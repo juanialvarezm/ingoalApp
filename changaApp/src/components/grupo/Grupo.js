@@ -8,9 +8,22 @@ import Button from 'react-native-button'
 import ModalGroups from './ModalGroups'
 import { GlobalState } from '../../context/GlobalContext'
 import GrupoBox from './GrupoBox'
+import  {io}  from 'socket.io-client'
+
+const socket = io('http://10.0.2.2:5000');
+
 
 const Grupo = ({navigation}) => {
   const {showModal,setShowModal} = GlobalState()
+
+
+  useEffect(() => {
+    // socket.on("message", "kk")
+
+    // return () => {
+    //   socket.off("message", "KK");
+    // };
+  }, []);
 
 
     const dispatch = useDispatch()

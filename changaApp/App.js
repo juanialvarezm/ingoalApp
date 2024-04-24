@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View }from "react-native"
 import Login from './src/components/auth/Login'
 import IndexPage from './src/screens/Index'
@@ -25,6 +25,7 @@ const Stack = createNativeStackNavigator()
 
 
 const App = () => {
+
   return (
     <Provider store={store}>
           <PersistGate persistor={persistor}>

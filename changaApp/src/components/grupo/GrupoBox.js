@@ -1,12 +1,16 @@
-import React, { useDebugValue } from 'react'
+import React, { useDebugValue,useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import {View,Text,StyleSheet, Image, TextInput,TouchableWithoutFeedback,Button, SafeAreaView, KeyboardAvoidingView,Keyboard, Platform, FlatList,} from "react-native"
 import pic from "../../assets/20230123_213701.jpg"
 import { resetGrupo } from '../../features/grupoSlice'
 import { useDispatch } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 
-function BubbleMessage({author,message}){
-        return(
+
+
+function BubbleMessage({author,message}){    
+    return(
             <View
             style={{
                 maxWidth:"80%",
@@ -16,13 +20,18 @@ function BubbleMessage({author,message}){
                 backgroundColor:author === "user"? "#121212" : "#007AFF",
             }}>
                 <Text style={{
-                    color:author === "user"? "#f6f6f6" : "#222"
+                    color:author === "user"? "#f6f6f6" : "#000"
                 }}>{message}</Text>
             </View>
         )
 }
 
 const GrupoBox = ({grupo}) => {
+    const {userInfo} = useSelector((state)=>state.auth)
+
+
+
+
     const dispatch = useDispatch()
 
     return (
@@ -34,13 +43,14 @@ const GrupoBox = ({grupo}) => {
                     source={pic}
                     style={styles.pic}/>
                     <Text style={styles.title}>{grupo.club.toUpperCase()}</Text>
-                    <Text style={styles.title}>{grupo.division}</Text>
+                    <Text style={styles.division}>{grupo.division}</Text>
                 </View>
                 <KeyboardAvoidingView
                 style={{flex:1}}
                 
                 keyboardVerticalOffset={Platform.OS === "ios" ? "padding" : undefined}
-                behavior='padding'>
+                behavior="padding"
+                >
                 <FlatList
                 style={{flex:1}}
                 data={conversation}
@@ -86,17 +96,25 @@ const styles = StyleSheet.create({
         // backgroundColor:"#f6f6f6"
     },
     header:{
-        backgroundColor:"#c9c9c9",
+        backgroundColor:"#d5d5d5",
         marginBottom:25,
         flexDirection:"row",        
         alignContent:"center",
         alignItems:"center",
-
+        height:60,
     },
     title:{
-        padding:15,
+        paddingLeft:10,
+        paddingRight:7,
+        color:"#000",
+        fontSize:20
+    },
+    division:{
+        fontSize:16,
+        paddingLeft:10
     },
     pic:{
+        marginLeft:10,
         width:40,
         height:40,
         borderRadius:20
