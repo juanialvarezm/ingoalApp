@@ -5,10 +5,9 @@ const messageSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"User",
     },
-    receiver:{
-        type:mongoose.Types.ObjectId,
-        ref:"User",
-    },
+    receiver:[{
+        type:Array
+    }],
     grupo:{
         type:mongoose.Types.ObjectId,
         ref:"Grupos"

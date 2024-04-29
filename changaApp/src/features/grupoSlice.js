@@ -28,6 +28,15 @@ export const crearGrupo  = createAsyncThunk("grupos/create",
 })
 
 
+const fetchGroupMessages = async()=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
 
 const initialState = {
     grupo:null,

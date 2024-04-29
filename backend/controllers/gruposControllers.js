@@ -125,5 +125,15 @@ const joinGroup = async(req,res)=>{
     }
 }
 
+const fetchGrupos = async(req,res)=>{
+    try {
+        const grupos = await Grupos.find()
+        res.json(grupos)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+
 module.exports = {createGroup,addPartidoAlFixture,addJugadores,
-                removeJugadores,agregarEjercicios,joinGroup}  
+                removeJugadores,agregarEjercicios,joinGroup,fetchGrupos}  

@@ -35,6 +35,10 @@ const canchasSchema = mongoose.Schema({
     codigo:{
         type:String,
         unique:true
+    },
+    esPrivado:{
+        type:Boolean,
+        default:true
     }
 })
 
