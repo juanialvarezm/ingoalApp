@@ -29,4 +29,13 @@ const sendMessage = async(req,res)=>{
     }
 }
 
+const fetchMessages = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+} 
+
+
 module.exports = {sendMessage}
