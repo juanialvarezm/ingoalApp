@@ -81,7 +81,7 @@ const Grupo = ({navigation}) => {
 
         ):(
           <View style={styles.grupoBox}>
-            <GrupoBox grupo={grupo}/>
+            {/* <GrupoBox grupo={grupo}/> */}
           </View>
         )}
         
