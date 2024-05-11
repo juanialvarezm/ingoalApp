@@ -17,14 +17,6 @@ const Grupo = ({navigation}) => {
   const {showModal,setShowModal} = GlobalState()
 
 
-  useEffect(() => {
-    // socket.on("message", "kk")
-
-    // return () => {
-    //   socket.off("message", "KK");
-    // };
-  }, []);
-
 
     const dispatch = useDispatch()
     const { grupo } = useSelector((state)=>state.grupos)
@@ -81,7 +73,7 @@ const Grupo = ({navigation}) => {
 
         ):(
           <View style={styles.grupoBox}>
-            {/* <GrupoBox grupo={grupo}/> */}
+            <GrupoBox grupo={grupo}/>
           </View>
         )}
         

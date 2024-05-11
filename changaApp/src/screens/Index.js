@@ -9,6 +9,7 @@ import IsAuthenticated from '../helpers/IsAuthenticated'
 import GrupoScreen from './GrupoScreen'
 import Grupo from '../components/grupo/Grupo'
 import Login from '../components/auth/Login'
+import GrupoOptions from '../components/grupo/GrupoOptions'
 
 const Tab = createBottomTabNavigator() 
 
@@ -17,7 +18,9 @@ const Index = () => {
     <>
     <Tab.Navigator>
       <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} />
-      <Tab.Screen name="Grupos" options={{headerShown:false,headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={GrupoScreen} />
+      <Tab.Screen name="Options" options={{headerShown:false}} component={GrupoOptions} />
+      <Tab.Screen name="Chat" options={{headerShown:false,headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={GrupoScreen} />
+
       <Tab.Screen name="Perfil" options={{headerShown:false}} component={IsAuthenticated} />
 
     </Tab.Navigator>
