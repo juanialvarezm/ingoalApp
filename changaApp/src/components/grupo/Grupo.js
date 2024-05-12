@@ -9,6 +9,7 @@ import ModalGroups from './ModalGroups'
 import { GlobalState } from '../../context/GlobalContext'
 import GrupoBox from './GrupoBox'
 import  {io}  from 'socket.io-client'
+import GrupoOptions from './GrupoOptions'
 
 const socket = io('http://10.0.2.2:5000');
 
@@ -73,7 +74,7 @@ const Grupo = ({navigation}) => {
 
         ):(
           <View style={styles.grupoBox}>
-            <GrupoBox grupo={grupo}/>
+            <GrupoOptions navigation={navigation} grupo={grupo}/>
           </View>
         )}
         

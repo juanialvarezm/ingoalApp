@@ -19,6 +19,9 @@ import GlobalContextProvider from './src/context/GlobalContext'
 import GrupoScreen from './src/screens/GrupoScreen'
 import Grupo from './src/components/grupo/Grupo'
 import CrearGrupo from './src/components/grupo/CrearGrupo'
+import Rutina from './src/components/grupo/Rutina'
+import Fixture from './src/components/grupo/Fixture'
+import Citados from './src/components/grupo/Citados'
 
 
 const Stack = createNativeStackNavigator()
@@ -46,6 +49,12 @@ const App = () => {
                   <Stack.Group screenOptions={{ presentation: "modal"}} options={{modalPresentationStyle:""}}>
                     <Stack.Screen name='CrearGrupo' component={CrearGrupo} />
                   </Stack.Group>
+
+                <Stack.Group>
+                  <Stack.Screen name='Rutina' component={Rutina} />
+                  <Stack.Screen name='Fixture' component={Fixture} />
+                  <Stack.Screen name='Citados' component={Citados} />
+                </Stack.Group>
 
               </Stack.Navigator>
             </NavigationContainer>

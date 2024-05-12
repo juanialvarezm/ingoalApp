@@ -15,8 +15,8 @@ const GrupoHeader = () => {
           alt='group pic'
           source={pic}
           style={styles.pic}/>
-          <Text style={styles.title}>{grupo.club.toUpperCase()}</Text>
-          <Text style={styles.division}>{grupo.division}</Text>
+          <Text style={styles.title}>{grupo?.club?.toUpperCase()}</Text>
+          <Text style={styles.division}>{grupo?.division}</Text>
         </View>
     </View>
   )
@@ -27,27 +27,34 @@ const styles =  StyleSheet.create({
       // flex:1,
     },
     header:{
+      paddingTop:6,
       backgroundColor:"#134c34",
-      marginBottom:25,
       flexDirection:"row",        
       alignContent:"center",
       alignItems:"center",
-      height:60,
+      height:70,
+      paddingLeft:20,
+      borderBottomRightRadius:5,
+      borderBottomLeftRadius:5,
     },
     pic:{
       marginLeft:10,
-      width:40,
-      height:40,
+      width:45,
+      height:45,
       borderRadius:20
   },
   title:{
-    paddingLeft:10,
+    alignItems:"center",
+    paddingLeft:15,
     paddingRight:7,
     color:"#fff",
     fontSize:20
 },
 division:{
-  color:"#d3d3d3"
+  alignItems:"center",
+
+  paddingLeft:5,
+  color:"#f3f3f3"
 }
 })
 

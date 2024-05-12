@@ -12,7 +12,8 @@ const GrupoScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   gruposWrappa:{
-    flex:1
+    flex:1,
+    backgroundColor:"#f6f6f6"
   }
 })
 
