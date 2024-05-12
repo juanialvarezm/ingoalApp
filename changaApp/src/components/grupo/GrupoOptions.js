@@ -11,7 +11,7 @@ const GrupoOptions = ({navigation}) => {
   return (
     <View style={styles.optionsContainer}>
         <View style={styles.headerContainer}>
-            <GrupoHeader/>
+            <GrupoHeader navigation={navigation}/>
         </View>
         <View style={styles.groupOptionsContainer}>
             <TouchableOpacity onPress={()=>navigation.navigate("Citados")} style={styles.citados}>

@@ -2,22 +2,33 @@ import React,{useState} from 'react'
 import { useSelector } from 'react-redux'
 import { View,StyleSheet,Text,Image } from 'react-native'
 import pic from "../../assets/20230123_213701.jpg"
+import Button from 'react-native-button';
 
 
-const GrupoHeader = () => {
+const GrupoHeader = ({navigation}) => {
     const {grupo} = useSelector((state)=>state.grupos)
 
 
     return (
     <View style={styles.headerContainer}>
-        <View style={styles.header}>
-          <Image
-          alt='group pic'
-          source={pic}
-          style={styles.pic}/>
-          <Text style={styles.title}>{grupo?.club?.toUpperCase()}</Text>
-          <Text style={styles.division}>{grupo?.division}</Text>
-        </View>
+      <View>
+      <Button 
+            onPress={()=>navigation.navigate("GrupoDetails")}   
+            >
+              <View
+            style={styles.header}
+            >
+                  <Image
+              alt='group pic'
+              source={pic}
+              style={styles.pic}/>
+              <Text style={styles.title}>{grupo?.club?.toUpperCase()}</Text>
+              <Text style={styles.division}>{grupo?.division}</Text>
+
+              </View>
+        </Button>
+
+      </View>
     </View>
   )
 }

@@ -54,6 +54,7 @@ const App = () => {
                   <Stack.Screen name='Rutina' component={Rutina} />
                   <Stack.Screen name='Fixture' component={Fixture} />
                   <Stack.Screen name='Citados' component={Citados} />
+                  <Stack.Screen name='GrupoDetails' component={Citados} />
                 </Stack.Group>
 
               </Stack.Navigator>
