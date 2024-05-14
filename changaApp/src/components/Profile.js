@@ -37,7 +37,7 @@ const Profile = () => {
                             containerStyle={{padding:9,width:60,
                                 marginTop:10,
                                 alignContent:"center",alignItems:"center", overflow:'hidden',  
-                                borderRadius:10,borderColor:"#222",borderWidth:4, backgroundColor: '#222',marginLeft:40}}
+                                borderRadius:10,borderColor:"#134c34",borderWidth:4, backgroundColor: '#134c34',marginLeft:40}}
                             disabledContainerStyle={{backgroundColor: 'grey'}}
                             style={{fontSize: 18, color: '#222'}}>
                                 <Text style={{color:"#fff", fontSize:18,fontWeight:"bold"  }}>
@@ -65,25 +65,9 @@ const Profile = () => {
                                     </Button>
 
                             </View>
-                            <View style={styles.club}>
-                                {/* <Text style={styles.textClub}>{userInfo?.club || "medio scum"}</Text>
-                                <FontAwesomeIcon icon={faFootball} style={{color: "#0e450d",}} />                         */}
 
-                                <Button
-                                    containerStyle={{padding:9,
-                                        marginTop:10,
-                                        alignContent:"center",alignItems:"center", overflow:'hidden',  
-                                        borderRadius:30,borderColor:"#fff",borderWidth:4, backgroundColor: '#fff',marginLeft:20}}
-                                    disabledContainerStyle={{backgroundColor: 'grey'}}
-                                    style={{fontSize: 18, color: '#222'}}>
-                                        <Text style={{color:"#222", fontSize:18,fontWeight:"bold",paddingRight:7}}>
-                                        medio scrum
-                                        </Text>
-                                        <FontAwesomeIcon icon={faFootball} style={{color: "#000",}} />
 
-                                    </Button>
 
-                            </View>
                             <View style={styles.club}>
                                 {/* <Text style={styles.textClub}>{userInfo?.club || "11"}</Text>
                                 <FontAwesomeIcon icon={faFootball} style={{color: "#0e450d",}} />                         */}

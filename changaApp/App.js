@@ -22,6 +22,7 @@ import CrearGrupo from './src/components/grupo/CrearGrupo'
 import Rutina from './src/components/grupo/Rutina'
 import Fixture from './src/components/grupo/Fixture'
 import Citados from './src/components/grupo/Citados'
+import GrupoDetailsHeader from './src/components/grupo/GrupoDetailsHeader'
 
 
 const Stack = createNativeStackNavigator()
@@ -54,7 +55,7 @@ const App = () => {
                   <Stack.Screen name='Rutina' component={Rutina} />
                   <Stack.Screen name='Fixture' component={Fixture} />
                   <Stack.Screen name='Citados' component={Citados} />
-                  <Stack.Screen name='GrupoDetails' component={Citados} />
+                  <Stack.Screen  name='GrupoDetails' component={GrupoDetailsHeader} />
                 </Stack.Group>
 
               </Stack.Navigator>

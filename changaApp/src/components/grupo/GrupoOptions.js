@@ -22,7 +22,7 @@ const GrupoOptions = ({navigation}) => {
                             style={styles.citadosPic}
                             alt='Citados Pic'/>
                     </View>
-                    <Text style={{color:"#000",textAlign:"center"}}>CITADOS</Text>
+                    <Text style={{color:"#000",textAlign:"center",fontSize:18}}>CITADOS</Text>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>navigation.navigate("Rutina")} style={styles.rutina}>
@@ -33,7 +33,7 @@ const GrupoOptions = ({navigation}) => {
                             style={styles.rutinaPic}
                             alt='rutina Pic'/>
                     </View>
-                    <Text style={{color:"#000",textAlign:"center"}}>RUTINA</Text>
+                    <Text style={{color:"#000",textAlign:"center",fontSize:18}}>RUTINA</Text>
                 </View>
 
             </TouchableOpacity>
@@ -45,7 +45,7 @@ const GrupoOptions = ({navigation}) => {
                         style={styles.fixturePic}
                         alt='Fixture Pic'/>
                     </View>
-                    <Text style={{color:"#000",textAlign:"center"}}>CITADOS</Text>
+                    <Text style={{color:"#000",textAlign:"center",fontSize:18}}>CITADOS</Text>
                 </View>
             </TouchableOpacity>
         </View>
