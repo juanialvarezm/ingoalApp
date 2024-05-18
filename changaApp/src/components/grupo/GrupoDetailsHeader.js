@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { StyleSheet, Text, View,Image, FlatList  } from 'react-native'
 import { useSelector } from 'react-redux'
 import pic from "../../assets/20230123_213701.jpg"
-import manrunning from "../../assets/manrunning.png"
+import rugby from "../../assets/rugby.png"
 
 const GrupoDetailsHeader = () => {
   const {grupo} = useSelector((state)=>state.grupos)
@@ -36,15 +36,29 @@ const GrupoDetailsHeader = () => {
         <Text style={{color:"#000",fontSize:18}}>{grupo?.division.toUpperCase()}</Text>
       </View>
       <View style={styles.estadisticas}>
-        <View>
+        <View style={styles.headerRow}>
           <Image
-          source={manrunning}
+          source={rugby}
           style={styles.manRunning}
           alt='Try Pic'/>
+
+          <View>
+            <Text>Goleadores</Text>
+          </View>
         </View>
-        <View>
-          <Text>Goleadores</Text>
+        
+        <View style={styles.headerRow}>
+          <Image
+          source={rugby}
+          style={styles.manRunning}
+          alt='Try Pic'
+          />
+
+          <View >
+            <Text>Goleadores</Text>
+          </View>
         </View>
+
       </View>
       <View style={styles.players}>
         <View style={styles.jugadorBox}>
@@ -114,6 +128,14 @@ const styles = StyleSheet.create({
   manRunning:{
     width:40,
     height:40
+  },
+  estadisticas:{
+    flexDirection:"row"
+  },
+  headerRow:{
+    flexDirection:"column",
+    padding:20,
+    paddingBottom:10,
   }
 })
 

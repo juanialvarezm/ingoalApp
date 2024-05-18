@@ -14,6 +14,8 @@ const GrupoHeader = ({navigation}) => {
       <View>
       <Button 
             onPress={()=>navigation.navigate("GrupoDetails")}   
+            containerStyle={{padding:6, overflow:'hidden', borderRadius:2, backgroundColor: '#134c34'}}
+            disabledContainerStyle={{backgroundColor: 'grey'}}
             >
               <View
             style={styles.header}
@@ -38,15 +40,15 @@ const styles =  StyleSheet.create({
       // flex:1,
     },
     header:{
-      paddingTop:6,
+      // paddingTop:6,
       backgroundColor:"#134c34",
       flexDirection:"row",        
       alignContent:"center",
       alignItems:"center",
       height:70,
       paddingLeft:20,
-      borderBottomRightRadius:5,
-      borderBottomLeftRadius:5,
+      // borderBottomRightRadius:5,
+      // borderBottomLeftRadius:5,
     },
     pic:{
       marginLeft:10,

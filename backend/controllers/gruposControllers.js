@@ -135,6 +135,20 @@ const fetchGrupos = async(req,res)=>{
 }
 
 
+const makeGroupAdmin = async(req,res)=>{
+    try {
+        const {userId,groupId,reqUser} = req.body
+
+        if(!reqUser.isAdmin)return 
+
+        const make = await User.findByIdAndUpdate(userId,{isAdmin:true})
+        res.json(make)
+
+    } catch (error) {
+        throw new Error(eror.message)
+    }
+}
+
 module.exports = {createGroup,addPartidoAlFixture,addJugadores,
                 removeJugadores,agregarEjercicios,joinGroup,fetchGrupos}
                 
