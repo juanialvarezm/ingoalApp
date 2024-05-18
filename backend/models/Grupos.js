@@ -9,12 +9,9 @@ const canchasSchema = mongoose.Schema({
         type:String, 
         required:[true, "Especifique la division"]
     },
-    admin:{
-        type:mongoose.Types.ObjectId,
-        // required:true,
-        ref:"User"
-        // type:String
-    },
+    admin:[{
+        type:Array
+    }],
     jugadas:[{
         type:Array
     }],
@@ -39,7 +36,10 @@ const canchasSchema = mongoose.Schema({
     esPrivado:{
         type:Boolean,
         default:true
-    }
+    },
+    equipos:{
+        type:Array
+    },
 })
 
 

@@ -4,6 +4,9 @@ const partidosSchema = mongoose.Schema({
     equipoLocal:{
         type:String
     },
+    division:{
+        type:String
+    },
     equipoVisitante:{
         type:String
     },
@@ -25,6 +28,9 @@ const partidosSchema = mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"User"
     },
+    grupoId:{
+        type:String
+    }
 
 })
 

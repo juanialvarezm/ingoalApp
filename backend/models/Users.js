@@ -32,10 +32,9 @@ const UserSchema = mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"Messages"
     }],
-    isAdmin:{
-        type:Boolean,
-        default:false
-    }
+    isAdmin:[{
+        type:Array
+    }]
 })
 
 

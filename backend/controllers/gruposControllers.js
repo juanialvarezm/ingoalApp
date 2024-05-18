@@ -9,8 +9,8 @@ const createGroup = async(req,res)=>{
     try {
         const {club,division,jugadores,fixture,admin} = req.body
 
-        if(!club || !division){
-            console.log("es necesario un nombre y division")
+        if(!club || !division || !admin){
+            console.log("es necesario un nombre , division y admin ")
         }
 
         console.log(req.user)
@@ -19,15 +19,18 @@ const createGroup = async(req,res)=>{
             division,
             jugadores,
             admin,
-
+            // isAdmin:reqUser
         }
         
+
         var createGroup = await Grupos.create(groupInfo)
         createGroup = await createGroup.populate("jugadores", "name username")
 
         let players = jugadores.map((j)=>j)
         console.log(players)
         const addJugadores = await User.findByIdAndUpdate(players,{grupo:createGroup})
+
+        const nowAdmin = await User.findByIdAndUpdate(admin,{isAdmin:createGroup._id})
 
 
         res.json(createGroup)
@@ -38,27 +41,6 @@ const createGroup = async(req,res)=>{
 }
 
 
-const addPartidoAlFixture = async (req,res) => {
-    try {
-
-        const {fecha,equipoLocal,equipoVisitante,grupoId} = req.body
-        
-            if(!equipoLocal || !equipoVisitante){
-                throw new Error("Se necesitan equipos")
-            }
-        
-        const partido = await Partidos.create({equipoLocal,equipoVisitante,fecha,grupoId})
-        
-        const alFixture = await Grupos.findByIdAndUpdate(grupoId,
-            {$push:{partidos:partido}}
-        )
-        
-        res.json(alFixture) 
-
-    } catch (error) {
-        throw new Error(error.message)
-    }
-}
 
 
 const addJugadores = async(req,res)=>{
@@ -96,18 +78,6 @@ const removeJugadores = async(req,res)=>{
 }
 
 
-const agregarEjercicios = async(req,res)=>{
-    try {
-        const {nombreEjercicio, descripcion,grupo} = req.body
-
-        const ejer = await Ejercicios.create({nombreEjercicio,descripcion,grupo}) 
-        const rutina = await Grupos.findByIdAndUpdate(grupo,{$push:{rutina:{ejer}}}) 
-        
-        res.json(ejer)
-    } catch (error) {
-        throw new Error(error.message)
-    }
-}
 
 const joinGroup = async(req,res)=>{
     try {
@@ -139,16 +109,69 @@ const makeGroupAdmin = async(req,res)=>{
     try {
         const {userId,groupId,reqUser} = req.body
 
-        if(!reqUser.isAdmin)return 
 
-        const make = await User.findByIdAndUpdate(userId,{isAdmin:true})
+        const isReqAdmin = await User.findById(reqUser)
+        // console.log(isReqAdmin)
+        if(!isReqAdmin.isAdmin)return console.log("no es admin ") 
+
+        const make = await User.findByIdAndUpdate(userId,{isAdmin:groupId})
+        
         res.json(make)
 
     } catch (error) {
-        throw new Error(eror.message)
+        throw new Error(error.message)
     }
 }
 
+const agregarEjercicios = async(req,res)=>{
+    try {
+        const {nombreEjercicio, descripcion,grupo} = req.body
+
+        const ejer = await Ejercicios.create({nombreEjercicio,descripcion,grupo}) 
+        const rutina = await Grupos.findByIdAndUpdate(grupo,{$push:{rutina:{ejer}}}) 
+        
+        res.json(ejer)
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+const addPartidoAlFixture = async (req,res) => {
+    try {
+
+        const {fecha,equipoLocal,equipoVisitante,grupoId} = req.body
+        
+            if(!equipoLocal || !equipoVisitante){
+                throw new Error("Se necesitan equipos")
+            }
+        
+        const partido = await Partidos.create({equipoLocal,equipoVisitante,fecha,grupoId})
+        
+        const alFixture = await Grupos.findByIdAndUpdate(grupoId,
+            {$push:{partidos:partido}}
+        ).populate("partidos", "equipoLocal equipoVisitante fecha")
+        
+        res.json(alFixture) 
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+
+const citarJugadores = async(req,res)=>{
+    try {
+        const {jugadores,fecha,equipo} = req.body
+
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+
+
 module.exports = {createGroup,addPartidoAlFixture,addJugadores,
-                removeJugadores,agregarEjercicios,joinGroup,fetchGrupos}
+                removeJugadores,agregarEjercicios,joinGroup,fetchGrupos,
+                makeGroupAdmin}
                 

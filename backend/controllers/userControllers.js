@@ -1,6 +1,7 @@
 const express = require("express")
 const User = require("../models/Users")
 const generateJWT = require("../helpers/generateJWT")
+const Partidos = require("../models/Partidos")
 
 const signUp = async(req,res)=>{
     try {
@@ -73,5 +74,8 @@ const searchUsers = async(req,res)=>{
         throw new Error(error.message)   
     }
 }
+
+
+
 
 module.exports = {signUp,login,editUser,searchUsers}
