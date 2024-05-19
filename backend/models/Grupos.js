@@ -37,9 +37,10 @@ const canchasSchema = mongoose.Schema({
         type:Boolean,
         default:true
     },
-    equipos:{
-        type:Array
-    },
+    equipos:[{
+        type:mongoose.Types.ObjectId,
+        ref:"EquiposGrupo"
+    }]
 })
 
 
