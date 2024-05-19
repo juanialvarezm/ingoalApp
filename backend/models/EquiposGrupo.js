@@ -10,11 +10,13 @@ const equiposGrupoSchema = mongoose.Schema({
         ref:"Grupos",
         required:true
     },
-    jugadores:{
-        type:Array
-    },
+    jugadores:[{
+        type:mongoose.Types.ObjectId,
+        ref:"User",
+    }],
     fecha:{
-        type:Date()
+        // type:Date()
+        type:String
     }
 })
 

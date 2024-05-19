@@ -45,7 +45,7 @@ const GrupoOptions = ({navigation}) => {
                         style={styles.fixturePic}
                         alt='Fixture Pic'/>
                     </View>
-                    <Text style={{color:"#000",textAlign:"center",fontSize:18}}>CITADOS</Text>
+                    <Text style={{color:"#000",textAlign:"center",fontSize:18}}>FIXTURE</Text>
                 </View>
             </TouchableOpacity>
         </View>

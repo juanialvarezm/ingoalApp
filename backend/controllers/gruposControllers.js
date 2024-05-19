@@ -3,6 +3,7 @@ const User = require("../models/Users")
 const Grupos = require("../models/Grupos")
 const Partidos = require("../models/Partidos")
 const Ejercicios = require("../models/Ejercicios")
+const EquiposGrupo = require("../models/EquiposGrupo")
 
 
 const createGroup = async(req,res)=>{
@@ -161,8 +162,16 @@ const addPartidoAlFixture = async (req,res) => {
 
 const citarJugadores = async(req,res)=>{
     try {
-        const {jugadores,fecha,equipo} = req.body
+        const {nombreEquipo,grupo,jugadores,fecha} = req.body
 
+
+        var crearEquipo = await EquiposGrupo.create({nombreEquipo,grupo,jugadores,fecha})
+        crearEquipo = await crearEquipo.populate("jugadores")
+        
+        var addToGroup = await Grupos.findByIdAndUpdate(grupo,{$push:{equipos:crearEquipo}})
+        addToGroup = await addToGroup.populate("equipos")
+
+        res.json(addToGroup)
 
     } catch (error) {
         throw new Error(error.message)
@@ -173,5 +182,5 @@ const citarJugadores = async(req,res)=>{
 
 module.exports = {createGroup,addPartidoAlFixture,addJugadores,
                 removeJugadores,agregarEjercicios,joinGroup,fetchGrupos,
-                makeGroupAdmin}
+                makeGroupAdmin,citarJugadores}
                 
