@@ -36,6 +36,7 @@ const login = async (req,res)=>{
                 _id:user._id,
                 name:user.name,
                 username:user.username,
+                grupo:user.grupo,
                 password:user.password,
                 token: generateJWT(user._id),
             })    

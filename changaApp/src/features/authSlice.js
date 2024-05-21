@@ -7,7 +7,7 @@ const initialState = {
     error:null,
     userToken:null,
     status:"loading",
-    userInfo:null
+    userInfo:null,
 }
 
 
@@ -16,8 +16,11 @@ const authSlice = createSlice({
     initialState,
     reducers:{
         logout:(state,action)=>{
-            state.userToken = null
-            state.userInfo = null 
+            return {
+                ...state,
+                userToken:null,
+                userInfo:null,    
+            }
         }
     },
     extraReducers:(builder)=>{

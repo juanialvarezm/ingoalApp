@@ -2,13 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import { selectCurrentToken } from "./authSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useSelector } from "react-redux";
+
 
 export const crearGrupo  = createAsyncThunk("grupos/create",
-    async(groupData,{rejectWithValue})=>{
+async(groupData,{rejectWithValue})=>{
     try {
+
+    const { userToken } = useSelector((state)=>state.auth)
+        
         const config = {
             headers: {
               'Content-Type':'application/json',
+              "Authorization":`Bearer ${userToken}`
             },
           }
 
@@ -24,10 +30,3 @@ export const crearGrupo  = createAsyncThunk("grupos/create",
 })
 
 
-const agregarPartidoAlFixture = createAsyncThunk("grupos/addPartido",()=>{
-    try {
-
-    } catch (error) {
-        throw new Error(error.message)
-    }
-})

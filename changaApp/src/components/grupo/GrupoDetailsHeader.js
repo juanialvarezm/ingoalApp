@@ -126,8 +126,10 @@ const styles = StyleSheet.create({
     fontSize:14
   },
   manRunning:{
-    width:40,
-    height:40
+    width:30,
+    height:30,
+    alignSelf:"center",
+    marginBottom:5
   },
   estadisticas:{
     flexDirection:"row"

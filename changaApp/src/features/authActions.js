@@ -3,6 +3,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios"
 import { selectCurrentToken } from "./authSlice";
 
+
+
+
 export const register = createAsyncThunk("auth/register",
         async(userData,{rejectWithValue})=>{
             try {

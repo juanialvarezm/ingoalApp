@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View,StyleSheet, Image } from 'react-native'
 import {useSelector} from "react-redux"
 import profi from "../assets/20230123_213701.jpg"
@@ -6,10 +6,20 @@ import Button from 'react-native-button';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faFootball } from '@fortawesome/free-solid-svg-icons/faFootball'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
-
+import { logout } from '../features/authSlice';
+import { useDispatch } from 'react-redux';
 
 const Profile = () => {
     const {error,userInfo,userToken} = useSelector((state)=>state.auth)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        console.log(userInfo)
+    },[])
+
+    const logoutAc = ()=>{
+        dispatch(logout())
+    }
 
   return (
     <>
@@ -29,7 +39,7 @@ const Profile = () => {
                             <Text style={styles.name}> {userInfo?.name}</Text>
                         </View>
                         <View>
-                            <Text style={styles.username}> @{userInfo.username} </Text>
+                            <Text style={styles.username}> @{userInfo?.username} </Text>
                         </View>
                     </View>
                     <View style={styles.amigos}>
@@ -48,8 +58,6 @@ const Profile = () => {
                 </View>
                 <View style={styles.infoProfile}>
                             <View style={styles.club}>
-                                {/* <Text style={styles.textClub}>{userInfo?.club || "GEBA"}</Text>
-                                <FontAwesomeIcon icon={faFootball} style={{color: "#0e450d",}} />                         */}
                                 <Button
                                     containerStyle={{padding:9,width:80,
                                         marginTop:10,
@@ -102,8 +110,9 @@ const Profile = () => {
                                         </Text>
                                     </Button>
                                 </View>
-                                <View   >
+                                <View>
                                         <Button
+                                        onPress={logoutAc}
                                     containerStyle={{padding:9,width:55,height:50,
                                         marginTop:10,
                                         alignContent:"center",alignItems:"center", overflow:'hidden',
