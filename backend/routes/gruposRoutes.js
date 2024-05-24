@@ -4,10 +4,12 @@ const {protect} = require("../middleware/auth")
 const {createGroup, addPartidoAlFixture,addJugadores,
     agregarEjercicios,removeJugadores, joinGroup,
     makeGroupAdmin,
-    citarJugadores} = require("../controllers/gruposControllers")
+    citarJugadores,
+    quitGroup,
+    fetchGrupo} = require("../controllers/gruposControllers")
 
 
-router.route("/").post(createGroup)
+router.route("/").post(createGroup).get(fetchGrupo)
 router.route("/fixture").post(protect,addPartidoAlFixture)
 router.route("/add").post(protect,addJugadores)
 router.route("/ejercicio").post(protect,agregarEjercicios)
@@ -15,6 +17,7 @@ router.route("/remove").post(protect,removeJugadores)
 router.route("/join").post(protect,joinGroup)
 router.route("/makeadmin").post(protect,makeGroupAdmin)
 router.route("/citar").post(protect,citarJugadores)
+router.route("/leave").post(protect,quitGroup)
 
 
 

@@ -20,18 +20,19 @@ const createGroup = async(req,res)=>{
             division,
             jugadores,
             admin,
-            // isAdmin:reqUser
         }
         
 
         var createGroup = await Grupos.create(groupInfo)
         createGroup = await createGroup.populate("jugadores", "name username")
+        createGroup = await createGroup.populate("jugadores", "name username")
 
-        let players = jugadores.map((j)=>j)
-        console.log(players)
-        const addJugadores = await User.findByIdAndUpdate(players,{grupo:createGroup})
+        
+        var addJugadores = await User.findByIdAndUpdate(jugadores,{grupo:createGroup._id})
+        // addJugadores = await addJugadores.populate("grupo division")
 
-        const nowAdmin = await User.findByIdAndUpdate(admin,{isAdmin:createGroup._id})
+
+        const nowAdmin = await User.findByIdAndUpdate(admin,{isAdmin:createGroup})
 
 
         res.json(createGroup)
@@ -42,6 +43,29 @@ const createGroup = async(req,res)=>{
 }
 
 
+const fetchGrupo = async(req,res)=>{
+    try {
+        const {groupId} = req.body
+
+        const find = await Grupos.findById(groupId)
+        res.json(find)
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+const quitGroup = async(req,res)=>{
+    try {
+        const {groupId,userId} = req.body
+
+        const leave = await Grupos.findByIdAndUpdate(groupId,{$pull:{jugadores:userId}})
+        res.json(leave)
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
 
 
 const addJugadores = async(req,res)=>{
@@ -182,5 +206,5 @@ const citarJugadores = async(req,res)=>{
 
 module.exports = {createGroup,addPartidoAlFixture,addJugadores,
                 removeJugadores,agregarEjercicios,joinGroup,fetchGrupos,
-                makeGroupAdmin,citarJugadores}
+                makeGroupAdmin,citarJugadores,quitGroup,fetchGrupo}
                 

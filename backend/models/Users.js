@@ -24,14 +24,8 @@ const UserSchema = mongoose.Schema({
     },
     grupo:{
         type:mongoose.Types.ObjectId,
+        ref:"Grupos"
     },
-    cancionesGuardadas:[{
-        type:Array,
-    }],
-    messages:[{
-        type:mongoose.Types.ObjectId,
-        ref:"Messages"
-    }],
     isAdmin:[{
         type:Array
     }]

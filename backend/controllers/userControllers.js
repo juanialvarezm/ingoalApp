@@ -2,6 +2,7 @@ const express = require("express")
 const User = require("../models/Users")
 const generateJWT = require("../helpers/generateJWT")
 const Partidos = require("../models/Partidos")
+const Grupos = require("../models/Grupos")
 
 const signUp = async(req,res)=>{
     try {
@@ -20,6 +21,8 @@ const signUp = async(req,res)=>{
     }
 }
 
+
+
 const login = async (req,res)=>{
     try {
         const {name,password} = req.body
@@ -31,6 +34,8 @@ const login = async (req,res)=>{
 
         }
 
+        const grupoo = await Grupos.find({jugadores:user})
+
         if(user && await user.comparePassword(password)){
             res.json({
                 _id:user._id,
@@ -38,6 +43,8 @@ const login = async (req,res)=>{
                 username:user.username,
                 grupo:user.grupo,
                 password:user.password,
+                posicion:user.posicion,
+                isAdmin:user.isAdmin,
                 token: generateJWT(user._id),
             })    
         }else{

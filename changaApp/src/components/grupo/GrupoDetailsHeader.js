@@ -1,11 +1,33 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, View,Image, FlatList  } from 'react-native'
+import { StyleSheet, Text, View,Image, FlatList, Dimensions  } from 'react-native'
 import { useSelector } from 'react-redux'
 import pic from "../../assets/20230123_213701.jpg"
 import rugby from "../../assets/rugby.png"
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
+import Button from "react-native-button"
+import { useDispatch } from 'react-redux'
+import { fetchGroup } from '../../features/grupoSlice'
 
-const GrupoDetailsHeader = () => {
+
+const GrupoDetailsHeader = ({navigation}) => {
+  const dispatch = useDispatch()
+
   const {grupo} = useSelector((state)=>state.grupos)
+
+  useEffect(()=>{
+    dispatch(fetchGroup())
+  },[])
+
+
+  const resettGrupo = async()=>{
+    try {
+        dispatch(quitGroup())
+        navigation.navigate("Home")
+    } catch (error) {
+      throw new Error(error.message)
+    }
+  }
 
   useEffect(()=>{
     console.log(grupo.jugadores)
@@ -32,7 +54,7 @@ const GrupoDetailsHeader = () => {
             alt={"SAMOAA"} 
             source={pic}
           />
-        <Text style={{color:"#000",fontSize:20}}>Geba</Text>
+        <Text style={{color:"#000",fontSize:20}}>{grupo?.club}</Text>
         <Text style={{color:"#000",fontSize:18}}>{grupo?.division.toUpperCase()}</Text>
       </View>
       <View style={styles.estadisticas}>
@@ -48,15 +70,16 @@ const GrupoDetailsHeader = () => {
         </View>
         
         <View style={styles.headerRow}>
-          <Image
-          source={rugby}
-          style={styles.manRunning}
-          alt='Try Pic'
-          />
+          <Button
+          onPress={resettGrupo}
+            containerStyle={{padding:12,
+            alignContent:"center",alignItems:"center", overflow:'hidden',
+            borderRadius:30,borderColor:"#000",borderWidth:4,}}
+            disabledContainerStyle={{backgroundColor: 'grey'}}
+            style={{fontSize: 18, color: '#222'}}>
+            <FontAwesomeIcon style={styles.logout} icon={faRightFromBracket} />
+        </Button>
 
-          <View >
-            <Text>Goleadores</Text>
-          </View>
         </View>
 
       </View>

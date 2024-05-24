@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 const Profile = () => {
     const {error,userInfo,userToken} = useSelector((state)=>state.auth)
     const dispatch = useDispatch()
+    const { grupo } = useSelector((state)=>state.grupos)
 
     useEffect(()=>{
         console.log(userInfo)

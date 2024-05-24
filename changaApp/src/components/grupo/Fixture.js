@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux'
 import Button from "react-native-button"
 import confusing from "../../assets/confusing.png"
 
+
 const Fixture = () => {
   const {userInfo} = useSelector((state)=>state.auth)
   const {grupo} = useSelector((state)=>state.grupos)
+
   
 
   return (

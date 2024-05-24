@@ -24,7 +24,7 @@ const Grupo = ({navigation}) => {
     const { userInfo } = useSelector((state)=>state.auth)
 
     useEffect(()=>{
-      console.log(grupo)
+      console.log(userInfo)
     },[])
   
 
@@ -34,7 +34,7 @@ const Grupo = ({navigation}) => {
         <Text>No hay usuario</Text>
       ):(
         <>
-          {!grupo?(
+          {!userInfo.grupo?(
             <View style={styles.container}>
                 <>
                   <View style={styles.visual}>

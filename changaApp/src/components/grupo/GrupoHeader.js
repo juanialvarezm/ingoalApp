@@ -7,6 +7,7 @@ import Button from 'react-native-button';
 
 const GrupoHeader = ({navigation}) => {
     const {grupo} = useSelector((state)=>state.grupos)
+    const {userInfo} = useSelector((state)=>state.auth)
 
 
     return (
@@ -24,8 +25,9 @@ const GrupoHeader = ({navigation}) => {
               alt='group pic'
               source={pic}
               style={styles.pic}/>
-              <Text style={styles.title}>{grupo?.club?.toUpperCase()}</Text>
-              <Text style={styles.division}>{grupo?.division}</Text>
+              <Text style={styles.title}>{userInfo?.grupo?.club?.toUpperCase()}</Text>
+              <Text style={styles.division}>{userInfo?.grupo?.division}</Text>
+              <Text style={styles.division}>{userInfo?.grupo}</Text>
 
               </View>
         </Button>
