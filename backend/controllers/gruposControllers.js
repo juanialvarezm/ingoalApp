@@ -45,9 +45,10 @@ const createGroup = async(req,res)=>{
 
 const fetchGrupo = async(req,res)=>{
     try {
-        const {groupId} = req.body
+        const {groupId} = req.params
 
         const find = await Grupos.findById(groupId)
+        // const find = await Grupos.find({})
         res.json(find)
 
     } catch (error) {

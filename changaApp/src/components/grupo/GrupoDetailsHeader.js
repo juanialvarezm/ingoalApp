@@ -14,11 +14,7 @@ const GrupoDetailsHeader = ({navigation}) => {
   const dispatch = useDispatch()
 
   const {grupo} = useSelector((state)=>state.grupos)
-
-  useEffect(()=>{
-    dispatch(fetchGroup())
-  },[])
-
+  const {userInfo} = useSelector((state)=>state.auth)
 
   const resettGrupo = async()=>{
     try {
@@ -28,10 +24,6 @@ const GrupoDetailsHeader = ({navigation}) => {
       throw new Error(error.message)
     }
   }
-
-  useEffect(()=>{
-    console.log(grupo.jugadores)
-  },[])
 
   const Item = ({ username,name }) => (
     <View style={styles.jugadores}>
@@ -86,7 +78,7 @@ const GrupoDetailsHeader = ({navigation}) => {
       <View style={styles.players}>
         <View style={styles.jugadorBox}>
           <FlatList
-          data={grupo.jugadores}
+          data={grupo?.jugadores}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           />

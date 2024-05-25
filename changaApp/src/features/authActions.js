@@ -4,6 +4,19 @@ import axios from "axios"
 import { selectCurrentToken } from "./authSlice";
 
 
+export const fetchGroup = createAsyncThunk("grupos/fetchh",async(grupo,{rejectWithValue})=>{
+
+  try {
+
+
+          const {data} = await axios.get(`http://10.0.2.2:5000/api/grupos/${grupo}`)            
+          console.log(data)
+              return data
+          // setGrupoO(data)
+  } catch (error) {
+      return rejectWithValue(error?.response?.data)
+  }
+})
 
 
 export const register = createAsyncThunk("auth/register",

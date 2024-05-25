@@ -9,7 +9,8 @@ const {createGroup, addPartidoAlFixture,addJugadores,
     fetchGrupo} = require("../controllers/gruposControllers")
 
 
-router.route("/").post(createGroup).get(fetchGrupo)
+router.route("/").post(createGroup)
+router.route("/:groupId").get(fetchGrupo)
 router.route("/fixture").post(protect,addPartidoAlFixture)
 router.route("/add").post(protect,addJugadores)
 router.route("/ejercicio").post(protect,agregarEjercicios)

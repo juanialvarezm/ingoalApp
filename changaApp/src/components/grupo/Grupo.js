@@ -23,11 +23,7 @@ const Grupo = ({navigation}) => {
     const { grupo } = useSelector((state)=>state.grupos)
     const { userInfo } = useSelector((state)=>state.auth)
 
-    useEffect(()=>{
-      console.log(userInfo)
-    },[])
   
-
   return (
     <View style={styles.hiperCont}>
       {userInfo == null | userInfo == undefined?(

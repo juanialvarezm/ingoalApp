@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login,register } from "./authActions";
+import { fetchGroup, login,register } from "./authActions";
 import { useSelector } from "react-redux";
 
 
@@ -8,6 +8,7 @@ const initialState = {
     userToken:null,
     status:"loading",
     userInfo:null,
+    userGroup:null
 }
 
 
@@ -80,6 +81,15 @@ const authSlice = createSlice({
                 userToken:null
             }
 
+        })
+        builder.addCase(fetchGroup.fulfilled,(state,action)=>{
+            return {
+                ...state,
+                userGroup:action.payload
+            }
+        })
+        builder.addCase(fetchGroup.rejected,(state,action)=>{
+            console.log("failed")
         })
     }
 })
