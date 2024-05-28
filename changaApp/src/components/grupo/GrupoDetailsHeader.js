@@ -8,6 +8,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFro
 import Button from "react-native-button"
 import { useDispatch } from 'react-redux'
 import { fetchGroup } from '../../features/grupoSlice'
+import { quitGroup } from '../../features/grupoSlice'
 
 
 const GrupoDetailsHeader = ({navigation}) => {
@@ -15,10 +16,11 @@ const GrupoDetailsHeader = ({navigation}) => {
 
   const {grupo} = useSelector((state)=>state.grupos)
   const {userInfo} = useSelector((state)=>state.auth)
+  const {userGroup} = useSelector((state)=>state.grupos)
 
   const resettGrupo = async()=>{
     try {
-        dispatch(quitGroup())
+        dispatch(quitGroup(userGroup._id,userInfo._id))
         navigation.navigate("Home")
     } catch (error) {
       throw new Error(error.message)
@@ -46,8 +48,8 @@ const GrupoDetailsHeader = ({navigation}) => {
             alt={"SAMOAA"} 
             source={pic}
           />
-        <Text style={{color:"#000",fontSize:20}}>{grupo?.club}</Text>
-        <Text style={{color:"#000",fontSize:18}}>{grupo?.division.toUpperCase()}</Text>
+        <Text style={{color:"#000",fontSize:20}}>{userGroup?.club}</Text>
+        <Text style={{color:"#000",fontSize:18}}>{userGroup?.division?.toUpperCase()}</Text>
       </View>
       <View style={styles.estadisticas}>
         <View style={styles.headerRow}>
@@ -78,9 +80,9 @@ const GrupoDetailsHeader = ({navigation}) => {
       <View style={styles.players}>
         <View style={styles.jugadorBox}>
           <FlatList
-          data={grupo?.jugadores}
+          data={userGroup?.jugadores}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          key={(item) => item.id}
           />
 
         </View>

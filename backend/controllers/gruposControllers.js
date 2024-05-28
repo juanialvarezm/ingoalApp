@@ -60,7 +60,10 @@ const quitGroup = async(req,res)=>{
     try {
         const {groupId,userId} = req.body
 
+         const user = await User.findByIdAndUpdate(userId,{grupo:null})
+
         const leave = await Grupos.findByIdAndUpdate(groupId,{$pull:{jugadores:userId}})
+        console.log(leave)
         res.json(leave)
 
     } catch (error) {

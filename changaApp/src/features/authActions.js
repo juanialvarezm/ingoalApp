@@ -8,7 +8,6 @@ export const fetchGroup = createAsyncThunk("grupos/fetchh",async(grupo,{rejectWi
 
   try {
 
-
           const {data} = await axios.get(`http://10.0.2.2:5000/api/grupos/${grupo}`)            
           console.log(data)
               return data

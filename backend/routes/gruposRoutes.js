@@ -18,7 +18,7 @@ router.route("/remove").post(protect,removeJugadores)
 router.route("/join").post(protect,joinGroup)
 router.route("/makeadmin").post(protect,makeGroupAdmin)
 router.route("/citar").post(protect,citarJugadores)
-router.route("/leave").post(protect,quitGroup)
+router.route("/leave").post(quitGroup)
 
 
 

@@ -22,6 +22,7 @@ const Grupo = ({navigation}) => {
     const dispatch = useDispatch()
     const { grupo } = useSelector((state)=>state.grupos)
     const { userInfo } = useSelector((state)=>state.auth)
+    const { userGroup } = useSelector((state)=>state.grupos)
 
   
   return (
@@ -30,7 +31,7 @@ const Grupo = ({navigation}) => {
         <Text>No hay usuario</Text>
       ):(
         <>
-          {!userInfo.grupo?(
+          {!userGroup == userGroup == undefined || userGroup == null?(
             <View style={styles.container}>
                 <>
                   <View style={styles.visual}>

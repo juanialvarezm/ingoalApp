@@ -33,7 +33,23 @@ async(groupData,{rejectWithValue})=>{
     }
 })
 
-export const quitGroup = createAsyncThunk("grupos/quit",async(userData,{rejectWithValue})=>{
+
+export const fetchGroup = createAsyncThunk("grupos/fetchh",async(grupo,{rejectWithValue})=>{
+
+    try {
+  
+  
+            const {data} = await axios.get(`http://10.0.2.2:5000/api/grupos/${grupo}`)            
+            console.log(data)
+                return data
+            // setGrupoO(data)
+    } catch (error) {
+        return rejectWithValue(error?.response?.data)
+    }
+  })
+  
+
+export const quitGroup = createAsyncThunk("grupos/quit",async(groupData,{rejectWithValue})=>{
     try {
             const config = {
                 headers:{
@@ -41,7 +57,7 @@ export const quitGroup = createAsyncThunk("grupos/quit",async(userData,{rejectWi
                 }
             }
 
-        const {data} = await axios.post("http://10.0.2.2:5000/api/grupos/leave",{...userData},config) 
+        const {data} = await axios.post("http://10.0.2.2:5000/api/grupos/leave",...groupData,config) 
         return data
 
     } catch (error) {
@@ -56,7 +72,8 @@ export const quitGroup = createAsyncThunk("grupos/quit",async(userData,{rejectWi
 const initialState = {
     grupo:null,
     status:"loading",
-    error:null
+    error:null,
+    userGroup:null
 }
 
 const gruposSlice = createSlice({
@@ -87,21 +104,31 @@ const gruposSlice = createSlice({
                 status:"rejected",
             }
         })
-        // builder.addCase(fetchGroup.fulfilled,(state,action)=>{
-        //     console.log("fullfilled")
-            // return {
-            //     ...state,
-            //     grupo:action.payload,
-            //     status:"success"
-            // }
+        builder.addCase(fetchGroup.fulfilled,(state,action)=>{
+            return {
+                ...state,
+                userGroup:action.payload
+            }
+        })
+        builder.addCase(fetchGroup.rejected,(state,action)=>{
+            console.log("failed")
+        })
+        builder.addCase(quitGroup.pending,(state,action)=>{
+            console.log("waiting quit")
+        })
+        builder.addCase(quitGroup.fulfilled,(state,action)=>{
+            // state.userGroup = null
+            return {
+                ...state,
+                userGroup:null 
+            }
 
-        // })
-        // builder.addCase(fetchGroup.rejected,(state,action)=>{
-        //     console.log("Something went wrong")
-        // })
-        // builder.addCase(fetchGroup.pending,(state,action)=>{
-        //     console.log("waiting")
-        // })
+            console.log("fullfilled")
+        })
+        builder.addCase(quitGroup.rejected,(state,action)=>{
+            console.log("failed quit")
+        })
+
     }
 })
 export const selectCurrentGrupo = (state)=> state.grupos.grupo

@@ -11,33 +11,14 @@ const GrupoHeader = ({navigation}) => {
   const dispatch = useDispatch()
 
     const {grupo} = useSelector((state)=>state.grupos)
-    const {userInfo,userGroup} = useSelector((state)=>state.auth)
+    const {userInfo} = useSelector((state)=>state.auth)
+    const {userGroup} = useSelector((state)=>state.grupos)
 
-    const [grupoO ,setGrupoO]= useState([])
-
-    const fetchGroupp = async()=>{
-      try {
-              const config = {
-                  headers:{
-                      "Content-Type":"application/json"
-                  }
-              } 
-  
-              const {data} = await axios.get(`http://10.0.2.2:5000/api/grupos/${userInfo.grupo}`,config)
-              
-              console.log("jjj")
-              console.log(data)
-              setGrupoO(data)
-      } catch (error) {
-        console.log(error.message)
-          // return rejectWithValue(error.response?.data)
-      }
-  }
 
 
     useEffect(()=>{
       dispatch(fetchGroup(userInfo.grupo))
-      console.log(userInfo.grupo)
+      console.log(userGroup)
       // fetchGroupp()
       console.log(grupo)
     },[])
@@ -58,10 +39,8 @@ const GrupoHeader = ({navigation}) => {
               alt='group pic'
               source={pic}
               style={styles.pic}/>
-              <Text style={styles.title}>{grupo?.club?.toUpperCase()}</Text>
               <Text style={styles.title}>{userGroup?.club?.toUpperCase()}</Text>
-              <Text style={styles.division}>{grupo?.division}</Text>
-              <Text style={styles.division}>{userInfo?.grupo}</Text>
+              <Text style={styles.division}>{userGroup?.division}</Text>
 
               </View>
         </Button>
