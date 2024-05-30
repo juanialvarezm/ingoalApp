@@ -8,7 +8,9 @@ function GlobalContextProvider({children}){
     const [password,setPassword] = useState("")
     const [username,setUsername] = useState("")
     const [showModal,setShowModal] = useState(false)
+    const [codigo,setCodigo] = useState(" ")
     
+
     return(
         <GlobalContext.Provider value={{
             name,
@@ -22,7 +24,9 @@ function GlobalContextProvider({children}){
             password,
             setPassword,
             showModal,
-            setShowModal
+            setShowModal,
+            codigo,
+            setCodigo,
         }}>
             {children}
         </GlobalContext.Provider>

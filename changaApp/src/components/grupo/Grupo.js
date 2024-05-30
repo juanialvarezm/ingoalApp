@@ -10,6 +10,7 @@ import { GlobalState } from '../../context/GlobalContext'
 import GrupoBox from './GrupoBox'
 import  {io}  from 'socket.io-client'
 import GrupoOptions from './GrupoOptions'
+import { fetchGroup } from '../../features/authActions'
 
 const socket = io('http://10.0.2.2:5000');
 
@@ -22,16 +23,29 @@ const Grupo = ({navigation}) => {
     const dispatch = useDispatch()
     const { grupo } = useSelector((state)=>state.grupos)
     const { userInfo } = useSelector((state)=>state.auth)
-    const { userGroup } = useSelector((state)=>state.grupos)
+    const { userGroup } = useSelector((state)=>state.auth)
 
-  
+  const fetchGupo = async()=>{
+    try {
+      dispatch(fetchGroup(userInfo._id))
+  console.log(userGroup)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+
+  useEffect(()=>{
+    fetchGupo()
+  },[userInfo])
+
   return (
     <View style={styles.hiperCont}>
       {userInfo == null | userInfo == undefined?(
         <Text>No hay usuario</Text>
       ):(
         <>
-          {!userGroup == userGroup == undefined || userGroup == null?(
+          {!userGroup || userGroup == undefined || userGroup == null?(
             <View style={styles.container}>
                 <>
                   <View style={styles.visual}>

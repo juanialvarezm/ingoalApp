@@ -1,12 +1,35 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { StyleSheet,View,Text,Modal,TextInput } from "react-native"
 import { GlobalState } from "../../context/GlobalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark"
 import Button from "react-native-button"
+import { joinGroup } from "../../features/grupoSlice"
+import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 const ModalGroups = ()=>{
-    const {setShowModal} = GlobalState()
+    const {setShowModal,codigo,setCodigo} = GlobalState()
+    const dispatch = useDispatch()
+    const {grupo} = useSelector((state)=>state.grupos)
+    const {userInfo} = useSelector((state)=>state.auth)
+    const {userGroup} = useSelector((state)=>state.auth)
+
+
+
+    const joinGroupp = ()=>{
+        try {
+
+            dispatch(joinGroup(userInfo,codigo))
+            // navigation.navigate("Home")
+
+        } catch (error) {
+          console.log(error.message)
+        }
+      }
+  
+
+
     return(
         <>
                 <View style={styles.modalContainerStyle}>
@@ -17,13 +40,16 @@ const ModalGroups = ()=>{
                     </View>
 
                     <View style={styles.grey}>
-                        <TextInput style={{height:45}} placeholder="Inserte el codigo del grupo"/>
+                        <TextInput style={{height:45}} onChangeText={(value)=>setCodigo(value)} placeholder="Inserte el codigo del grupo"/>
                     </View>
-                    <View>
+                    <View >
                         <Button title="Cerrar" containerStyle={{backgroundColor:"#fff",width:80,height:40, borderRadius:5,
                         alignItems:"center",alignContent:"center",justifyContent: 'center',marginLeft:10,marginTop:10}}
                         onPress={()=>setShowModal(false)}>
-                            <Text style={{color:"black"}}>Unirse</Text>
+                            <Button onPress={joinGroupp}>
+                                <Text style={{color:"black"}}>Unirse</Text>
+
+                            </Button>
                         </Button>
 
                     </View>

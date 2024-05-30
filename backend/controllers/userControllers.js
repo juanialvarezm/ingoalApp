@@ -22,6 +22,19 @@ const signUp = async(req,res)=>{
 }
 
 
+const fetchUserGrupo = async(req,res)=>{
+    try {
+        const {userId} = req.params
+
+        const usuario = await User.findById(userId)
+        const grupo = await Grupos.findOne({jugadores:usuario})
+        res.json(grupo)
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
 
 const login = async (req,res)=>{
     try {
@@ -86,4 +99,4 @@ const searchUsers = async(req,res)=>{
 
 
 
-module.exports = {signUp,login,editUser,searchUsers}
+module.exports = {signUp,login,editUser,searchUsers,fetchUserGrupo}

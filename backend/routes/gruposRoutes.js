@@ -10,12 +10,12 @@ const {createGroup, addPartidoAlFixture,addJugadores,
 
 
 router.route("/").post(createGroup)
-router.route("/:groupId").get(fetchGrupo)
+router.route("/fetch").post(fetchGrupo)
+router.route("/join").post(joinGroup)
 router.route("/fixture").post(protect,addPartidoAlFixture)
 router.route("/add").post(protect,addJugadores)
 router.route("/ejercicio").post(protect,agregarEjercicios)
 router.route("/remove").post(protect,removeJugadores)
-router.route("/join").post(protect,joinGroup)
 router.route("/makeadmin").post(protect,makeGroupAdmin)
 router.route("/citar").post(protect,citarJugadores)
 router.route("/leave").post(quitGroup)

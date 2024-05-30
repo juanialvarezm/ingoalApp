@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {View,Text,StyleSheet} from "react-native"
 import Grupo from '../components/grupo/Grupo'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { fetchGroup } from '../features/authActions'
 
 const GrupoScreen = ({navigation}) => {
+  
   return (
     <View style={styles.gruposWrappa}>
       <Grupo navigation={navigation}/>

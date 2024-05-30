@@ -24,7 +24,8 @@ const UserSchema = mongoose.Schema({
     },
     grupo:{
         type:mongoose.Types.ObjectId,
-        ref:"Grupos"
+        ref:"Grupos",
+        default:null
     },
     isAdmin:[{
         type:Array

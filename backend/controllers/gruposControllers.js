@@ -45,11 +45,20 @@ const createGroup = async(req,res)=>{
 
 const fetchGrupo = async(req,res)=>{
     try {
-        const {groupId} = req.params
+        const {groupId} = req.body
 
-        const find = await Grupos.findById(groupId)
-        // const find = await Grupos.find({})
-        res.json(find)
+        if(groupId){
+            const find = await Grupos.findById(groupId)
+            // const find = await Grupos.find({})
+            if(find){
+                return res.json(find)
+            }else{
+                return
+            }
+        
+        } else return console.log("no hay grupo")
+
+
 
     } catch (error) {
         throw new Error(error.message)
@@ -110,13 +119,17 @@ const removeJugadores = async(req,res)=>{
 
 const joinGroup = async(req,res)=>{
     try {
-        const {groupId,userId} = req.body
+        const {userId,codigo} = req.body
 
-        if(!groupId || !userId){
+        if(!userId || !codigo){
             console.log("Un grupo y un usuario se necesita")
         }
 
-        const grupo = await Grupos.findByIdAndUpdate(groupId,{$push:{jugadores:userId}})
+        const codeGroup = await Grupos.findOne({codigo:codigo})
+        const grupo = await Grupos.findByIdAndUpdate(codeGroup,{$push:{jugadores:userId}})
+        const user = await User.findByIdAndUpdate(userId,{grupo:codeGroup})
+        
+
         res.json(grupo)
 
     } catch (error) {

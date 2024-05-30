@@ -8,7 +8,7 @@ const initialState = {
     userToken:null,
     status:"loading",
     userInfo:null,
-    userGroup:null
+    userGroup:null,
 }
 
 
@@ -87,6 +87,7 @@ const authSlice = createSlice({
                 ...state,
                 userGroup:action.payload
             }
+            console.log("fulll")
         })
         builder.addCase(fetchGroup.rejected,(state,action)=>{
             console.log("failed")

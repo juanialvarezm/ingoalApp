@@ -16,7 +16,7 @@ const GrupoDetailsHeader = ({navigation}) => {
 
   const {grupo} = useSelector((state)=>state.grupos)
   const {userInfo} = useSelector((state)=>state.auth)
-  const {userGroup} = useSelector((state)=>state.grupos)
+  const {userGroup} = useSelector((state)=>state.auth)
 
   const resettGrupo = async()=>{
     try {

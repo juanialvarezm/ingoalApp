@@ -65,7 +65,21 @@ export const quitGroup = createAsyncThunk("grupos/quit",async(groupData,{rejectW
     }
 })
 
+export const joinGroup = createAsyncThunk("grupos/join",async(groupData,{rejectWithValue})=>{
+    try {
+        const config = {
+            headers:{
+                "Content-Type":"application/json"
+            }
+        }
 
+        const {data} = await axios.post("http://10.0.2.2:5000/api/grupos/join",...groupData,config)        
+        return data
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+})
 
 
 
@@ -123,10 +137,23 @@ const gruposSlice = createSlice({
                 userGroup:null 
             }
 
-            console.log("fullfilled")
         })
         builder.addCase(quitGroup.rejected,(state,action)=>{
             console.log("failed quit")
+        })
+        builder.addCase(joinGroup.pending,(state,action)=>{
+            console.log("wating joinin")
+        })
+        builder.addCase(joinGroup.fulfilled,(state,action)=>{
+            // console.log("fullfillde")
+            return{
+                ...state,
+                userGroup:action.payload
+            }
+        })
+
+        builder.addCase(joinGroup.rejected,(state,action)=>{
+            console.log("rejected joinin")
         })
 
     }
