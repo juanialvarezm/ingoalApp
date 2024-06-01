@@ -34,12 +34,11 @@ async(groupData,{rejectWithValue})=>{
 })
 
 
-export const fetchGroup = createAsyncThunk("grupos/fetchh",async(grupo,{rejectWithValue})=>{
+export const fetchGroup = createAsyncThunk("grupos/fetch",async(groupData,{rejectWithValue})=>{
 
-    try {
+    try {  
   
-  
-            const {data} = await axios.get(`http://10.0.2.2:5000/api/grupos/${grupo}`)            
+            const {data} = await axios.get(`http://10.0.2.2:5000/api/user/grupo/${groupData}`)            
             console.log(data)
                 return data
             // setGrupoO(data)
@@ -145,7 +144,6 @@ const gruposSlice = createSlice({
             console.log("wating joinin")
         })
         builder.addCase(joinGroup.fulfilled,(state,action)=>{
-            // console.log("fullfillde")
             return{
                 ...state,
                 userGroup:action.payload

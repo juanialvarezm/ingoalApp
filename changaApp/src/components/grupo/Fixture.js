@@ -13,9 +13,9 @@ const Fixture = () => {
 
   return (
     <View style={styles.fixtureContainer}>
-      {userInfo?.isAdmin == grupo._id?(
+      {userInfo?.isAdmin == grupo?._id?(
         <>
-          {grupo.fixture == null || grupo.fixture == undefined?(
+          {grupo?.fixture == null || grupo?.fixture == undefined?(
             <Text>hay partidos</Text>
           ):(
             <View style={styles.noHayFixture}>
@@ -35,7 +35,7 @@ const Fixture = () => {
         </>
       ):(
         <>
-          {grupo.fixture == null || grupo.fixture == undefined?(
+          {grupo?.fixture == null || grupo?.fixture == undefined?(
             <View style={styles.noHayFixture}>
               <Image
               source={confusing}

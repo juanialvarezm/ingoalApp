@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
 import Button from "react-native-button"
 import { useDispatch } from 'react-redux'
-import { fetchGroup } from '../../features/grupoSlice'
+import { fetchGroup } from '../../features/authActions'
 import { quitGroup } from '../../features/grupoSlice'
 
 
@@ -18,6 +18,20 @@ const GrupoDetailsHeader = ({navigation}) => {
   const {userInfo} = useSelector((state)=>state.auth)
   const {userGroup} = useSelector((state)=>state.auth)
 
+  const fetchGupo = async()=>{
+    try {
+      dispatch(fetchGroup(userInfo._id))
+  console.log(userGroup)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+
+  useEffect(()=>{
+    fetchGupo()
+  },[userInfo])
+
   const resettGrupo = async()=>{
     try {
         dispatch(quitGroup(userGroup._id,userInfo._id))
@@ -27,13 +41,26 @@ const GrupoDetailsHeader = ({navigation}) => {
     }
   }
 
+  useEffect(()=>{
+    console.log(userGroup.jugadores)
+  },[])
+
   const Item = ({ username,name }) => (
     <View style={styles.jugadores}>
       <Image source={pic} style={{width:35,height:35,borderRadius:20}}/>
       <Text style={styles.name}>{name} </Text>
       <Text style={styles.username}>@{username} </Text>
+      <View>
+      {userGroup.admin == userInfo._id ?(
+        <Text>es admin</Text>
+      ):(
+        <Text>No es admin</Text>
+      )}
+
+      </View>
     </View>
   );
+  
   
   const renderItem = ({ item }) => (
     <Item username={item.username} name={item.name}  />
@@ -115,7 +142,7 @@ const styles = StyleSheet.create({
   jugadores:{
     alignItems:"center",
     flexDirection:"row",
-    padding:6
+    padding:8
   },
   players:{
     elevation: 5,
