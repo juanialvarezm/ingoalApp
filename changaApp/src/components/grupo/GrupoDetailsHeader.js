@@ -4,12 +4,11 @@ import { useSelector } from 'react-redux'
 import pic from "../../assets/20230123_213701.jpg"
 import rugby from "../../assets/rugby.png"
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
+import { faRightFromBracket,faUser } from '@fortawesome/free-solid-svg-icons'
 import Button from "react-native-button"
 import { useDispatch } from 'react-redux'
 import { fetchGroup } from '../../features/authActions'
 import { quitGroup } from '../../features/grupoSlice'
-
 
 const GrupoDetailsHeader = ({navigation}) => {
   const dispatch = useDispatch()
@@ -52,7 +51,9 @@ const GrupoDetailsHeader = ({navigation}) => {
       <Text style={styles.username}>@{username} </Text>
       <View>
       {userGroup.admin == userInfo._id ?(
-        <Text>es admin</Text>
+        <View style={styles.esAdmin}>
+          <FontAwesomeIcon icon={faUser} />        
+        </View>
       ):(
         <Text>No es admin</Text>
       )}
@@ -182,6 +183,14 @@ const styles = StyleSheet.create({
     flexDirection:"column",
     padding:20,
     paddingBottom:10,
+  },
+  esAdmin:{
+    alignContent:"center",
+    alignItems:"center",
+    backgroundColor:"#d3d3d3",  
+    padding:5,
+    marginLeft:200,
+    borderRadius:7,
   }
 })
 

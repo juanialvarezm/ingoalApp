@@ -7,15 +7,15 @@ import confusing from "../../assets/confusing.png"
 
 const Fixture = () => {
   const {userInfo} = useSelector((state)=>state.auth)
-  const {grupo} = useSelector((state)=>state.grupos)
+  const {userGroup} = useSelector((state)=>state.auth)
 
   
 
   return (
     <View style={styles.fixtureContainer}>
-      {userInfo?.isAdmin == grupo?._id?(
+      {userGroup.admin == userInfo._id?(
         <>
-          {grupo?.fixture == null || grupo?.fixture == undefined?(
+          {!userGroup?.fixture == null || !userGroup?.fixture == undefined?(
             <Text>hay partidos</Text>
           ):(
             <View style={styles.noHayFixture}>
@@ -23,7 +23,7 @@ const Fixture = () => {
               source={confusing}
               alt='No fixture pic'
               style={styles.noFixturePic}/>
-              <Text style={styles.noFixtureText}>Carga los partidos</Text>
+              <Text style={styles.noFixtureText}>No hay partidos...</Text>
               
               <View>
                 <Button>
@@ -35,13 +35,13 @@ const Fixture = () => {
         </>
       ):(
         <>
-          {grupo?.fixture == null || grupo?.fixture == undefined?(
+          {userGroup?.fixture == null || userGroup?.fixture == undefined?(
             <View style={styles.noHayFixture}>
               <Image
               source={confusing}
               alt='No fixture pic'
               style={styles.noFixturePic}/>
-              <Text style={styles.noFixtureText}>No hay partidos</Text>
+              <Text style={styles.noFixtureText}>No hay partidossdksodksodk</Text>
             </View>
           ):(
             <Text>Si hay fixture</Text>
