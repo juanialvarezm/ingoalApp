@@ -27,7 +27,8 @@ const fetchUserGrupo = async(req,res)=>{
         const {userId} = req.params
 
         const usuario = await User.findById(userId)
-        const grupo = await Grupos.findOne({jugadores:usuario})
+        var grupo = await Grupos.findOne({jugadores:usuario}).populate("jugadores", "name username")
+
         res.json(grupo)
 
     } catch (error) {
