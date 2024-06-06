@@ -51,5 +51,4 @@ const detallesEquipo = async(req,res)=>{
     }
 }
 
-
 module.exports = {fetchTeams,createTeam,detallesEquipo}

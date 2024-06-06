@@ -221,6 +221,8 @@ const citarJugadores = async(req,res)=>{
 
 
 
+
+
 module.exports = {createGroup,addPartidoAlFixture,addJugadores,
                 removeJugadores,agregarEjercicios,joinGroup,fetchGrupos,
                 makeGroupAdmin,citarJugadores,quitGroup,fetchGrupo}

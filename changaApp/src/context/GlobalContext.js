@@ -9,6 +9,9 @@ function GlobalContextProvider({children}){
     const [username,setUsername] = useState("")
     const [showModal,setShowModal] = useState(false)
     const [codigo,setCodigo] = useState(" ")
+    const [equipoVisitante,setEquipoVisitante] = useState("")
+    const [equipoLocal,setEquipoLocal] = useState("")
+    const [fechaPartido,setFechaPartido] = useState("")
     
 
     return(
@@ -27,6 +30,12 @@ function GlobalContextProvider({children}){
             setShowModal,
             codigo,
             setCodigo,
+            equipoLocal,
+            setEquipoLocal,
+            equipoVisitante,
+            setEquipoVisitante,
+            fechaPartido,
+            setFechaPartido
         }}>
             {children}
         </GlobalContext.Provider>

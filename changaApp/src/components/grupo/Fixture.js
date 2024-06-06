@@ -5,7 +5,7 @@ import Button from "react-native-button"
 import confusing from "../../assets/confusing.png"
 
 
-const Fixture = () => {
+const Fixture = ({navigation}) => {
   const {userInfo} = useSelector((state)=>state.auth)
   const {userGroup} = useSelector((state)=>state.auth)
 
@@ -15,9 +15,16 @@ const Fixture = () => {
     <View style={styles.fixtureContainer}>
       {userGroup.admin == userInfo._id?(
         <>
-          {!userGroup?.fixture == null || !userGroup?.fixture == undefined?(
+          {userGroup?.partidos != null || userGroup?.partidos != undefined?(
+            <>
             <Text>hay partidos</Text>
-          ):(
+            {userGroup.admin == userInfo._id && (
+              <Text>AGREGA MAS!!</Text>
+            )}
+
+            </>
+            
+        ):(
             <View style={styles.noHayFixture}>
               <Image
               source={confusing}
@@ -26,7 +33,7 @@ const Fixture = () => {
               <Text style={styles.noFixtureText}>No hay partidos...</Text>
               
               <View>
-                <Button>
+                <Button onPress={()=>navigation.navigate("CargarFixture")}>
                   Cargar Fixture
                 </Button>
               </View>
@@ -35,7 +42,7 @@ const Fixture = () => {
         </>
       ):(
         <>
-          {userGroup?.fixture == null || userGroup?.fixture == undefined?(
+          {userGroup?.partidos == null || userGroup?.partidos == undefined?(
             <View style={styles.noHayFixture}>
               <Image
               source={confusing}

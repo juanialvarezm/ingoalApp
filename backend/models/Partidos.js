@@ -2,17 +2,17 @@ const mongoose = require("mongoose")
 
 const partidosSchema = mongoose.Schema({
     equipoLocal:{
-        type:mongoose.Types.ObjectId,
-        ref:"Teams"
-        // type:String
+        //type:mongoose.Types.ObjectId,
+        //ref:"Teams"
+         type:String
     },
     division:{
         type:String
     },
     equipoVisitante:{
-        type:mongoose.Types.ObjectId,
-        ref:"Teams",
-        // type:String
+        //type:mongoose.Types.ObjectId,
+        //ref:"Teams",
+         type:String
 
     },
     resultadoLocal:{

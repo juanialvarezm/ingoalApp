@@ -81,6 +81,17 @@ export const joinGroup = createAsyncThunk("grupos/join",async(groupData,{rejectW
 })
 
 
+   export const addPartidoAlFixture = createAsyncThunk("grupos/addFixture",async(groupData,{rejectWithValue})=>{
+        try {
+
+            const {data} = await axios.post("http://10.0.2.2:5000/api/grupos/fixture",{...groupData})
+            console.log(groupData)
+            return data 
+        } catch (error) {
+            return rejectWithValue(error.response?.data)
+        }
+    })
+
 
 const initialState = {
     grupo:null,
@@ -149,10 +160,24 @@ const gruposSlice = createSlice({
                 userGroup:action.payload
             }
         })
-
         builder.addCase(joinGroup.rejected,(state,action)=>{
             console.log("rejected joinin")
         })
+        builder.addCase(addPartidoAlFixture.pending,(state,action)=>{
+            console.log("esperando agregar partido al fixture")
+        })
+        builder.addCase(addPartidoAlFixture.fulfilled,(state,action)=>{
+            return {
+                ...state,
+                userGroup:action.payload
+            }
+            return console.log("fullfilled added to fixture")
+
+        })
+        builder.addCase(addPartidoAlFixture.rejected,(state,action)=>{
+            console.log("partido no agregado")
+        })
+
 
     }
 })
