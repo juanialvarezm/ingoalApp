@@ -10,7 +10,8 @@ import { GlobalState } from '../../context/GlobalContext'
 import GrupoBox from './GrupoBox'
 import  {io}  from 'socket.io-client'
 import GrupoOptions from './GrupoOptions'
-import { fetchGroup } from '../../features/authActions'
+// import { fetchGroup } from '../../features/authActions'
+import { fetchGroup } from '../../features/grupoSlice'
 
 const socket = io('http://10.0.2.2:5000');
 
@@ -23,7 +24,7 @@ const Grupo = ({navigation}) => {
     const dispatch = useDispatch()
     const { grupo } = useSelector((state)=>state.grupos)
     const { userInfo } = useSelector((state)=>state.auth)
-    const { userGroup } = useSelector((state)=>state.auth)
+    const { userGroup } = useSelector((state)=>state.grupos)
 
   const fetchGupo = async()=>{
     try {

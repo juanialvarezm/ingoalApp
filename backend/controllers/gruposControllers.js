@@ -48,10 +48,12 @@ const fetchGrupo = async(req,res)=>{
         const {groupId} = req.body
 
         if(groupId){
-            const find = await Grupos.findById(groupId)
+            const find = await Grupos.findById(groupId).populate("partidos", "equipoLocal equipoVisitante fecha")
+            
             // const find = await Grupos.find({})
             if(find){
                 return res.json(find)
+
             }else{
                 return
             }

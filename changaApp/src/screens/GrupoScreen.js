@@ -3,10 +3,28 @@ import {View,Text,StyleSheet} from "react-native"
 import Grupo from '../components/grupo/Grupo'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { fetchGroup } from '../features/authActions'
+import { fetchGroup } from '../../features/grupoSlice'
 
 const GrupoScreen = ({navigation}) => {
-  
+  const {userInfo} = useSelector((state)=> state.grupos)
+
+  const fetchGupo = async()=>{
+    try {
+      dispatch(fetchGroup(userInfo._id))
+  console.log(userGroup)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+
+  useEffect(()=>{
+    fetchGupo()
+  },[userInfo])
+
+
+
+
   return (
     <View style={styles.gruposWrappa}>
       <Grupo navigation={navigation}/>

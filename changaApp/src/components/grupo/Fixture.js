@@ -1,27 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {View, Text,StyleSheet, Image} from "react-native"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from "react-native-button"
 import confusing from "../../assets/confusing.png"
-
+import { fetchPartidos } from '../../features/grupoSlice'
+import { fetchGroup } from '../../features/grupoSlice'
 
 const Fixture = ({navigation}) => {
+  const dispatch = useDispatch()
+
   const {userInfo} = useSelector((state)=>state.auth)
-  const {userGroup} = useSelector((state)=>state.auth)
+
+  //CAMBIAR DE USERGROUP AUTH A USERGROUP GRUPOS EN STORE
+  // const {userGroup} = useSelector((state)=>state.auth)
+  const {userGroup} = useSelector((state)=>state.grupos)
+
+  const cargarPartidos = ()=>{
+    dispatch(fetchPartidos({grupoId:userGroup._id}))
+  }
+
 
   
+  useEffect(()=>{
+
+    console.log(userGroup)
+  },[])
 
   return (
     <View style={styles.fixtureContainer}>
       {userGroup.admin == userInfo._id?(
         <>
-          {userGroup?.partidos != null || userGroup?.partidos != undefined?(
+          {userGroup?.partidos != undefined && userGroup.partidos.length > 0 ?(
             <>
-            <Text>hay partidos</Text>
-            {userGroup.admin == userInfo._id && (
-              <Text>AGREGA MAS!!</Text>
-            )}
-
+            {userGroup.partidos.map((p)=>(
+              <View key={p._id}>
+                <Text>{p.equipoVisitante}</Text>
+                <Text>{p.equipoLocal}</Text>
+                <Text>{p.fecha}</Text>
+              </View>
+            ))}
             </>
             
         ):(
@@ -42,7 +59,7 @@ const Fixture = ({navigation}) => {
         </>
       ):(
         <>
-          {userGroup?.partidos == null || userGroup?.partidos == undefined?(
+          {userGroup?.partidos == undefined?(
             <View style={styles.noHayFixture}>
               <Image
               source={confusing}

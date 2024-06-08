@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 // import axios from "axios";
 
 
+
 export const crearGrupo  = createAsyncThunk("grupos/create",
 async(groupData,{rejectWithValue})=>{
     try {
@@ -92,12 +93,25 @@ export const joinGroup = createAsyncThunk("grupos/join",async(groupData,{rejectW
         }
     })
 
+    export const fetchPartidos = createAsyncThunk("grupos/fetchpartidos",async(grupoId,{rejectWithValue})=>{
+        try {
+            const {data} = await axios.get("http://10.0.2.2:5000/api/partidos")
+            return data
+            
+        } catch (error) {
+            return rejectWithValue(error.response?.data)
+            
+        }
+    })
+
+
 
 const initialState = {
     grupo:null,
     status:"loading",
     error:null,
-    userGroup:null
+    userGroup:null,
+    
 }
 
 const gruposSlice = createSlice({
@@ -144,7 +158,7 @@ const gruposSlice = createSlice({
             // state.userGroup = null
             return {
                 ...state,
-                userGroup:null 
+                userGroup:null
             }
 
         })
@@ -177,7 +191,15 @@ const gruposSlice = createSlice({
         builder.addCase(addPartidoAlFixture.rejected,(state,action)=>{
             console.log("partido no agregado")
         })
-
+        builder.addCase(fetchPartidos.rejected,(state,action)=>{
+            console.log("no fetch partidos")
+        })
+        builder.addCase(fetchPartidos.fulfilled,(state,action)=>{
+            console.log("ok")
+        })
+        builder.addCase(fetchPartidos.pending,(state,action)=>{
+            console.log("partidos pending")
+        })
 
     }
 })

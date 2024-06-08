@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faRightFromBracket,faUser } from '@fortawesome/free-solid-svg-icons'
 import Button from "react-native-button"
 import { useDispatch } from 'react-redux'
-import { fetchGroup } from '../../features/authActions'
+import { fetchGroup } from '../../features/grupoSlice'
 import { quitGroup } from '../../features/grupoSlice'
 
 const GrupoDetailsHeader = ({navigation}) => {
@@ -15,7 +15,7 @@ const GrupoDetailsHeader = ({navigation}) => {
 
   const {grupo} = useSelector((state)=>state.grupos)
   const {userInfo} = useSelector((state)=>state.auth)
-  const {userGroup} = useSelector((state)=>state.auth)
+  const {userGroup} = useSelector((state)=>state.grupos)
 
   const fetchGupo = async()=>{
     try {
