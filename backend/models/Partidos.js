@@ -35,6 +35,11 @@ const partidosSchema = mongoose.Schema({
     },
     grupoId:{
         type:String
+    },
+    categoria:{
+        type:String,
+        required:true
+        //A , B, C
     }
 
 })

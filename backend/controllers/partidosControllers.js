@@ -3,7 +3,7 @@ const Partidos = require("../models/Partidos")
 
 const empezarPartido = async(req,res)=>{
     try {
-        const {equipoVisitante,equipoLocal,creador,
+        const {equipoVisitante,equipoLocal,creador,categoria,
             tries} = req.body
             
             if(!equipoVisitante || !equipoLocal){
@@ -12,9 +12,10 @@ const empezarPartido = async(req,res)=>{
 
             // let creador = req.user
 
-            let partido = await Partidos.create({equipoLocal,equipoVisitante,creador})
+            let partido = await Partidos.create({equipoLocal,equipoVisitante,creador,categoria})
             partido =  await partido.populate("equipoLocal", "nombre , logo") 
             partido =  await partido.populate("equipoVisitante", "nombre , logo") 
+            partido =  await partido.populate("categoria") 
 
 
 
@@ -47,8 +48,13 @@ const actualizarPartido = async(req,res)=>{
 
 const fetchPartidos = async(req,res)=>{
     try {
-        const {grupoId} = req.body
-        const partidos = await Partidos.find({grupoId:grupoId})
+        const {grupoId,categoria} = req.body
+
+        if(!grupoId  || !categoria){
+             throw new Error("Incomplete fields")
+        }
+
+        const partidos = await Partidos.find({grupoId:grupoId, categoria:categoria})
         res.json(partidos)
     } catch (error) {
         throw new Error(error.message)

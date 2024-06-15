@@ -183,13 +183,13 @@ const agregarEjercicios = async(req,res)=>{
 const addPartidoAlFixture = async (req,res) => {
     try {
 
-        const {fecha,equipoLocal,equipoVisitante,grupoId} = req.body
+        const {fecha,equipoLocal,equipoVisitante,grupoId,categoria} = req.body
         
             if(!equipoLocal || !equipoVisitante){
                 throw new Error("Se necesitan equipos")
             }
         
-        const partido = await Partidos.create({equipoLocal,equipoVisitante,fecha,grupoId})
+        const partido = await Partidos.create({equipoLocal,equipoVisitante,fecha,grupoId,categoria})
         
         const alFixture = await Grupos.findByIdAndUpdate(grupoId,
             {$push:{partidos:partido}}

@@ -19,7 +19,6 @@ const canchasSchema = mongoose.Schema({
         // type:Array
         type:mongoose.Types.ObjectId,
         ref:"Partidos"
-
     }],
     jugadores:[{
         type:mongoose.Types.ObjectId,
@@ -40,6 +39,10 @@ const canchasSchema = mongoose.Schema({
     equipos:[{
         type:mongoose.Types.ObjectId,
         ref:"EquiposGrupo"
+    }],
+    fixture:[{
+        type:mongoose.Types.ObjectId,
+        ref:"Fixture"
     }]
 })
 

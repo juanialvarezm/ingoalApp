@@ -7,6 +7,7 @@ const gruposRoutes = require("./routes/gruposRoutes")
 const partidosRoutes = require("./routes/partidosRoutes")
 const messageRoutes = require("./routes/messageRoutes")
 const teamRoutes = require("./routes/teamRoutes")
+const fixtureRoutes = require("./routes/fixtureRoutes")
 
 const express = require("express")
 const app = express()
@@ -29,6 +30,7 @@ app.use("/api/grupos",gruposRoutes)
 app.use("/api/partidos",partidosRoutes)
 app.use("/api/message",messageRoutes)
 app.use("/api/teams",teamRoutes)
+app.use("/api/fixture",fixtureRoutes)
 
 
 
