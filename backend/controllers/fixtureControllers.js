@@ -18,9 +18,14 @@ const crearFixture = async(req,res)=>{
     try {
         const {grupo,categoria,partidos} = req.body
         
-        partidos = partidos.map((p)=>p)
-        const fixture = await Fixture.create({grupo,categoria,partidos:p})
-        const addFixturetoGrupo = await Grupos.findByIdAndUpdate(grupo,{$push:{fixture:fixture}})
+
+        var fixture = await Fixture.create({grupo,categoria,partidos})
+        fixture  = await fixture.populate("partidos", "equipoLocal equipoVisitante")
+
+        var addFixturetoGrupo = await Grupos.findByIdAndUpdate(grupo,{$push:{fixture:fixture}})
+        addFixturetoGrupo  = await addFixturetoGrupo.populate("fixture", "partidos")
+
+
         res.json(fixture)
 
     } catch (error) {
