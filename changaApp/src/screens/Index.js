@@ -20,7 +20,6 @@ const Index = () => {
       <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} />
       <Tab.Screen name="Chat" options={{headerShown:false,headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={GrupoScreen} />
       <Tab.Screen name="Perfil" options={{headerShown:false}} component={IsAuthenticated} />
-
     </Tab.Navigator>
     </>
   )

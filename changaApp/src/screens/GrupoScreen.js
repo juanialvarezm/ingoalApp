@@ -6,22 +6,6 @@ import { useDispatch } from 'react-redux'
 import { fetchGroup } from '../../features/grupoSlice'
 
 const GrupoScreen = ({navigation}) => {
-  const {userInfo} = useSelector((state)=> state.grupos)
-
-  const fetchGupo = async()=>{
-    try {
-      dispatch(fetchGroup(userInfo._id))
-  console.log(userGroup)
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-
-  useEffect(()=>{
-    fetchGupo()
-  },[userInfo])
-
 
 
 

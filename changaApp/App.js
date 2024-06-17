@@ -19,11 +19,12 @@ import GlobalContextProvider from './src/context/GlobalContext'
 import GrupoScreen from './src/screens/GrupoScreen'
 import Grupo from './src/components/grupo/Grupo'
 import CrearGrupo from './src/components/grupo/CrearGrupo'
-import Rutina from './src/components/grupo/Rutina'
-import Fixture from './src/components/grupo/Fixture'
-import Citados from './src/components/grupo/Citados'
+import Rutina from './src/components/grupo/rutina/Rutina'
+import Fixture from './src/components/grupo/Fixture/Fixture'
+import Citados from './src/components/grupo/citados/Citados'
 import GrupoDetailsHeader from './src/components/grupo/GrupoDetailsHeader'
-import CargarFixture from './src/components/grupo/CargarFixture'
+import CargarFixture from './src/components/grupo/Fixture/CargarFixture'
+import FixtureBox from './src/components/grupo/Fixture/FixtureBox'
 
 const Stack = createNativeStackNavigator()
 
@@ -45,6 +46,8 @@ const App = () => {
                     <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Register2' component={Register2} />
                     <Stack.Screen name='Register3' component={Register3} />
+                  <Stack.Screen  name='CargarFixture' component={CargarFixture} />
+
                   </Stack.Group>
 
                   <Stack.Group screenOptions={{ presentation: "modal"}} options={{modalPresentationStyle:""}}>
@@ -56,7 +59,7 @@ const App = () => {
                   <Stack.Screen name='Fixture' component={Fixture} />
                   <Stack.Screen name='Citados' component={Citados} />
                   <Stack.Screen  name='GrupoDetails' component={GrupoDetailsHeader} />
-                  <Stack.Screen  name='CargarFixture' component={CargarFixture} />
+                  <Stack.Screen  name='FixtureBox' component={FixtureBox} />
                 </Stack.Group>
 
               </Stack.Navigator>

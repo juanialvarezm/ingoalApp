@@ -93,14 +93,37 @@ export const joinGroup = createAsyncThunk("grupos/join",async(groupData,{rejectW
         }
     })
 
-    export const fetchPartidos = createAsyncThunk("grupos/fetchpartidos",async(grupoId,{rejectWithValue})=>{
+    export const fetchPartidos = createAsyncThunk("grupos/fetchpartidos",async(fixtureData,{rejectWithValue})=>{
         try {
-            const {data} = await axios.get("http://10.0.2.2:5000/api/partidos")
+            const {data} = await axios.get("http://10.0.2.2:5000/api/partidos",{...fixtureData})
             return data
             
         } catch (error) {
             return rejectWithValue(error.response?.data)
             
+        }
+    })
+
+   export const fetchFixture = createAsyncThunk("grupos/fetchfixture",async(fixtureData,{rejectWithValue})=>{
+        try {
+
+            const {data} = await axios.get("http://10.0.2.2:5000/api/fixture",{...fixtureData})
+            return data
+            
+        } catch (error) {
+            return rejectWithValue(error.response?.data)
+        }
+    })
+
+    const crearFixture = createAsyncThunk("grupos/crearFixture",async(fixtureData,{rejectWithValue})=>{
+        try {
+            
+            const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",{...fixtureData})
+            console.log(data)
+            return data
+
+        } catch (error) {
+            return rejectWithValue(error.response?.data)
         }
     })
 
@@ -111,6 +134,7 @@ const initialState = {
     status:"loading",
     error:null,
     userGroup:null,
+    fixtureGroup:"null",
     
 }
 
@@ -195,10 +219,28 @@ const gruposSlice = createSlice({
             console.log("no fetch partidos")
         })
         builder.addCase(fetchPartidos.fulfilled,(state,action)=>{
-            console.log("ok")
+            console.log("fixtureGroup fetched")
         })
         builder.addCase(fetchPartidos.pending,(state,action)=>{
             console.log("partidos pending")
+        })
+        builder.addCase(fetchFixture.fulfilled,(state,action)=>{
+            return {
+                ...state,
+                fixtureGroup:action.payload
+            }
+        })
+        builder.addCase(fetchFixture.rejected,(state,action)=>{
+            console.log("rejected loading fixture")
+        })
+        builder.addCase(crearFixture.rejected,(state,action)=>{
+            console.log("rejected crear fixture")
+        })
+        builder.addCase(crearFixture.fulfilled,(state,action)=>{
+            return {
+                ...state,
+                fixtureGroup:action.payload
+            }
         })
 
     }

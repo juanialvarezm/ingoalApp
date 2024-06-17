@@ -12,6 +12,7 @@ function GlobalContextProvider({children}){
     const [equipoVisitante,setEquipoVisitante] = useState("")
     const [equipoLocal,setEquipoLocal] = useState("")
     const [fechaPartido,setFechaPartido] = useState("")
+    const [fixtureCategoria,setFixtureCategoria] = useState("")
     
 
     return(
@@ -35,7 +36,9 @@ function GlobalContextProvider({children}){
             equipoVisitante,
             setEquipoVisitante,
             fechaPartido,
-            setFechaPartido
+            setFechaPartido,
+            fixtureCategoria,
+            setFixtureCategoria
         }}>
             {children}
         </GlobalContext.Provider>
