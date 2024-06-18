@@ -3,138 +3,16 @@ import { selectCurrentToken } from "./authSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { useSelector } from "react-redux";
-// import {crearGrupo} from "./grupoActions"
+import { crearGrupo,fetchPartidos,
+    addPartidoAlFixture,quitGroup,joinGroup,fetchGroup } from "./grupoActions";
 
-// import { createSlice } from "@reduxjs/toolkit";
-// import { selectCurrentToken } from "./authSlice";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// import axios from "axios";
-
-
-
-export const crearGrupo  = createAsyncThunk("grupos/create",
-async(groupData,{rejectWithValue})=>{
-    try {
-
-        
-        const config = {
-            headers: {
-              'Content-Type':'application/json',
-            },
-          }
-
-          const {data} =await axios.post(
-            "http://10.0.2.2:5000/api/grupos",
-            {...groupData},config)
-
-        return data
-
-    } catch (error) {
-        return rejectWithValue(error.response?.data)
-    }
-})
-
-
-export const fetchGroup = createAsyncThunk("grupos/fetch",async(groupData,{rejectWithValue})=>{
-
-    try {  
-  
-            const {data} = await axios.get(`http://10.0.2.2:5000/api/user/grupo/${groupData}`)            
-            console.log(data)
-                return data
-            // setGrupoO(data)
-    } catch (error) {
-        return rejectWithValue(error?.response?.data)
-    }
-  })
-  
-
-export const quitGroup = createAsyncThunk("grupos/quit",async(groupData,{rejectWithValue})=>{
-    try {
-            const config = {
-                headers:{
-                    "Content-type":"application/json"
-                }
-            }
-
-        const {data} = await axios.post("http://10.0.2.2:5000/api/grupos/leave",...groupData,config) 
-        return data
-
-    } catch (error) {
-        throw new Error(error.message)
-    }
-})
-
-export const joinGroup = createAsyncThunk("grupos/join",async(groupData,{rejectWithValue})=>{
-    try {
-        const config = {
-            headers:{
-                "Content-Type":"application/json"
-            }
-        }
-
-        const {data} = await axios.post("http://10.0.2.2:5000/api/grupos/join",...groupData,config)        
-        return data
-
-    } catch (error) {
-        throw new Error(error.message)
-    }
-})
-
-
-   export const addPartidoAlFixture = createAsyncThunk("grupos/addFixture",async(groupData,{rejectWithValue})=>{
-        try {
-
-            const {data} = await axios.post("http://10.0.2.2:5000/api/grupos/fixture",{...groupData})
-            console.log(groupData)
-            return data 
-        } catch (error) {
-            return rejectWithValue(error.response?.data)
-        }
-    })
-
-    export const fetchPartidos = createAsyncThunk("grupos/fetchpartidos",async(fixtureData,{rejectWithValue})=>{
-        try {
-            const {data} = await axios.get("http://10.0.2.2:5000/api/partidos",{...fixtureData})
-            return data
-            
-        } catch (error) {
-            return rejectWithValue(error.response?.data)
-            
-        }
-    })
-
-   export const fetchFixture = createAsyncThunk("grupos/fetchfixture",async(fixtureData,{rejectWithValue})=>{
-        try {
-
-            const {data} = await axios.get("http://10.0.2.2:5000/api/fixture",{...fixtureData})
-            return data
-            
-        } catch (error) {
-            return rejectWithValue(error.response?.data)
-        }
-    })
-
-    const crearFixture = createAsyncThunk("grupos/crearFixture",async(fixtureData,{rejectWithValue})=>{
-        try {
-            
-            const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",{...fixtureData})
-            console.log(data)
-            return data
-
-        } catch (error) {
-            return rejectWithValue(error.response?.data)
-        }
-    })
-
-
-
+    
 const initialState = {
     grupo:null,
     status:"loading",
     error:null,
+    fixtureDelGrupo:"hola",
     userGroup:null,
-    fixtureGroup:"null",
     
 }
 
@@ -224,24 +102,25 @@ const gruposSlice = createSlice({
         builder.addCase(fetchPartidos.pending,(state,action)=>{
             console.log("partidos pending")
         })
-        builder.addCase(fetchFixture.fulfilled,(state,action)=>{
-            return {
-                ...state,
-                fixtureGroup:action.payload
-            }
-        })
-        builder.addCase(fetchFixture.rejected,(state,action)=>{
-            console.log("rejected loading fixture")
-        })
-        builder.addCase(crearFixture.rejected,(state,action)=>{
-            console.log("rejected crear fixture")
-        })
-        builder.addCase(crearFixture.fulfilled,(state,action)=>{
-            return {
-                ...state,
-                fixtureGroup:action.payload
-            }
-        })
+        // builder.addCase(fetchFixture.fulfilled,(state,action)=>{
+        //     return console.log(state.fixtureGroup)
+            // return {
+            //     ...state,
+            //     fixtureGroup:action.payload
+            // }
+        // })
+        // builder.addCase(fetchFixture.rejected,(state,action)=>{
+        //     console.log("rejected loading fixture")
+        // })
+        // builder.addCase(crearFixture.rejected,(state,action)=>{
+        //     console.log("rejected crear fixture")
+        // })
+        // builder.addCase(crearFixture.fulfilled,(state,action)=>{
+        //     return {
+        //         ...state,
+        //         fixtureGroup:action.payload
+        //     }
+        // })
 
     }
 })

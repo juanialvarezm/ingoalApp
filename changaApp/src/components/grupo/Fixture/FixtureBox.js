@@ -8,14 +8,15 @@ import { useDispatch } from "react-redux";
 
 
 const FixtureBox = ({partido})=>{
-    const {userGroup,fixtureGroup,status} = useSelector((state)=>state.grupos)
+    const {userGroup,fixtureDelGrupo,status} = useSelector((state)=>state.grupos)
     const {fixtureCategoria} = GlobalState()
     const dispatch = useDispatch()
 
     const cargarFixture = ()=>{
         try {
             dispatch(fetchFixture(fixtureCategoria,userGroup._id))
-            console.log("ok "+ fixtureGroup)       
+            console.log(status)       
+            console.log(fixtureDelGrupo)       
 
         } catch (error) {
             console.log(error.message)
@@ -28,7 +29,7 @@ const FixtureBox = ({partido})=>{
 
     return(
         <View style={{marginTop:60,flex:1,marginBottom:90}}>
-        {fixtureGroup.partidos?.map((partido)=>(
+        {/* {fixtureGroup.partidos?.map((partido)=>(
           <View style={{backgroundColor:"blue",flex:1}} key={partido._id}>
             <View style={styles.fixtureBoxContainer}>
                 <View>
@@ -49,7 +50,7 @@ const FixtureBox = ({partido})=>{
                 </View>
             </View>
           </View>
-        ))}
+        ))} */}
       </View>
     )
 }

@@ -8,14 +8,13 @@ import { GlobalState } from "../../../context/GlobalContext"
 
 const ElegirFixture = () => {
     const navigation = useNavigation()
-    const {userGroup} = useSelector((state)=>state.grupos)
+    const {userGroup,fixtureGroup} = useSelector((state)=>state.grupos)
     const {fixtureCategoria,setFixtureCategoria} = GlobalState()
 
 
     const handleCategoria = (value)=>{
         try {
             setFixtureCategoria(value)
-            console.log("chachacha :",fixtureCategoria)
             navigation.navigate("FixtureBox")
 
         } catch (error) {
@@ -25,7 +24,7 @@ const ElegirFixture = () => {
 
     useEffect(()=>{
 
-        console.log(userGroup.partidos)
+        // console.log(fixtureGroup)   
     },[])
 
     return (

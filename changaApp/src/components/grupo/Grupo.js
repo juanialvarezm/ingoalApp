@@ -29,7 +29,7 @@ const Grupo = ({navigation}) => {
   const fetchGupo = async()=>{
     try {
       dispatch(fetchGroup(userInfo._id))
-  console.log(userGroup)
+  // console.log(userGroup)
     } catch (error) {
       console.log(error.message)
     }

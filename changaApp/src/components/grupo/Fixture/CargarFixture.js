@@ -18,7 +18,7 @@ const CargarFixture = () => {
 
 
         useEffect(()=>{
-            console.log(userGroup)
+            // console.log(userGroup)
         },[])
 
         const agregarAlFixture = ()=>{
