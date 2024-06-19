@@ -27,7 +27,10 @@ const fetchUserGrupo = async(req,res)=>{
         const {userId} = req.params
 
         const usuario = await User.findById(userId)
-        var grupo = await Grupos.findOne({jugadores:usuario}).populate("jugadores", "name username").populate("partidos", "equipoVisitante equipoLocal fecha")
+        var grupo = await Grupos.findOne({jugadores:usuario})
+        .populate("jugadores", "name username")
+        .populate("partidos", "equipoVisitante equipoLocal fecha")
+        .populate("fixture")
 
         res.json(grupo)
 

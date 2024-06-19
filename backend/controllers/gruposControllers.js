@@ -48,7 +48,9 @@ const fetchGrupo = async(req,res)=>{
         const {groupId} = req.body
 
         if(groupId){
-            const find = await Grupos.findById(groupId).populate("partidos", "equipoLocal equipoVisitante fecha")
+            const find = await Grupos.findById(groupId)
+            .populate("partidos", "equipoLocal equipoVisitante fecha")
+            .populate("fixture", "partidos")
             
             // const find = await Grupos.find({})
             if(find){
@@ -180,6 +182,8 @@ const agregarEjercicios = async(req,res)=>{
     }
 }
 
+
+//CAMBIAR NOMBRE
 const addPartidoAlFixture = async (req,res) => {
     try {
 

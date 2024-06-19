@@ -41,7 +41,6 @@ const partidosSchema = mongoose.Schema({
         required:true
         //A , B, C
     }
-
 })
 
 module.exports = mongoose.model("Partidos", partidosSchema)

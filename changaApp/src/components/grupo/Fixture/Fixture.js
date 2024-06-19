@@ -14,13 +14,13 @@ const Fixture = ({navigation}) => {
   const {userInfo} = useSelector((state)=>state.auth)
 
   //CAMBIAR DE USERGROUP AUTH A USERGROUP GRUPOS EN STORE
-  const {userGroup} = useSelector((state)=>state.grupos)
+  const {userGroup,pp} = useSelector((state)=>state.grupos)
 
 
   
   useEffect(()=>{
 
-    // console.log(userGroup)
+    console.log(pp)
   },[])
 
   return (
