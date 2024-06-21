@@ -18,7 +18,7 @@ const FixtureBox = ({partido})=>{
         try {
             dispatch(fetchFixture(cat,userGroup._id))
             console.log(fixtureStatus)       
-            console.log(fixture._id)       
+            console.log(fixture)       
 
         } catch (error) {
             console.log(error.message)
@@ -32,7 +32,8 @@ const FixtureBox = ({partido})=>{
     return(
         <View style={{marginTop:60,flex:1,marginBottom:90}}>
             <Text>{fixture._id}</Text>
-        {/* {fixture?.map((partido)=>(
+            <Text>{fixture}kjj</Text>
+        {fixture?.map((partido)=>(
           <View style={{backgroundColor:"blue",flex:1}} key={partido._id}>
             <View style={styles.fixtureBoxContainer}>
                 <View>
@@ -53,7 +54,7 @@ const FixtureBox = ({partido})=>{
                 </View>
             </View>
           </View>
-        ))} */}
+        ))}
       </View>
     )
 }

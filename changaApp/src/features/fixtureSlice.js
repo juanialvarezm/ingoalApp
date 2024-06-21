@@ -3,7 +3,7 @@ import { crearFixture,fetchFixture } from "./fixtureActions";
 
 
 const initialState = {
-    fixture:[],
+    fixture:null,
     error:null,
     fixtureStatus:"loading"
 }
