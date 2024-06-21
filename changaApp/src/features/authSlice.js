@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchGroup, login,register } from "./authActions";
 import { useSelector } from "react-redux";
 
-
 const initialState = {
     error:null,
     userToken:null,

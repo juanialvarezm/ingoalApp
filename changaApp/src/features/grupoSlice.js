@@ -3,12 +3,7 @@ import { selectCurrentToken } from "./authSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { useSelector } from "react-redux";
-// import {crearGrupo} from "./grupoActions"
 
-// import { createSlice } from "@reduxjs/toolkit";
-// import { selectCurrentToken } from "./authSlice";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// import axios from "axios";
 
 
 
@@ -104,36 +99,11 @@ export const joinGroup = createAsyncThunk("grupos/join",async(groupData,{rejectW
         }
     })
 
-   export const fetchFixture = createAsyncThunk("grupos/fetchfixture",async(fixtureData,{rejectWithValue})=>{
-        try {
-
-            const {data} = await axios.get("http://10.0.2.2:5000/api/fixture",{...fixtureData})
-            
-            return data
-            
-        } catch (error) {
-            return rejectWithValue(error.response?.data)
-        }
-    })
-
-    const crearFixture = createAsyncThunk("grupos/crearFixture",async(fixtureData,{rejectWithValue})=>{
-        try {
-            
-            const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",{...fixtureData})
-            console.log(data)
-            return data
-
-        } catch (error) {
-            return rejectWithValue(error.response?.data)
-        }
-    })
-
 
 
 const initialState = {
     grupo:null,
     status:"loading",
-    pp:"hola",
     userGroup:null,
     
 }
@@ -224,26 +194,6 @@ const gruposSlice = createSlice({
         builder.addCase(fetchPartidos.pending,(state,action)=>{
             console.log("partidos pending")
         })
-        // builder.addCase(fetchFixture.fulfilled,(state,action)=>{
-        //     return console.log(state.fixtureGroup)
-            // return {
-            //     ...state,
-            //     fixtureGroup:action.payload
-            // }
-        // })
-        // builder.addCase(fetchFixture.rejected,(state,action)=>{
-        //     console.log("rejected loading fixture")
-        // })
-        // builder.addCase(crearFixture.rejected,(state,action)=>{
-        //     console.log("rejected crear fixture")
-        // })
-        // builder.addCase(crearFixture.fulfilled,(state,action)=>{
-        //     return {
-        //         ...state,
-        //         fixtureGroup:action.payload
-        //     }
-        // })
-
     }
 })
 export const selectCurrentGrupo = (state)=> state.grupos.grupo

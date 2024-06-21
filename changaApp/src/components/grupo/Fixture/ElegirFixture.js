@@ -10,6 +10,7 @@ const ElegirFixture = () => {
     const navigation = useNavigation()
     const {userGroup,fixtureGroup} = useSelector((state)=>state.grupos)
     const {fixtureCategoria,setFixtureCategoria} = GlobalState()
+    const {fixture}= useSelector((state)=>state.fixture)
 
 
     const handleCategoria = (value)=>{
@@ -24,7 +25,7 @@ const ElegirFixture = () => {
 
     useEffect(()=>{
 
-        // console.log(fixtureGroup)   
+        console.log(fixture)   
     },[])
 
     return (

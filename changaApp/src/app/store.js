@@ -6,6 +6,7 @@ import {
   } from 'redux-persist'
 import authReducer from "../features/authSlice"
 import gruposReducer from "../features/grupoSlice"
+import fixtureReducer from "../features/fixtureSlice"
 
 const persistConfig = {
   key: 'root',
@@ -16,6 +17,7 @@ const persistConfig = {
 const reducers = combineReducers({
     auth:authReducer,
     grupos:gruposReducer,
+    fixtures:fixtureReducer,
  });
 
  const persistedReducer = persistReducer(persistConfig, reducers);
