@@ -1,22 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text,Image } from "react-native";
 import Index from "../../../screens/Index";
 import { useSelector } from "react-redux";
 import { GlobalState } from "../../../context/GlobalContext";
-import { fetchFixture } from "../../../features/grupoSlice";
 import { useDispatch } from "react-redux";
+import { fetchFixture } from "../../../features/fixtureActions"
 
 
 const FixtureBox = ({partido})=>{
-    const {userGroup,pp,status} = useSelector((state)=>state.grupos)
+    const {userGroup} = useSelector((state)=>state.grupos)
     const {fixtureCategoria} = GlobalState()
+    const [cat,setCate] = useState("A")
     const dispatch = useDispatch()
+    const {fixture,fixtureStatus} = useSelector((state)=>state.fixtures)
 
     const cargarFixture = ()=>{
         try {
-            dispatch(fetchFixture(fixtureCategoria,userGroup._id))
-            console.log(status)       
-            // console.log(userGroup)       
+            dispatch(fetchFixture(cat,userGroup._id))
+            console.log(fixtureStatus)       
+            console.log(fixture._id)       
 
         } catch (error) {
             console.log(error.message)
@@ -25,13 +27,12 @@ const FixtureBox = ({partido})=>{
 
     useEffect(()=>{
         cargarFixture()
-        console.log(pp)       
-
     },[])
 
     return(
         <View style={{marginTop:60,flex:1,marginBottom:90}}>
-        {/* {fixtureGroup.partidos?.map((partido)=>(
+            <Text>{fixture._id}</Text>
+        {/* {fixture?.map((partido)=>(
           <View style={{backgroundColor:"blue",flex:1}} key={partido._id}>
             <View style={styles.fixtureBoxContainer}>
                 <View>

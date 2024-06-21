@@ -10,14 +10,14 @@ import { logout } from '../features/authSlice';
 import { useDispatch } from 'react-redux';
 
 const Profile = () => {
-    const {error,userInfo,userToken} = useSelector((state)=>state.auth)
+    const {userInfo,userToken} = useSelector((state)=>state.auth)
     const dispatch = useDispatch()
     const {userGroup} = useSelector((state)=>state.grupos)
-    const {status} = useSelector((state)=>state.fixtures)
+    const {error} = useSelector((state)=>state.fixtures)
 
 
     useEffect(()=>{
-        console.log(status)
+        console.log(error)
     },[])
 
     const logoutAc = ()=>{

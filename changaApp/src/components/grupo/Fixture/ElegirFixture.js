@@ -1,16 +1,14 @@
 import { View,StyleSheet, Text, TouchableOpacity } from "react-native"
 import React, { useEffect } from 'react'
 import { useSelector } from "react-redux"
-import {fetchFixture} from "../../../features/grupoSlice"
 import { useNavigation } from "@react-navigation/native"
 import { GlobalState } from "../../../context/GlobalContext"
-
 
 const ElegirFixture = () => {
     const navigation = useNavigation()
     const {userGroup,fixtureGroup} = useSelector((state)=>state.grupos)
     const {fixtureCategoria,setFixtureCategoria} = GlobalState()
-    const {fixture}= useSelector((state)=>state.fixture)
+    const {fixture}= useSelector((state)=>state.fixtures)
 
 
     const handleCategoria = (value)=>{
@@ -23,9 +21,10 @@ const ElegirFixture = () => {
         }
     } 
 
+
+
     useEffect(()=>{
 
-        console.log(fixture)   
     },[])
 
     return (

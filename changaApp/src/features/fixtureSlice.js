@@ -14,23 +14,17 @@ const fixtureSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
-        builder.addCase(fetchFixture.pending, (state,action)=>{
-            return {
-                ...state,
-                fixtureStatus:"loading"
-            }
-        })
-        builder.addCase(fetchFixture.fullfilled, (state,action)=>{
-            return {
+        builder.addCase(fetchFixture.fulfilled,(state,action)=>{
+            return{
                 ...state,
                 fixtureStatus:"success",
                 fixture:action.payload
             }
         })
-        builder.addCase(fetchFixture.pending, (state,action)=>{
-            return {
+        builder.addCase(fetchFixture.rejected,(state,action)=>{
+            return{
                 ...state,
-                fixtureStatus:"failed"
+                fixtureStatus:"failed",
             }
         })
     }
