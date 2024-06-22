@@ -3,10 +3,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios"
 import { selectCurrentToken } from "./authSlice";
 
-export const fetchFixture = createAsyncThunk("grupos/fetchfixture",async(fixtureData,{rejectWithValue})=>{
+export const fetchFixture = createAsyncThunk("fixtures/fetchfixture",async(lotofda,{rejectWithValue})=>{
     try {
 
-        const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",{...fixtureData})
+        const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",...lotofda)
         
         return data
         
@@ -15,7 +15,7 @@ export const fetchFixture = createAsyncThunk("grupos/fetchfixture",async(fixture
     }
 })
 
-export const crearFixture = createAsyncThunk("grupos/crearFixture",async(fixtureData,{rejectWithValue})=>{
+export const crearFixture = createAsyncThunk("fixtures/crearFixture",async(fixtureData,{rejectWithValue})=>{
     try {
         
         const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",...fixtureData)

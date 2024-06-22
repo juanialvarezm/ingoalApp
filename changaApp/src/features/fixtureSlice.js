@@ -18,13 +18,19 @@ const fixtureSlice = createSlice({
             return{
                 ...state,
                 fixtureStatus:"success",
-                fixtureData:action.payload.partidos
+                fixtureData:action.payload
             }
         })
         builder.addCase(fetchFixture.rejected,(state,action)=>{
             return{
                 ...state,
                 fixtureStatus:"failed",
+            }
+        })
+        builder.addCase(fetchFixture.pending,(state,action)=>{
+            return{
+                ...state,
+                fixtureStatus:"pending",
             }
         })
     }

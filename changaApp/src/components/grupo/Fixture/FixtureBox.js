@@ -17,8 +17,8 @@ const FixtureBox = ({partido})=>{
     const cargarFixture = ()=>{
         try {
             
-            dispatch(fetchFixture("B","665a597ff36aae12e802489f"))
-            console.log(fixtureStatus)       
+            dispatch(fetchFixture({categoria:fixtureCategoria,grupo:userGroup._id}))
+            console.log(fixtureCategoria)       
             console.log(fixtureData)       
 
         } catch (error) {
