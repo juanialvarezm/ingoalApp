@@ -16,7 +16,8 @@ const FixtureBox = ({partido})=>{
 
     const cargarFixture = ()=>{
         try {
-            dispatch(fetchFixture(cat,userGroup._id))
+            
+            dispatch(fetchFixture("B","665a597ff36aae12e802489f"))
             console.log(fixtureStatus)       
             console.log(fixtureData)       
 
@@ -31,8 +32,6 @@ const FixtureBox = ({partido})=>{
 
     return(
         <View style={{marginTop:60,flex:1,marginBottom:90}}>
-            <Text>{fixture._id}</Text>
-            <Text>{fixture}kjj</Text>
         {fixtureData?.map((partido)=>(
           <View style={{backgroundColor:"blue",flex:1}} key={partido._id}>
             <View style={styles.fixtureBoxContainer}>

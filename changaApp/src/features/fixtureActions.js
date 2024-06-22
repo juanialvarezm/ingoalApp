@@ -6,7 +6,7 @@ import { selectCurrentToken } from "./authSlice";
 export const fetchFixture = createAsyncThunk("grupos/fetchfixture",async(fixtureData,{rejectWithValue})=>{
     try {
 
-        const {data} = await axios.get("http://10.0.2.2:5000/api/fixture",{...fixtureData})
+        const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",{...fixtureData})
         
         return data
         
@@ -18,7 +18,7 @@ export const fetchFixture = createAsyncThunk("grupos/fetchfixture",async(fixture
 export const crearFixture = createAsyncThunk("grupos/crearFixture",async(fixtureData,{rejectWithValue})=>{
     try {
         
-        const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",{...fixtureData})
+        const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",...fixtureData)
         console.log(data)
         return data
 

@@ -8,7 +8,6 @@ const ElegirFixture = () => {
     const navigation = useNavigation()
     const {userGroup,fixtureGroup} = useSelector((state)=>state.grupos)
     const {fixtureCategoria,setFixtureCategoria} = GlobalState()
-    const {fixture}= useSelector((state)=>state.fixtures)
 
 
     const handleCategoria = (value)=>{

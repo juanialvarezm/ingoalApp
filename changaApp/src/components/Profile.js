@@ -13,11 +13,11 @@ const Profile = () => {
     const {userInfo,userToken} = useSelector((state)=>state.auth)
     const dispatch = useDispatch()
     const {userGroup} = useSelector((state)=>state.grupos)
-    const {error} = useSelector((state)=>state.fixtures)
+    const {error,fixtureData} = useSelector((state)=>state.fixtures)
 
 
     useEffect(()=>{
-        console.log(error)
+        console.log(fixtureData)
     },[])
 
     const logoutAc = ()=>{
