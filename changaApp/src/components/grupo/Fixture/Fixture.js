@@ -20,7 +20,7 @@ const Fixture = ({navigation}) => {
   
   useEffect(()=>{
 
-    console.log(pp)
+    // console.log(pp)
   },[])
 
   return (

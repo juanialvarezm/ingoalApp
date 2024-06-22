@@ -12,13 +12,13 @@ const FixtureBox = ({partido})=>{
     const {fixtureCategoria} = GlobalState()
     const [cat,setCate] = useState("A")
     const dispatch = useDispatch()
-    const {fixture,fixtureStatus} = useSelector((state)=>state.fixtures)
+    const {fixtureData,fixtureStatus} = useSelector((state)=>state.fixtures)
 
     const cargarFixture = ()=>{
         try {
             dispatch(fetchFixture(cat,userGroup._id))
             console.log(fixtureStatus)       
-            console.log(fixture)       
+            console.log(fixtureData)       
 
         } catch (error) {
             console.log(error.message)
@@ -33,7 +33,7 @@ const FixtureBox = ({partido})=>{
         <View style={{marginTop:60,flex:1,marginBottom:90}}>
             <Text>{fixture._id}</Text>
             <Text>{fixture}kjj</Text>
-        {fixture?.map((partido)=>(
+        {fixtureData?.map((partido)=>(
           <View style={{backgroundColor:"blue",flex:1}} key={partido._id}>
             <View style={styles.fixtureBoxContainer}>
                 <View>

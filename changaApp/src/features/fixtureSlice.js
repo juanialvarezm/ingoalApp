@@ -3,7 +3,7 @@ import { crearFixture,fetchFixture } from "./fixtureActions";
 
 
 const initialState = {
-    fixture:null,
+    fixtureData:null,
     error:null,
     fixtureStatus:"loading"
 }
@@ -18,7 +18,7 @@ const fixtureSlice = createSlice({
             return{
                 ...state,
                 fixtureStatus:"success",
-                fixture:action.payload
+                fixtureData:action.payload
             }
         })
         builder.addCase(fetchFixture.rejected,(state,action)=>{
