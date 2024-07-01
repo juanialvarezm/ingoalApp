@@ -6,6 +6,7 @@ import { selectCurrentToken } from "./authSlice";
 export const fetchFixture = createAsyncThunk("fixtures/fetchfixture",async(lotofda,{rejectWithValue})=>{
     try {
 
+        // const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",...lotofda)
         const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",...lotofda)
         
         return data

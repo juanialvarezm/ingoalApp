@@ -10,15 +10,15 @@ import { fetchFixture } from "../../../features/fixtureActions"
 const FixtureBox = ({partido})=>{
     const {userGroup} = useSelector((state)=>state.grupos)
     const {fixtureCategoria} = GlobalState()
-    const [cat,setCate] = useState("A")
+    // const [cat,setCate] = useState("A")
     const dispatch = useDispatch()
     const {fixtureData,fixtureStatus} = useSelector((state)=>state.fixtures)
 
     const cargarFixture = ()=>{
         try {
             
+            // dispatch(fetchFixture({categoria:fixtureCategoria,grupo:userGroup._id}))
             dispatch(fetchFixture({categoria:fixtureCategoria,grupo:userGroup._id}))
-            console.log(fixtureCategoria)       
             console.log(fixtureData)       
 
         } catch (error) {
