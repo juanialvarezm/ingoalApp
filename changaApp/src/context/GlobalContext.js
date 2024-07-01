@@ -12,7 +12,7 @@ function GlobalContextProvider({children}){
     const [equipoVisitante,setEquipoVisitante] = useState("")
     const [equipoLocal,setEquipoLocal] = useState("")
     const [fechaPartido,setFechaPartido] = useState("")
-    const [fixtureCategoria,setFixtureCategoria] = useState("A")
+    const [fixtureCategoria,setFixtureCategoria] = useState("")
     
 
     return(

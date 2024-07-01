@@ -7,7 +7,7 @@ export const fetchFixture = createAsyncThunk("fixtures/fetchfixture",async(lotof
     try {
 
         // const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",...lotofda)
-        const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",...lotofda)
+        const {data} = await axios.post("http://10.0.2.2:5000/api/fixture",{...lotofda})
         
         return data
         

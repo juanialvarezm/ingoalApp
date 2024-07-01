@@ -33,25 +33,15 @@ const FixtureBox = ({partido})=>{
     return(
         <View style={{marginTop:60,flex:1,marginBottom:90}}>
         {fixtureData?.map((partido)=>(
-          <View style={{backgroundColor:"blue",flex:1}} key={partido._id}>
+          <View  key={partido._id}>
             <View style={styles.fixtureBoxContainer}>
-                <View>
-                    <Text>oooo</Text>
+                {partido.partidos.map((p)=>(
+                    <View>
+                        <Text>{p.equipoLocal}</Text>
+                        <Text>{p.equipoVisitante}</Text>
+                    </View>
+                ))}
                 </View>
-                <View>
-                    <Text>{partido.equipoLocal}</Text>
-                    <Image 
-                    source={partido.equipoLocal?.logo}
-                    alt="Geba"/>
-                </View>
-                <View>
-                    <Text>{partido.equipoVisitante}</Text>
-                    <Image 
-                    source={partido.equipoLocal?.logo}
-                    alt="Cuba"/>
-
-                </View>
-            </View>
           </View>
         ))}
       </View>
@@ -59,13 +49,6 @@ const FixtureBox = ({partido})=>{
 }
 
 const styles = StyleSheet.create({
-    fixtureBoxContainer:{
-        backgroundColor:"red",
-        flex:1,
-        margin:10,
-        borderRadius:5,
-        elevation:15
-    }
 })
 
 export default FixtureBox
