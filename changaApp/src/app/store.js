@@ -26,10 +26,10 @@ const reducers = combineReducers({
 export const store = configureStore({
   reducer:persistedReducer,
 
-  middleware:(getDefaultMiddleware)=>
-    getDefaultMiddleware({
-        serializableCheck:false
-      }),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    immutableCheck: false,
+    serializableCheck: false,
+  })
 
 })
 
