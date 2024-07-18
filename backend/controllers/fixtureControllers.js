@@ -9,11 +9,11 @@ const fetchFixture = async(req,res)=>{
         const {categoria,grupo} = req.body
         // const {grupo} = req.body
 
-        var fixture = await Fixture.find({categoria:categoria, grupo:grupo})
+        var fixture = await Fixture.findOne({categoria:categoria, grupo:grupo})
         // var fixture = await Fixture.findOne({grupo:grupo})
         .populate("partidos")
-        // fixture  = await fixture.populate("partidos.equipoLocal","nombre")
-        // fixture  = await fixture.populate("partidos.equipoVisitante","nombre")
+        fixture  = await fixture.populate("partidos.equipoLocal","nombre")
+        fixture  = await fixture.populate("partidos.equipoVisitante","nombre")
 
 
         res.json(fixture)

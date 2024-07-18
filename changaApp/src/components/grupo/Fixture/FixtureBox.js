@@ -32,10 +32,10 @@ const FixtureBox = ({partido})=>{
 
     return(
         <View style={{paddingTop:60,flex:1,backgroundColor:"#F6F6F6"}}>
-        {fixtureData?.map((partido)=>(
-          <View  key={partido._id}>
+        {fixtureData?.partidos.map((p)=>(
+          <View  key={p._id}>
             <View style={styles.fixtureBoxContainer}>
-                {partido.partidos.map((p)=>(
+                {/* {partido.partidos.map((p)=>( */}
                     <View style={styles.partidoBox} key={p._id}>
                         <View style={styles.equipoLocalBox} >
                             <Text style={{color:"#000", fontSize:15}}>{p?.resultadoLocal}</Text>
@@ -47,7 +47,7 @@ const FixtureBox = ({partido})=>{
                         </View>
                         <View style={styles.equipoVisitanteBox} >
                             <Text style={{color:"#000", fontSize:15}}>{p?.resultadoVisitante}</Text>
-                            <Text>{p.equipoVisitant}</Text>
+                            <Text>{p.equipoVisitante?.nombre}</Text>
 
                             {/* <Image
                             alt="Equipo Local foto"
@@ -55,7 +55,7 @@ const FixtureBox = ({partido})=>{
 
                         </View>
                     </View>
-                ))}
+                {/* ))} */}
                 </View>
           </View>
         ))}
