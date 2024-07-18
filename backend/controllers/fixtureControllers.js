@@ -2,15 +2,19 @@ const express = require("express")
 const Fixture = require("../models/Fixture")
 const Grupos = require("../models/Grupos")
 const Partidos = require("../models/Partidos")
+const Teams = require("../models/Teams")
 
 const fetchFixture = async(req,res)=>{
     try {
         const {categoria,grupo} = req.body
+        // const {grupo} = req.body
 
-        // const fixture = await Fixture.find({grupo:grupo,categoria:categoria})
         var fixture = await Fixture.find({categoria:categoria, grupo:grupo})
-        // fixture  = await fixture.populate("partidos", "equipoLocal equipoVisitante")
+        // var fixture = await Fixture.findOne({grupo:grupo})
         .populate("partidos")
+        // fixture  = await fixture.populate("partidos.equipoLocal","nombre")
+        // fixture  = await fixture.populate("partidos.equipoVisitante","nombre")
+
 
         res.json(fixture)
 
@@ -25,14 +29,15 @@ const crearFixture = async(req,res)=>{
         
 
         var fixture = await Fixture.create({grupo,categoria,partidos})
-        fixture  = await fixture.populate("partidos", "equipoLocal equipoVisitante")
+        fixture  = await fixture.populate("partidos",)
+        fixture  = await fixture.populate("partidos.equipoLocal","nombre")
 
         var addFixturetoGrupo = await Grupos.findByIdAndUpdate(grupo,{$push:{fixture:fixture}})
-        addFixturetoGrupo  = await addFixturetoGrupo.populate("fixture", "partidos")
+        // addFixturetoGrupo  = await addFixturetoGrupo.populate("fixture", "partidos")
         // addFixturetoGrupo = await addFixturetoGrupo.populate("fixture")
 
 
-        res.json(addFixturetoGrupo)
+        res.json(fixture)
 
     } catch (error) {
         throw new Error(error.message)

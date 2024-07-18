@@ -11,7 +11,7 @@ const FixtureSchema = mongoose.Schema({
     },
     categoria:{
         type:String
-    }
+    } 
 })
 
 module.exports = mongoose.model("Fixture", FixtureSchema)

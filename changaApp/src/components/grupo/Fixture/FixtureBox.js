@@ -39,7 +39,7 @@ const FixtureBox = ({partido})=>{
                     <View style={styles.partidoBox} key={p._id}>
                         <View style={styles.equipoLocalBox} >
                             <Text style={{color:"#000", fontSize:15}}>{p?.resultadoLocal}</Text>
-                            <Text >{p.equipoLocal.toUpperCase()}</Text>
+                            <Text >{p.equipoLocal?.nombre}</Text>
 
                             {/* <Image
                             alt="Equipo Local foto"
@@ -47,7 +47,7 @@ const FixtureBox = ({partido})=>{
                         </View>
                         <View style={styles.equipoVisitanteBox} >
                             <Text style={{color:"#000", fontSize:15}}>{p?.resultadoVisitante}</Text>
-                            <Text>{p.equipoVisitante.toUpperCase()}</Text>
+                            <Text>{p.equipoVisitant}</Text>
 
                             {/* <Image
                             alt="Equipo Local foto"

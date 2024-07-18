@@ -13,7 +13,7 @@ const empezarPartido = async(req,res)=>{
             // let creador = req.user
 
             let partido = await Partidos.create({equipoLocal,equipoVisitante,creador,categoria,grupoId})
-            partido =  await partido.populate("equipoLocal", "nombre , logo") 
+            partido =  await partido.populate("equipoLocal", "nombre logo") 
             partido =  await partido.populate("equipoVisitante", "nombre , logo") 
             partido =  await partido.populate("grupoId") 
             partido =  await partido.populate("categoria") 
@@ -57,6 +57,7 @@ const fetchPartidos = async(req,res)=>{
         }
 
         const partidos = await Partidos.find({grupoId:grupoId, categoria:categoria})
+        .populate("equipoLocal equipoVisitante")
         res.json(partidos)
     } catch (error) {
         throw new Error(error.message)
