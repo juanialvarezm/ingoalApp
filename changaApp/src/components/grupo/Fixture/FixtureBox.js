@@ -31,14 +31,29 @@ const FixtureBox = ({partido})=>{
     },[])
 
     return(
-        <View style={{marginTop:60,flex:1,marginBottom:90}}>
+        <View style={{paddingTop:60,flex:1,backgroundColor:"#F6F6F6"}}>
         {fixtureData?.map((partido)=>(
           <View  key={partido._id}>
             <View style={styles.fixtureBoxContainer}>
                 {partido.partidos.map((p)=>(
-                    <View>
-                        <Text>{p.equipoLocal}</Text>
-                        <Text>{p.equipoVisitante}</Text>
+                    <View style={styles.partidoBox} key={p._id}>
+                        <View style={styles.equipoLocalBox} >
+                            <Text style={{color:"#000", fontSize:15}}>{p?.resultadoLocal}</Text>
+                            <Text >{p.equipoLocal.toUpperCase()}</Text>
+
+                            {/* <Image
+                            alt="Equipo Local foto"
+                            source={p.equipoLocal?.logo}/> */}
+                        </View>
+                        <View style={styles.equipoVisitanteBox} >
+                            <Text style={{color:"#000", fontSize:15}}>{p?.resultadoVisitante}</Text>
+                            <Text>{p.equipoVisitante.toUpperCase()}</Text>
+
+                            {/* <Image
+                            alt="Equipo Local foto"
+                            source={p.equipoLocal?.logo}/> */}
+
+                        </View>
                     </View>
                 ))}
                 </View>
@@ -49,6 +64,26 @@ const FixtureBox = ({partido})=>{
 }
 
 const styles = StyleSheet.create({
+    partidoBox:{
+        backgroundColor:"#F9F4F4",
+        marginVertical:9,
+        marginHorizontal:20,
+        padding:30,
+        borderRadius:10,
+        elevation:5,
+        flexDirection:"row",
+        justifyContent:"center"
+
+    },
+    equipoLocalBox:{
+        justifyContent:"center",
+        alignItems:"center",
+        paddingRight:150
+    },
+    equipoVisitanteBox:{
+        alignItems:"center",
+
+    }
 })
 
 export default FixtureBox

@@ -4,7 +4,7 @@ const Partidos = require("../models/Partidos")
 const empezarPartido = async(req,res)=>{
     try {
         const {equipoVisitante,equipoLocal,creador,categoria,
-            tries} = req.body
+            tries,grupoId} = req.body
             
             if(!equipoVisitante || !equipoLocal){
                 throw new Error("Se necesitan los equipos")
@@ -12,10 +12,12 @@ const empezarPartido = async(req,res)=>{
 
             // let creador = req.user
 
-            let partido = await Partidos.create({equipoLocal,equipoVisitante,creador,categoria})
+            let partido = await Partidos.create({equipoLocal,equipoVisitante,creador,categoria,grupoId})
             partido =  await partido.populate("equipoLocal", "nombre , logo") 
             partido =  await partido.populate("equipoVisitante", "nombre , logo") 
+            partido =  await partido.populate("grupoId") 
             partido =  await partido.populate("categoria") 
+            // partido =  await partido.populate("fecha") 
 
 
 

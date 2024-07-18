@@ -7,10 +7,10 @@ const fetchFixture = async(req,res)=>{
     try {
         const {categoria,grupo} = req.body
 
-        const fixture = await Fixture.find({grupo:grupo,categoria:categoria})
-        // const fixture = await Fixture.find({categoria:categoria})
-        // const fixture = await Fixture.find()
-        .populate("partidos","equipoLocal nombre  equipoVisitante nombre fecha")
+        // const fixture = await Fixture.find({grupo:grupo,categoria:categoria})
+        var fixture = await Fixture.find({categoria:categoria, grupo:grupo})
+        // fixture  = await fixture.populate("partidos", "equipoLocal equipoVisitante")
+        .populate("partidos")
 
         res.json(fixture)
 
@@ -28,8 +28,8 @@ const crearFixture = async(req,res)=>{
         fixture  = await fixture.populate("partidos", "equipoLocal equipoVisitante")
 
         var addFixturetoGrupo = await Grupos.findByIdAndUpdate(grupo,{$push:{fixture:fixture}})
-        //addFixturetoGrupo  = await addFixturetoGrupo.populate("fixture", "partidos")
-        addFixturetoGrupo = await addFixturetoGrupo.populate("fixture")
+        addFixturetoGrupo  = await addFixturetoGrupo.populate("fixture", "partidos")
+        // addFixturetoGrupo = await addFixturetoGrupo.populate("fixture")
 
 
         res.json(addFixturetoGrupo)

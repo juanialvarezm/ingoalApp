@@ -12,9 +12,6 @@ const teamSchema = new mongoose.Schema({
     logo:{
         type:String
     },
-    followers:[{
-        type:Array
-    }],
     isVerified:{
         type:Boolean,
         default:false
