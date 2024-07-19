@@ -25,8 +25,14 @@ import Citados from './src/components/grupo/citados/Citados'
 import GrupoDetailsHeader from './src/components/grupo/GrupoDetailsHeader'
 import CargarFixture from './src/components/grupo/Fixture/CargarFixture'
 import FixtureBox from './src/components/grupo/Fixture/FixtureBox'
+import BottomTabNvigator from './src/screens/Index'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import HomeScreen from './src/screens/HomeScreen'
+import IsAuthenticated from './src/helpers/IsAuthenticated'
+
 
 const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator() 
 
 
 const App = () => {
@@ -38,37 +44,41 @@ const App = () => {
           <GlobalContextProvider>
 
             <NavigationContainer>
-              <Stack.Navigator>
 
-                  <Stack.Group>
-                      <Stack.Screen name='Index' component={Index}
+            <Tab.Navigator>
+              <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} />
+              <Tab.Screen name="Chat">
+              {()=>(
+                <Stack.Navigator>
+                    <Stack.Screen name='Index' component={Index}
                     options={{headerShown:false}} />
-                    <Stack.Screen name='Register' component={Register} />
-                    <Stack.Screen name='Login' component={Login} />
+                    {/* <Stack.Screen name='Register' component={Register} /> */}
+                    {/* <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Register2' component={Register2} />
-                    <Stack.Screen name='Register3' component={Register3} />
-                  <Stack.Screen  name='CargarFixture' component={CargarFixture} />
+                    <Stack.Screen name='Register3' component={Register3} /> */}
+                    {/* <Stack.Screen  name='CargarFixture' component={CargarFixture} /> */}
 
-                  </Stack.Group>
-
-                  <Stack.Group screenOptions={{ presentation: "modal"}} options={{modalPresentationStyle:""}}>
                     <Stack.Screen name='CrearGrupo' component={CrearGrupo} />
-                  </Stack.Group>
 
-                <Stack.Group>
                   <Stack.Screen name='Rutina' component={Rutina} />
                   <Stack.Screen name='Fixture' component={Fixture} />
                   <Stack.Screen name='Citados' component={Citados} />
                   <Stack.Screen  name='GrupoDetails' component={GrupoDetailsHeader} />
                   <Stack.Screen  name='FixtureBox' component={FixtureBox} />
-                </Stack.Group>
 
-              </Stack.Navigator>
+                </Stack.Navigator>
+              )}
+              </Tab.Screen>
+              <Tab.Screen name="Perfil" options={{headerShown:false}} component={IsAuthenticated} />
+            </Tab.Navigator>
+
+
+              {/* <Stack.Navigator> */}
+              {/* </Stack.Navigator> */}
             </NavigationContainer>
-        </GlobalContextProvider>
-
-            </PersistGate>
-        </Provider>
+          </GlobalContextProvider>
+        </PersistGate>
+      </Provider>
     )
 }
 

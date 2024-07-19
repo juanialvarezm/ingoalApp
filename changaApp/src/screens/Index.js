@@ -10,19 +10,30 @@ import GrupoScreen from './GrupoScreen'
 import Grupo from '../components/grupo/Grupo'
 import Login from '../components/auth/Login'
 import GrupoOptions from '../components/grupo/GrupoOptions'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-const Tab = createBottomTabNavigator() 
 
-const Index = () => {
+// const Tab = createBottomTabNavigator() 
+const Stack = createNativeStackNavigator()
+
+
+const BottomTabNvigator = () => {
   return (
     <>
-    <Tab.Navigator>
-      <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} />
-      <Tab.Screen name="Chat" options={{headerShown:false,headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={GrupoScreen} />
-      <Tab.Screen name="Perfil" options={{headerShown:false}} component={IsAuthenticated} />
-    </Tab.Navigator>
+    {/* <Tab.Navigator> */}
+    <Stack.Navigator>
+      <Stack.Screen  name={"GrupoScreen"} component={GrupoScreen}/>
+    </Stack.Navigator>
+      {/* <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} /> */}
+      {/* <Tab.Screen name="Chat" options={{headerShown:false,headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={GrupoScreen} /> */}
+      {/* <Tab.Screen name="Perfil" options={{headerShown:false}} component={IsAuthenticated} /> */}
+    {/* </Tab.Navigator> */}
     </>
   )
 }
 
-export default Index
+
+const styles = StyleSheet.create({
+})
+
+export default BottomTabNvigator

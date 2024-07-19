@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from "react-redux"
 import { useNavigation } from "@react-navigation/native"
 import { GlobalState } from "../../../context/GlobalContext"
+import BottomTabNvigator from "../../../screens/Index"
 
 const ElegirFixture = () => {
     const navigation = useNavigation()

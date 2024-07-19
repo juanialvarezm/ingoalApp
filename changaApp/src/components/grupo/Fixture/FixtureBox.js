@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { GlobalState } from "../../../context/GlobalContext";
 import { useDispatch } from "react-redux";
 import { fetchFixture } from "../../../features/fixtureActions"
+import BottomTabNvigator from "../../../screens/Index";
 
 
 const FixtureBox = ({partido})=>{
@@ -41,17 +42,16 @@ const FixtureBox = ({partido})=>{
                             <Text style={{color:"#000", fontSize:15}}>{p?.resultadoLocal}</Text>
                             <Text >{p.equipoLocal?.nombre}</Text>
 
-                            {/* <Image
+                            <Image
                             alt="Equipo Local foto"
-                            source={p.equipoLocal?.logo}/> */}
+                            source={p.equipoLocal?.logo}/>
                         </View>
                         <View style={styles.equipoVisitanteBox} >
                             <Text style={{color:"#000", fontSize:15}}>{p?.resultadoVisitante}</Text>
                             <Text>{p.equipoVisitante?.nombre}</Text>
-
-                            {/* <Image
+                            <Image
                             alt="Equipo Local foto"
-                            source={p.equipoLocal?.logo}/> */}
+                            source={`${p.equipoVisitante?.logo[0]}`}/>
 
                         </View>
                     </View>
@@ -59,6 +59,7 @@ const FixtureBox = ({partido})=>{
                 </View>
           </View>
         ))}
+
       </View>
     )
 }
