@@ -25,7 +25,7 @@ const Fixture = ({navigation}) => {
 
   return (
     <View style={styles.fixtureContainer}>
-      {userGroup.admin == userInfo._id?(
+      {userGroup.admin == userInfo?._id?(
         <>
           {userGroup?.partidos != undefined && userGroup.partidos.length > 0 ?(
             <>

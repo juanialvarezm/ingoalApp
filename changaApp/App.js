@@ -47,7 +47,7 @@ const App = () => {
 
             <Tab.Navigator>
               <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} />
-              <Tab.Screen name="Chat">
+              <Tab.Screen name="Chat" options={{headerShown:false}}>
               {()=>(
                 <Stack.Navigator>
                     <Stack.Screen name='Index' component={Index}

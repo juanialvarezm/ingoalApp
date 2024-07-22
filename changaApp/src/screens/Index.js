@@ -21,7 +21,7 @@ const BottomTabNvigator = () => {
   return (
     <>
     {/* <Tab.Navigator> */}
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen  name={"GrupoScreen"} component={GrupoScreen}/>
     </Stack.Navigator>
       {/* <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} /> */}
