@@ -8,7 +8,7 @@ import { fetchFixture } from "../../../features/fixtureActions"
 import BottomTabNvigator from "../../../screens/Index";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
+import { useNavigation } from "@react-navigation/native";
 
 const FixtureBox = ({partido})=>{
     const {userGroup} = useSelector((state)=>state.grupos)
@@ -16,6 +16,8 @@ const FixtureBox = ({partido})=>{
     // const [cat,setCate] = useState("A")
     const dispatch = useDispatch()
     const {fixtureData,fixtureStatus} = useSelector((state)=>state.fixtures)
+    const navigation = useNavigation()
+
 
     const cargarFixture = ()=>{
         try {
@@ -47,7 +49,11 @@ const FixtureBox = ({partido})=>{
             <View  key={p._id}>
                 <View>
                     {/* {partido.partidos.map((p)=>( */}
-                        <TouchableOpacity style={styles.partidoBox} key={p._id}>
+                        <TouchableOpacity style={styles.partidoBox} 
+                        onPress={()=>navigation.navigate("PartidoDetails",{
+                            param:p
+                        })}
+                         key={p._id}>
                             <View style={styles.equipoLocalBox} >
                             <Image
                                 source={{uri: p.equipoLocal.logo}}

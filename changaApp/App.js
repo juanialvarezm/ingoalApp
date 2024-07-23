@@ -29,6 +29,7 @@ import BottomTabNvigator from './src/screens/Index'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from './src/screens/HomeScreen'
 import IsAuthenticated from './src/helpers/IsAuthenticated'
+import PartidoDetails from './src/components/grupo/Fixture/PartidoDetails'
 
 
 const Stack = createNativeStackNavigator()
@@ -65,6 +66,7 @@ const App = () => {
                   <Stack.Screen name='Citados' component={Citados} />
                   <Stack.Screen  name='GrupoDetails' component={GrupoDetailsHeader} />
                   <Stack.Screen  name='FixtureBox' component={FixtureBox} />
+                  <Stack.Screen  name='PartidoDetails' component={PartidoDetails} />
 
                 </Stack.Navigator>
               )}

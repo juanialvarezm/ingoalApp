@@ -65,4 +65,20 @@ const fetchPartidos = async(req,res)=>{
 }
 
 
-module.exports = {empezarPartido,actualizarPartido,fetchPartidos}
+const cargarUnPartido = async(req,res)=>{
+    try {
+        const {partidoId} = req.body
+
+        if(!partidoId){
+            throw new Error("No hay id")
+        }
+
+        const partido = await   Partidos.findById(partidoId)
+        res.json(partido)
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+module.exports = {empezarPartido,actualizarPartido,fetchPartidos,cargarUnPartido}
