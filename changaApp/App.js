@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Text, View }from "react-native"
+import { Text }from "react-native"
 import Login from './src/components/auth/Login'
 import IndexPage from './src/screens/Index'
 import { NavigationContainer } from '@react-navigation/native'
@@ -41,7 +41,7 @@ const App = () => {
   return (
     
     <Provider store={store}>
-          <PersistGate persistor={persistor}>
+      <PersistGate persistor={persistor}>
           <GlobalContextProvider>
 
             <NavigationContainer>
@@ -53,11 +53,11 @@ const App = () => {
                 <Stack.Navigator>
                     <Stack.Screen name='Index' component={Index}
                     options={{headerShown:false}} />
-                    {/* <Stack.Screen name='Register' component={Register} /> */}
-                    {/* <Stack.Screen name='Login' component={Login} />
+                    <Stack.Screen name='Register' component={Register} />
+                    <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Register2' component={Register2} />
-                    <Stack.Screen name='Register3' component={Register3} /> */}
-                    {/* <Stack.Screen  name='CargarFixture' component={CargarFixture} /> */}
+                    <Stack.Screen name='Register3' component={Register3} />
+                    <Stack.Screen  name='CargarFixture' component={CargarFixture} />
 
                     <Stack.Screen name='CrearGrupo' component={CrearGrupo} />
 
@@ -75,11 +75,9 @@ const App = () => {
             </Tab.Navigator>
 
 
-              {/* <Stack.Navigator> */}
-              {/* </Stack.Navigator> */}
             </NavigationContainer>
-          </GlobalContextProvider>
-        </PersistGate>
+            </GlobalContextProvider> 
+       </PersistGate>
       </Provider>
     )
 }

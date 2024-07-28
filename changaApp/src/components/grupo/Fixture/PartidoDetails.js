@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import { useRoute } from '@react-navigation/native'
-
 const PartidoDetails = () => {
     const route = useRoute()
     const { param } = route.params;
@@ -30,7 +29,6 @@ const PartidoDetails = () => {
           </View>
         </View>
         <View style={{}}>
-
         </View>
       </View>
   )
