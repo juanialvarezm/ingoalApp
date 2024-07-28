@@ -1,7 +1,7 @@
 const express = require("express")
 const Partidos = require("../models/Partidos")
 
-const empezarPartido = async(req,res)=>{
+const crearPartido = async(req,res)=>{
     try {
         const {equipoVisitante,equipoLocal,creador,categoria,
             tries,grupoId} = req.body
@@ -33,11 +33,11 @@ const actualizarPartido = async(req,res)=>{
     try{
 
         const {resultadoLocal,resultadoVisitante,
-            tries,conversiones,partidoId} = req.body
+            partidoId,puntos} = req.body
 
 
             const actualizarPartido = await Partidos.findByIdAndUpdate(partidoId,
-                {resultadoLocal,resultadoVisitante,tries,conversiones}
+                {resultadoLocal,resultadoVisitante,puntos}
                 )
                 
             res.json(actualizarPartido)
@@ -81,4 +81,4 @@ const cargarUnPartido = async(req,res)=>{
     }
 }
 
-module.exports = {empezarPartido,actualizarPartido,fetchPartidos,cargarUnPartido}
+module.exports = {crearPartido,actualizarPartido,fetchPartidos,cargarUnPartido}

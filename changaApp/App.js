@@ -30,11 +30,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from './src/screens/HomeScreen'
 import IsAuthenticated from './src/helpers/IsAuthenticated'
 import PartidoDetails from './src/components/grupo/Fixture/PartidoDetails'
+import { ThemeProvider, createTheme,lightColors} from '@rneui/themed';
 
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator() 
 
+const theme = createTheme({
+  lightColors: {
+    ...Platform.select({
+      default: lightColors.platform.android,
+      ios: lightColors.platform.ios,
+    }),
+  },
+});
 
 const App = () => {
 
@@ -42,8 +51,8 @@ const App = () => {
     
     <Provider store={store}>
       <PersistGate persistor={persistor}>
+          <ThemeProvider theme={theme}>
           <GlobalContextProvider>
-
             <NavigationContainer>
 
             <Tab.Navigator>
@@ -74,9 +83,10 @@ const App = () => {
               <Tab.Screen name="Perfil" options={{headerShown:false}} component={IsAuthenticated} />
             </Tab.Navigator>
 
-
             </NavigationContainer>
             </GlobalContextProvider> 
+
+          </ThemeProvider>
        </PersistGate>
       </Provider>
     )

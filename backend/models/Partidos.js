@@ -21,8 +21,8 @@ const partidosSchema = mongoose.Schema({
         type:Number,
         default:0
     },
-    tries:[{
-        type:Array,
+    puntos:[{
+        type:mongoose.Types.ObjectId,
     }],
     conversiones:[{
         type:Array,
@@ -38,6 +38,10 @@ const partidosSchema = mongoose.Schema({
         type:String,
         required:true
         //A , B, C
+    },
+    empezo:{
+        type:Boolean,
+        default:false
     }
 })
 
