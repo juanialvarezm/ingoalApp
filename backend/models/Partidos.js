@@ -14,15 +14,14 @@ const partidosSchema = mongoose.Schema({
 
     },
     resultadoLocal:{
-        type:Number,
-        default:0
+        type:String,
     },
     resultadoVisitante:{
-        type:Number,
-        default:0
+        type:String,
     },
     puntos:[{
         type:mongoose.Types.ObjectId,
+        ref:"Puntos"
     }],
     conversiones:[{
         type:Array,
@@ -42,6 +41,9 @@ const partidosSchema = mongoose.Schema({
     empezo:{
         type:Boolean,
         default:false
+    },
+    kaka:{
+        type:String
     }
 })
 

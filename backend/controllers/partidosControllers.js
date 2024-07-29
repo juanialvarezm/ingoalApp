@@ -1,5 +1,6 @@
 const express = require("express")
 const Partidos = require("../models/Partidos")
+const Puntos = require("../models/Puntos")
 
 const crearPartido = async(req,res)=>{
     try {
@@ -32,21 +33,45 @@ const crearPartido = async(req,res)=>{
 const actualizarPartido = async(req,res)=>{
     try{
 
-        const {resultadoLocal,resultadoVisitante,
-            partidoId,puntos} = req.body
+        const {
+            resultadoLocal,
+            resultadoVisitante,
+            partidoId,
+            puntos,
+            kaka} = req.body
 
 
-            const actualizarPartido = await Partidos.findByIdAndUpdate(partidoId,
-                {resultadoLocal,resultadoVisitante,puntos}
-                )
+            const actualizarPartido = await Partidos.findByIdAndUpdate(
+                partidoId,{resultadoLocal,resultadoVisitante,puntos,kaka})
                 
-            res.json(actualizarPartido)
+                const getMatch = await Partidos.findById(actualizarPartido._id)
+                .populate("resultadoLocal resultadoVisitante")
+
+            res.json(getMatch)
 
     }catch(e){
         throw new Error(error.message)
     }
 } 
 
+
+const actualizarPuntos = async(req,res)=>{
+    try {
+        const {minuto,tipo,jugador,partido} = req.body
+
+        if(!minuto || !tipo || !partido ||!jugador){
+            throw new Error("Campos incompletos")
+        }
+
+        var puntos = await Puntos.create({minuto,tipo,jugador,partido})
+        puntos = await puntos.populate("jugador")
+        puntos = await puntos.populate("partido")
+        res.json(puntos)
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
 
 const fetchPartidos = async(req,res)=>{
     try {
@@ -81,4 +106,4 @@ const cargarUnPartido = async(req,res)=>{
     }
 }
 
-module.exports = {crearPartido,actualizarPartido,fetchPartidos,cargarUnPartido}
+module.exports = {crearPartido,actualizarPartido,fetchPartidos,cargarUnPartido,actualizarPuntos}

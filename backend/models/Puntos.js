@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const PuntosSchema = new mongoose.Schema({
+const PuntosSchema = mongoose.Schema({
     jugador:{
         type:mongoose.Types.ObjectId,
         ref:"User"
@@ -15,9 +15,10 @@ const PuntosSchema = new mongoose.Schema({
     },
     tipo:{
         type:String,
+        enum:["try", "conversion", "penal", "trypenal"],
         required:true
     }
 })
 
 
-module.exports = new mongoose.model("Puntos", PuntosSchema)
+module.exports =  mongoose.model("Puntos", PuntosSchema)
