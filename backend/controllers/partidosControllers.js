@@ -90,6 +90,18 @@ const fetchPartidos = async(req,res)=>{
 }
 
 
+const empezarPartido = async(req,res)=>{
+    try {
+        const {partidoId} = req.body
+
+        const partido = await Partidos.findByIdAndUpdate(partidoId,{empezo:true})
+        res.json(partido)
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
 const cargarUnPartido = async(req,res)=>{
     try {
         const {partidoId} = req.body
@@ -106,4 +118,4 @@ const cargarUnPartido = async(req,res)=>{
     }
 }
 
-module.exports = {crearPartido,actualizarPartido,fetchPartidos,cargarUnPartido,actualizarPuntos}
+module.exports = {crearPartido,actualizarPartido,fetchPartidos,cargarUnPartido,actualizarPuntos,empezarPartido}
