@@ -31,7 +31,7 @@ import HomeScreen from './src/screens/HomeScreen'
 import IsAuthenticated from './src/helpers/IsAuthenticated'
 import PartidoDetails from './src/components/grupo/Fixture/PartidoDetails'
 import { ThemeProvider, createTheme,lightColors} from '@rneui/themed';
-import AgregarPartido from './src/components/grupo/Fixture/agregarPartido'
+import AgregarPartido from './src/components/grupo/Fixture/AgregarPartido'
 
 
 const Stack = createNativeStackNavigator()
