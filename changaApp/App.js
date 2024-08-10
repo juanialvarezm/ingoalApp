@@ -31,6 +31,7 @@ import HomeScreen from './src/screens/HomeScreen'
 import IsAuthenticated from './src/helpers/IsAuthenticated'
 import PartidoDetails from './src/components/grupo/Fixture/PartidoDetails'
 import { ThemeProvider, createTheme,lightColors} from '@rneui/themed';
+import AgregarPartido from './src/components/grupo/Fixture/agregarPartido'
 
 
 const Stack = createNativeStackNavigator()
@@ -76,6 +77,7 @@ const App = () => {
                   <Stack.Screen  name='GrupoDetails' component={GrupoDetailsHeader} />
                   <Stack.Screen  name='FixtureBox' component={FixtureBox} />
                   <Stack.Screen  name='PartidoDetails' component={PartidoDetails} />
+                  <Stack.Screen  name='AgregarPartido' component={AgregarPartido} />
 
                 </Stack.Navigator>
               )}

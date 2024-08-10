@@ -24,7 +24,8 @@ const PartidoDetails = () => {
     const buttons =[
       {title:"Resumen",index:0,function:fetchTries()},
       {title:"puntos",index:1,function:fetchTries()},
-      {title:"Tries",index:2,function:fetchTries()}
+      {title:"Tries",index:2,function:fetchTries()},
+      {title:"Conversiones",index:3,function:fetchTries()}
     ]
 
 
@@ -39,12 +40,23 @@ const PartidoDetails = () => {
           ):(
             <>
               {reanudar?(
-            <TouchableOpacity style={{backgroundColor:"red",width:180,alignSelf:"center",alignItems:"center",
-              marginTop:20,marginBottom:0,padding:15,borderRadius:15
-            }}
-            onPress={()=>setReanudar(!reanudar)}>
-              <Text style={{color:"#fff"}}>Pausar partido</Text>
-            </TouchableOpacity>
+                <View style={{flexDirection:"row",justifyContent: 'center'}}>
+                    <TouchableOpacity style={{backgroundColor:"red",width:80,alignSelf:"center",alignItems:"center",
+                    marginTop:20,marginBottom:0,padding:15,borderRadius:15
+                  }}
+                  onPress={()=>setReanudar(!reanudar)}>
+                    <Text style={{color:"#fff"}}> -0-</Text>
+                  </TouchableOpacity>
+
+
+                  <TouchableOpacity style={{backgroundColor:"#134c34",width:80,alignSelf:"center",alignItems:"center",
+                      marginTop:20,marginLeft:5,marginBottom:0,padding:15,borderRadius:15,elevation:5
+                      }}
+                    onPress={()=>setReanudar(!reanudar)}>
+                      <Text style={{color:"#fff"}}>stop</Text>
+                  </TouchableOpacity>
+
+                </View>
 
               ):(
                 <>
@@ -135,15 +147,19 @@ const styles = StyleSheet.create({
     fontSize:16
   },
   partidoOpciones:{
-    padding:15,
+    padding:5,
   },
   red:{
-    color:"black",
-    backgroundColor:"red"
+    padding:12,
+    borderRadius:10,
+    color:"#fff",
+    backgroundColor:"#134c34"
   },
   blue:{
+    padding:12,
+    borderRadius:10,
     color:"black",
-    backgroundColor:"blue"
+    backgroundColor:"#e9e9e9"
   }
 })
 

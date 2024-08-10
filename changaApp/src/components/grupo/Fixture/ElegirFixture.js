@@ -32,7 +32,7 @@ const ElegirFixture = () => {
     <View style={styles.elegirFixtureContainer}>
         <View style={styles.elegirFixtureBox}>
             {userGroup?.fixture.map((f)=>(
-                <TouchableOpacity key={f._id} onPress={()=>handleCategoria(f.categoria)}>
+                <TouchableOpacity key={f._id} style={styles.fixtureBox} onPress={()=>handleCategoria(f.categoria)}>
                     <View  style={styles.categoriaFixtureBox}>
                         <Text style={{color:"#fff", textAlign:"center"}}>Fixture {f.categoria}</Text>
                     </View>
@@ -58,8 +58,7 @@ const styles = StyleSheet.create({
         padding:5,
         borderRadius:10,
         justifyContent:"center",
-
-    }
+    },
 })
 
 export default ElegirFixture
