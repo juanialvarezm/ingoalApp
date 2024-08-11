@@ -32,6 +32,7 @@ import IsAuthenticated from './src/helpers/IsAuthenticated'
 import PartidoDetails from './src/components/grupo/Fixture/PartidoDetails'
 import { ThemeProvider, createTheme,lightColors} from '@rneui/themed';
 import AgregarPartido from './src/components/grupo/Fixture/AgregarPartido'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const Stack = createNativeStackNavigator()
@@ -56,8 +57,15 @@ const App = () => {
           <GlobalContextProvider>
             <NavigationContainer>
 
-            <Tab.Navigator>
-              <Tab.Screen name="Home" options={{headerTintColor: "#000",headerStyle: {backgroundColor: '#f0f0f0'},}} component={HomeScreen} />
+            <Tab.Navigator screenOptions={{
+            headerTintColor:"black",
+            tabBarActiveTintColor:"#134c34",
+            tabBarInactiveTintColor:"#222"}} 
+            >
+              <Tab.Screen  name="Home"  options={{headerTintColor: "#000",
+                tabBarIcon:()=>(
+                  <Icon name='user' size={20}/>
+                )}} component={HomeScreen} />
               <Tab.Screen name="Chat" options={{headerShown:false}}>
               {()=>(
                 <Stack.Navigator>
