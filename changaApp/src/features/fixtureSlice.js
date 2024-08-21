@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { crearFixture,fetchFixture } from "./fixtureActions";
+import { crearFixture,empezarPartido,fetchFixture } from "./fixtureActions";
 
 
 const initialState = {
@@ -30,7 +30,7 @@ const fixtureSlice = createSlice({
         builder.addCase(fetchFixture.pending,(state,action)=>{
             return{
                 ...state,
-                fixtureStatus:"pending",
+                fixtureStatus:"loading",
             }
         })
     }

@@ -7,6 +7,7 @@ import {
 import authReducer from "../features/authSlice"
 import gruposReducer from "../features/grupoSlice"
 import fixtureReducer from "../features/fixtureSlice"
+import partidoReducer from "../features/partidosSlice"
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ const reducers = combineReducers({
     auth:authReducer,
     fixtures:fixtureReducer,
     grupos:gruposReducer,
+    partidos:partidoReducer
  });
 
  const persistedReducer = persistReducer(persistConfig, reducers);

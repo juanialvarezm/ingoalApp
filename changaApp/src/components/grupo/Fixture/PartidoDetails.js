@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, TouchableHighlight } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { useRoute } from '@react-navigation/native'
-import { FAB, Tab } from '@rneui/base'
+import { FAB, Tab, TabView } from '@rneui/base'
 import Button from "react-native-button"
+import PartidoDetailsButtonTabs from './PartidoDetailsButtonTabs'
 
 
 const PartidoDetails = () => {
@@ -93,16 +94,29 @@ const PartidoDetails = () => {
         </View>
           {reanudar == true?(
             <>
-              <View >
+              <View style={{flex:1}} >
               <Tab 
             indicatorStyle={{
               backgroundColor: '#134C34',
-              height: 3,
+              height: 1,
             }}
             style={{marginTop:20,marginHorizontal:30,borderRadius:10, backgroundColor:"#fff",elevation:5}} value={index} onChange={setIndex} dense>
               <Tab.Item  titleStyle={{color:"#000"}} style={{marginRight:80}}>Alumni</Tab.Item>
               <Tab.Item titleStyle={{color:"#000"}}>Geba</Tab.Item>
             </Tab>
+            <TabView value={index} onChange={setIndex} animationType="spring">
+
+            <TabView.Item style={styles.tabItemContent}>
+              <View>
+                  <PartidoDetailsButtonTabs />
+              </View>
+        </TabView.Item>
+      <TabView.Item style={styles.tabItemContent}>
+        <View >     
+          <PartidoDetailsButtonTabs />
+          </View>
+      </TabView.Item>
+    </TabView>
             </View>
             </>
           ):(
@@ -134,7 +148,6 @@ const styles = StyleSheet.create({
     margin:20
   },
   equipoLocalBox:{
-    paddingRight:70,
     alignItems:"center",
     alignContent:"center"
   },
@@ -160,6 +173,14 @@ const styles = StyleSheet.create({
     borderRadius:10,
     color:"black",
     backgroundColor:"#e9e9e9"
+  },
+  tabItemContent:{
+     backgroundColor: '#f6f6f6',
+      width: '86%',
+      marginLeft:30,
+      marginTop:1,
+      borderRadius:5,
+      marginTop:5,
   }
 })
 

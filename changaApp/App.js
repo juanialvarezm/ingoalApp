@@ -33,6 +33,7 @@ import PartidoDetails from './src/components/grupo/Fixture/PartidoDetails'
 import { ThemeProvider, createTheme,lightColors} from '@rneui/themed';
 import AgregarPartido from './src/components/grupo/Fixture/AgregarPartido'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import PartidoDetailsButtonTabs from './src/components/grupo/Fixture/PartidoDetailsButtonTabs'
 
 
 const Stack = createNativeStackNavigator()
@@ -60,13 +61,20 @@ const App = () => {
             <Tab.Navigator screenOptions={{
             headerTintColor:"black",
             tabBarActiveTintColor:"#134c34",
-            tabBarInactiveTintColor:"#222"}} 
+            tabBarInactiveTintColor:"#222",
+        }} 
             >
               <Tab.Screen  name="Home"  options={{headerTintColor: "#000",
-                tabBarIcon:()=>(
-                  <Icon name='user' size={20}/>
+                tabBarIcon:({focused})=>(
+                  <Icon color={focused? "#134c34" :"#555"} name='home' size={30}/>
                 )}} component={HomeScreen} />
-              <Tab.Screen name="Chat" options={{headerShown:false}}>
+              <Tab.Screen name="Chat" 
+              options={{headerShown:false,
+                tabBarIcon:(({focused})=>(
+                  <Icon color={focused?"#134c34":"#555"} name='inbox' size={30} />
+                ))
+              }}
+              >
               {()=>(
                 <Stack.Navigator>
                     <Stack.Screen name='Index' component={Index}
@@ -86,11 +94,19 @@ const App = () => {
                   <Stack.Screen  name='FixtureBox' component={FixtureBox} />
                   <Stack.Screen  name='PartidoDetails' component={PartidoDetails} />
                   <Stack.Screen  name='AgregarPartido' component={AgregarPartido} />
+                  <Stack.Screen  name='aversifun' component={PartidoDetailsButtonTabs} />
 
                 </Stack.Navigator>
               )}
               </Tab.Screen>
-              <Tab.Screen name="Perfil" options={{headerShown:false}} component={IsAuthenticated} />
+              <Tab.Screen name="Perfil"
+               options={{headerShown:false,
+                tabBarIcon:(({focused})=>(
+                    <Icon color={focused ? "#134c34" :"#555"} name='user' size={30}/>
+
+                ))
+               }}
+               component={IsAuthenticated} />
             </Tab.Navigator>
 
             </NavigationContainer>
