@@ -63,7 +63,7 @@ const actualizarPuntos = async(req,res)=>{
             throw new Error("Campos incompletos")
         }
 
-        var puntos = await Puntos.create({minuto,tipo,jugador,partido})
+        var puntos = await Puntos.create({tipo,partido})
         puntos = await puntos.populate("jugador")
         puntos = await puntos.populate("partido")
         res.json(puntos)

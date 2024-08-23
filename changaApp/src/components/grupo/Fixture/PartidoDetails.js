@@ -98,7 +98,7 @@ const PartidoDetails = () => {
               <Tab 
             indicatorStyle={{
               backgroundColor: '#134C34',
-              height: 1,
+              height: 3,
             }}
             style={{marginTop:20,marginHorizontal:30,borderRadius:10, backgroundColor:"#fff",elevation:5}} value={index} onChange={setIndex} dense>
               <Tab.Item  titleStyle={{color:"#000"}} style={{marginRight:80}}>Alumni</Tab.Item>
@@ -113,7 +113,7 @@ const PartidoDetails = () => {
         </TabView.Item>
       <TabView.Item style={styles.tabItemContent}>
         <View >     
-          <PartidoDetailsButtonTabs />
+          <PartidoDetailsButtonTabs param={param} />
           </View>
       </TabView.Item>
     </TabView>

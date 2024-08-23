@@ -11,7 +11,7 @@ const PuntosSchema = mongoose.Schema({
     },
     minuto:{
         type:String,
-        required:true
+        // required:true
     },
     tipo:{
         type:String,

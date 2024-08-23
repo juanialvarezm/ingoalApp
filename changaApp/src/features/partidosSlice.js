@@ -24,15 +24,17 @@ const partidoSlice = createSlice({
             }
         })
         builder.addCase(actualizarPuntos.fulfilled,(state,action)=>{
-            return {...state,
-                status:"success",
-                partido:action.payload
-            }
+            console.log("success")
+            // return {...state,
+            //     status:"success",
+            //     partido:action.payload
+            // }
         })
         builder.addCase(actualizarPuntos.pending,(state,action)=>{
-            return {...state,
-                status:"loading",
-            }
+            console.log("loading")
+            // return {...state,
+            //     status:"loading",
+            // }
         })
         builder.addCase(actualizarPartido.fulfilled,(state,action)=>{
             return {...state,

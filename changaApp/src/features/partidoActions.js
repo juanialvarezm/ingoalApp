@@ -13,7 +13,9 @@ export const empezarPartido = createAsyncThunk("partidos/empezarPartido",async()
 
 export const actualizarPuntos = createAsyncThunk("partidos/actualizarpuntos",async({puntosData},{rejectWithValue})=>{
     try {
-        const {data} = await axios.post("http://10.0.2.2/api/partidos/puntos",{puntosData})
+        const {data} = await axios.post("http://10.0.2.2/api/partidos/puntos",{...puntosData})
+        console.log(data)
+
         return data 
     } catch (error) {
         throw new Error(error.message)   
