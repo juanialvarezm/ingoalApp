@@ -57,13 +57,13 @@ const actualizarPartido = async(req,res)=>{
 
 const actualizarPuntos = async(req,res)=>{
     try {
-        const {minuto,tipo,jugador,partido} = req.body
+        const {tipo} = req.body
 
-        if(!minuto || !tipo || !partido ||!jugador){
+        if( !tipo  ){
             throw new Error("Campos incompletos")
         }
 
-        var puntos = await Puntos.create({tipo,partido})
+        var puntos = await Puntos.create({tipo})
         puntos = await puntos.populate("jugador")
         puntos = await puntos.populate("partido")
         res.json(puntos)

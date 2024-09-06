@@ -34,12 +34,13 @@ const PartidoDetailsButtonTabs = () => {
   const actualizarPuntoss = ()=>{
     try {
 
-      dispatch(actualizarPuntos(punto,param._id))
+      dispatch(actualizarPuntos({tipo:punto,partido:param._id}))
       console.log(punto)
       console.log(param._id)
       
     } catch (error) {
-      throw new Error(error.message)
+      // throw new Error(error.message)
+      console.log(error.message)
     }
   }
 

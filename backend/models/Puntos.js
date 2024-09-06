@@ -11,11 +11,10 @@ const PuntosSchema = mongoose.Schema({
     },
     minuto:{
         type:String,
-        // required:true
     },
     tipo:{
         type:String,
-        enum:["try", "conversion", "penal", "trypenal"],
+        enum:["Try", "conversion", "Penal", "trypenal"],
         required:true
     }
 })
