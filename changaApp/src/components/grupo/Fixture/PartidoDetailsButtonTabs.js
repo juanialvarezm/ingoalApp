@@ -16,6 +16,7 @@ const buttons = [
 
 const PartidoDetailsButtonTabs = () => {
   const [puntoJugador,setPuntoJugador] = useState() 
+  const [punto,setPunto] = useState() 
 
   const route = useRoute()
   const { param } = route.params;
@@ -23,7 +24,7 @@ const PartidoDetailsButtonTabs = () => {
   const dispatch = useDispatch()
 
   const [indexx,setIndexx] = useState(0)
-  const {punto,setPunto} = GlobalState()
+  // const {punto,setPunto} = GlobalState()
 
   const handlePuntotype = (value)=>{
     setPunto(value)
@@ -34,9 +35,11 @@ const PartidoDetailsButtonTabs = () => {
   const actualizarPuntoss = ()=>{
     try {
 
+      // dispatch(actualizarPuntos({tipo:punto,partido:param._id}))
       dispatch(actualizarPuntos({tipo:punto,partido:param._id}))
       console.log(punto)
       console.log(param._id)
+      console.log(puntoJugador)
       
     } catch (error) {
       // throw new Error(error.message)
