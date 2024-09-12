@@ -24,7 +24,7 @@ const partidoSlice = createSlice({
             }
         })
         builder.addCase(actualizarPuntos.fulfilled,(state,action)=>{
-            console.log("success")
+            console.log("successs")
             // return {...state,
             //     status:"success",
             //     partido:action.payload
@@ -34,6 +34,13 @@ const partidoSlice = createSlice({
             console.log("loading")
             // return {...state,
             //     status:"loading",
+            // }
+        })
+        builder.addCase(actualizarPuntos.rejected,(state,action)=>{
+            console.log("error")
+            // return {...state,
+            //     status:"error",
+            //     partido:action            
             // }
         })
         builder.addCase(actualizarPartido.fulfilled,(state,action)=>{
