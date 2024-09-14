@@ -15,7 +15,6 @@ const PuntosSchema = mongoose.Schema({
     tipo:{
         type:String,
         enum:["Try", "Conversion", "Penal", "Tarjeta"],
-        // required:true
     }
 })
 

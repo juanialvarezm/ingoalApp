@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { resetGrupo } from "./grupoSlice";
 
 export const empezarPartido = createAsyncThunk("partidos/empezarPartido",async()=>{
     try {
@@ -13,12 +14,10 @@ export const empezarPartido = createAsyncThunk("partidos/empezarPartido",async()
 
 export const actualizarPuntos = createAsyncThunk("partidos/actualizarpuntos",async(puntosData,{rejectWithValue})=>{
     try {
-        const config = {
-            headers:{
-                "Content-Type":"application/json"
-            }
-        }
-        const {data} = await axios.post("http://10.0.2.2:5000/api/puntos/",{...puntosData})
+
+            
+        const {data} = await axios.post("http://10.0.2.2:5000/api/partidos/puntos",{...puntosData})
+        console.log(data)
         return data
     } catch (error) {
         return rejectWithValue(error?.response?.data)

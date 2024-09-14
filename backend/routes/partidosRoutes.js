@@ -9,6 +9,8 @@ router.route("/").get(fetchPartidos)
 router.route("/details").get(cargarUnPartido)
 router.route("/puntos").post(actualizarPuntos)
 router.route("/empezar").post(empezarPartido)
-
+router.route("/aver",(req,res)=>{
+    res.send("Hola")
+})
 
 module.exports = router

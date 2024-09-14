@@ -50,7 +50,7 @@ const actualizarPartido = async(req,res)=>{
             res.json(getMatch)
 
     }catch(e){
-        throw new Error(error.message)
+        throw new Error(e.message)
     }
 } 
 
@@ -59,12 +59,10 @@ const actualizarPuntos = async(req,res)=>{
     try {
         const {tipo,partido} = req.body
 
-        if(!tipo){
+        if(!tipo || !partido){
             throw new Error("Campos incompletos")
         }
-        if(!partido){
-            throw new Error("No hay partido")
-        }
+
 
         var puntos = await Puntos.create({tipo,partido})
         puntos = await puntos.populate("jugador")
