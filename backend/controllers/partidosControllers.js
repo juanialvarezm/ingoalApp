@@ -37,12 +37,11 @@ const actualizarPartido = async(req,res)=>{
             resultadoLocal,
             resultadoVisitante,
             partidoId,
-            puntos,
-            kaka} = req.body
+            puntos,} = req.body
 
 
             const actualizarPartido = await Partidos.findByIdAndUpdate(
-                partidoId,{resultadoLocal,resultadoVisitante,puntos,kaka})
+                partidoId,{resultadoLocal,resultadoVisitante,puntos})
                 
                 const getMatch = await Partidos.findById(actualizarPartido._id)
                 .populate("resultadoLocal resultadoVisitante")
@@ -57,14 +56,14 @@ const actualizarPartido = async(req,res)=>{
 
 const actualizarPuntos = async(req,res)=>{
     try {
-        const {tipo,partido} = req.body
+        const {tipo,partido,jugador} = req.body
 
-        if(!tipo || !partido){
+        if(!tipo || !partido || !jugador){
             throw new Error("Campos incompletos")
         }
 
 
-        var puntos = await Puntos.create({tipo,partido})
+        var puntos = await Puntos.create({tipo,partido,jugador})
         puntos = await puntos.populate("jugador")
         puntos = await puntos.populate("partido")
         res.json(puntos)

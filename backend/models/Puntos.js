@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const PuntosSchema = mongoose.Schema({
     jugador:{
         type:mongoose.Types.ObjectId,
-        ref:"User"
+        // ref:"User"
     },
     partido:{
         type:mongoose.Types.ObjectId,

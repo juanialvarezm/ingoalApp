@@ -37,11 +37,12 @@ const PartidoDetailsButtonTabs = () => {
   const actualizarPuntoss = ()=>{
     try {
 
-      dispatch(actualizarPuntos({tipo:punto,partido:param._id}))
+      dispatch(actualizarPuntos({tipo:punto,partido:param._id,jugador:puntoJugador}))
       console.log(punto)
       console.log(param._id)
       console.log(partido)
-      
+      console.log(puntoJugador)
+
     } catch (error) {
       // throw new Error(error.message)
       console.log(error.message)
@@ -70,7 +71,7 @@ const PartidoDetailsButtonTabs = () => {
 
         </View>
         <View style={styles.puntosInutContainer}>
-          <TextInput style={styles.puntoInut} value={puntoJugador} placeholder='Felipe Contepomi'/>
+          <TextInput style={styles.puntoInut} onChangeText={(value)=>setPuntoJugador(value)} value={puntoJugador} placeholder='Felipe Contepomi'/>
         </View>
 
         <View>

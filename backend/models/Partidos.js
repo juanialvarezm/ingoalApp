@@ -42,9 +42,6 @@ const partidosSchema = mongoose.Schema({
         type:Boolean,
         default:false
     },
-    kaka:{
-        type:String
-    },
     finalizado:{
         type:Boolean,
         default:false
