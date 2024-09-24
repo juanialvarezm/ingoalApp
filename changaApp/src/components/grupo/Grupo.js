@@ -91,9 +91,9 @@ const Grupo = ({navigation}) => {
 
         ):(
           <>
-                        <View style={styles.grupoBox}>
-                        <GrupoOptions navigation={navigation} grupo={grupo}/>
-                      </View>            
+            <View style={styles.grupoBox}>
+              <GrupoOptions navigation={navigation} grupo={grupo}/>
+            </View>            
           </>
         )}
         </>

@@ -4,7 +4,8 @@ import { useRoute } from '@react-navigation/native'
 import { FAB, Tab, TabView } from '@rneui/base'
 import Button from "react-native-button"
 import PartidoDetailsButtonTabs from './PartidoDetailsButtonTabs'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { cargarUnPartido, empezarPartido } from '../../../features/partidoActions'
 
 const PartidoDetails = () => {
   const [index,setIndex] = useState(0)
@@ -12,14 +13,27 @@ const PartidoDetails = () => {
   const [reanudar,setReanudar] = useState(false)
   const [indexView,setIndexView] = useState(0)
 
+  const dispatch = useDispatch()
+
     const route = useRoute()
     const { param } = route.params;
 
     const fetchTries = ()=>{}
+    const {status,partido} = useSelector((state)=>state.partidos)
     
+    const comenzarPartido = async()=>{
+      try {
+          dispatch(empezarPartido(param._id))
+        console.log("status"+status)
+        console.log("okk")
+      } catch (error) {
+        throw new Error(error,)
+      }
+    }
 
     useEffect(()=>{
       console.log(indexView)
+      dispatch(cargarUnPartido(param._id))
     },[indexView])
 
     const buttons =[
@@ -32,10 +46,10 @@ const PartidoDetails = () => {
 
     return (
     <View style={styles.partidoDetails}>
-          {param?.empezo == false ?(
+          {param.empezo == false ?(
             <TouchableOpacity style={{backgroundColor:"#134c34",width:180,alignSelf:"center",alignItems:"center",
               marginTop:20,marginBottom:0,padding:15,borderRadius:15
-            }}>
+            }} onPress={()=>comenzarPartido()}>
               <Text style={{color:"#fff"}}>Empezar partido</Text>
             </TouchableOpacity>
           ):(
@@ -75,20 +89,20 @@ const PartidoDetails = () => {
         <View style={styles.equipoDetails}>
           <View style={styles.equipoLocalBox}>
           <Image
-            source={{uri: param?.equipoLocal?.logo}}
+            source={{uri: partido?.equipoLocal?.logo}}
             style={{width:90,height:90}}
             />     
             <Text>{param.equipoLocal?.nombre}</Text>
-            <Text style={{color:"#000",fontSize:38}}> {param.resultadoLocal}</Text>
+            <Text style={{color:"#000",fontSize:38}}> {partido.resultadoLocal}</Text>
 
           </View>
           <View style={styles.equipoVisitanteBox}>
           <Image
-            source={{uri: param?.equipoVisitante?.logo}}
+            source={{uri: partido?.equipoVisitante?.logo}}
             style={{width:90,height:90}}
             />        
             <Text> {param.equipoVisitante?.nombre}</Text>
-            <Text style={{color:"#000",fontSize:38}}> {param.resultadoVisitante}</Text>
+            <Text style={{color:"#000",fontSize:38}}> {partido.resultadoVisitante}</Text>
 
           </View>
         </View>

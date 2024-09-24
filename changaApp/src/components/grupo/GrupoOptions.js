@@ -14,7 +14,7 @@ const GrupoOptions = ({navigation}) => {
             <GrupoHeader navigation={navigation}/>
         </View>
         <View style={styles.groupOptionsContainer}>
-            <TouchableOpacity onPress={()=>navigation.navigate("Citados")} style={styles.citados}>
+            {/* <TouchableOpacity onPress={()=>navigation.navigate("Citados")} style={styles.citados}>
                 <View>
                     <View>
                         <Image 
@@ -36,7 +36,8 @@ const GrupoOptions = ({navigation}) => {
                     <Text style={{color:"#000",textAlign:"center",fontSize:18}}>RUTINA</Text>
                 </View>
 
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+
             <TouchableOpacity onPress={()=>navigation.navigate("Fixture")} style={styles.fixture}>
                 <View>
                     <View>

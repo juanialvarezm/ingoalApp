@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import { actualizarPartido, actualizarPuntos, crearPartido, empezarPartido } from "./partidoActions";
+import { actualizarPartido, actualizarPuntos, crearPartido, empezarPartido,cargarUnPartido } from "./partidoActions";
 
 const initialState = {
     partido:null,
@@ -12,6 +12,12 @@ const partidoSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
+        builder.addCase(cargarUnPartido.fulfilled,(state,action)=>{
+            return{
+                ...state,
+                partido:action.payload
+            }
+        })
         builder.addCase(empezarPartido.pending,(state,action)=>{
             return {...state,
                 status:"loading"
@@ -20,6 +26,12 @@ const partidoSlice = createSlice({
         builder.addCase(empezarPartido.fulfilled,(state,action)=>{
             return {...state,
                 status:"success",
+                partido:action.payload
+            }
+        })
+        builder.addCase(empezarPartido.rejected,(state,action)=>{
+            return {...state,
+                status:"rejected",
                 partido:action.payload
             }
         })

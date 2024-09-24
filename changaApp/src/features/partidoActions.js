@@ -2,13 +2,22 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { resetGrupo } from "./grupoSlice";
 
-export const empezarPartido = createAsyncThunk("partidos/empezarPartido",async()=>{
+export const empezarPartido = createAsyncThunk("partidos/empezarPartido",async(partidoId)=>{
     try {
         
-        const {data} = await axios.post("http://10.0.2.2:5000/api/partidos/empezar")
+        const {data} = await axios.post("http://10.0.2.2:5000/api/partidos/empezar",{partidoId})
         return data
     } catch (error) {
         throw new Error(error.message)
+    }
+})
+
+export const cargarUnPartido = createAsyncThunk("partidos/cargarunosolo",async(partidoId)=>{
+    try {
+        const {data} = await axios.post("http://10.0.2.2:5000/api/partidos/details",{partidoId})
+        return data
+    } catch (error) {
+        throw new Error(error)
     }
 })
 

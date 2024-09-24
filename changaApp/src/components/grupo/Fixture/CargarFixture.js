@@ -3,7 +3,7 @@ import { View,StyleSheet, Text, TextInput } from 'react-native'
 import { useSelector } from 'react-redux'
 import Button  from 'react-native-button'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+// import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { GlobalState } from '../../../context/GlobalContext'
 import { useDispatch } from 'react-redux'
 import { addPartidoAlFixture } from '../../features/grupoSlice'
@@ -44,7 +44,7 @@ const CargarFixture = () => {
                 </View>
                 <View style={styles.inputCheck}>
                     <Button>
-                        <FontAwesomeIcon icon={faCheck} />
+                        {/* <FontAwesomeIcon icon={faCheck} /> */}
                     </Button>
                 </View>
 
@@ -58,7 +58,7 @@ const CargarFixture = () => {
                 </View>
                 <View style={styles.inputCheck}>
                     <Button>
-                        <FontAwesomeIcon icon={faCheck} />
+                        {/* <FontAwesomeIcon icon={faCheck} /> */}
                     </Button>
                 </View>
 
@@ -73,7 +73,7 @@ const CargarFixture = () => {
                 </View>
                 <View style={styles.inputCheck}>    
                     <Button>
-                        <FontAwesomeIcon icon={faCheck} />
+                        {/* <FontAwesomeIcon icon={faCheck} /> */}
                     </Button>
                 </View>
             </View>
