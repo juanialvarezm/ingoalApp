@@ -16,21 +16,24 @@ const CargarFixture = () => {
     const {equipoLocal,equipoVisitante,
         setEquipoLocal,setEquipoVisitante,fechaPartido, setFechaPartido} = GlobalState()
 
-
-        useEffect(()=>{
-            // console.log(userGroup)
-        },[])
-
         const agregarAlFixture = ()=>{
             try {
                 dispatch(addPartidoAlFixture({grupoId:userGroup._id,equipoLocal,equipoVisitante,fechaPartido}))
-                console.log(equipoLocal, equipoVisitante, fechaPartido)
     
             } catch (error) {
                 throw new Error(error.message)                
             }
         }
   
+
+    const crearFixture = ()=>{
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
+
     
     return (
     <View style={styles.cargarPartidoContainer}>

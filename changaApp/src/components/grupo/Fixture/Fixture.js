@@ -5,7 +5,7 @@ import Button from "react-native-button"
 import confusing from "../../../assets/confusing.png"
 import { fetchPartidos } from '../../../features/grupoSlice'
 import { fetchGroup } from '../../../features/grupoSlice'
-import FixtureBox from './FixtureBox'
+import FixtureBox from '../partidos/FixtureBox'
 import ElegirFixture from './ElegirFixture'
 
 const Fixture = ({navigation}) => {
@@ -43,7 +43,7 @@ const Fixture = ({navigation}) => {
               
               <View>
                 <Button onPress={()=>navigation.navigate("CargarFixture")}>
-                  Cargar Fixture
+                  Crear Fixture
                 </Button>
               </View>
             </View>

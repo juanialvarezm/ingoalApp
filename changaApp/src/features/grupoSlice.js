@@ -172,18 +172,24 @@ const gruposSlice = createSlice({
             console.log("rejected joinin")
         })
         builder.addCase(addPartidoAlFixture.pending,(state,action)=>{
-            console.log("esperando agregar partido al fixture")
+            // console.log("esperando agregar partido al fixture")
+            return {
+                ...state,
+                status:"pending"
+            }
         })
         builder.addCase(addPartidoAlFixture.fulfilled,(state,action)=>{
             return {
                 ...state,
                 userGroup:action.payload
             }
-            return console.log("fullfilled added to fixture")
 
         })
         builder.addCase(addPartidoAlFixture.rejected,(state,action)=>{
-            console.log("partido no agregado")
+            return{
+                ...state,
+                state:"loading"
+            }
         })
         builder.addCase(fetchPartidos.rejected,(state,action)=>{
             console.log("no fetch partidos")

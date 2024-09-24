@@ -24,16 +24,16 @@ import Fixture from './src/components/grupo/Fixture/Fixture'
 import Citados from './src/components/grupo/citados/Citados'
 import GrupoDetailsHeader from './src/components/grupo/GrupoDetailsHeader'
 import CargarFixture from './src/components/grupo/Fixture/CargarFixture'
-import FixtureBox from './src/components/grupo/Fixture/FixtureBox'
+import FixtureBox from './src/components/grupo/partidos/FixtureBox'
 import BottomTabNvigator from './src/screens/Index'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from './src/screens/HomeScreen'
 import IsAuthenticated from './src/helpers/IsAuthenticated'
-import PartidoDetails from './src/components/grupo/Fixture/PartidoDetails'
+import PartidoDetails from './src/components/grupo/partidos/PartidoDetails'
 import { ThemeProvider, createTheme,lightColors} from '@rneui/themed';
 import AgregarPartido from './src/components/grupo/Fixture/AgregarPartido'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import PartidoDetailsButtonTabs from './src/components/grupo/Fixture/PartidoDetailsButtonTabs'
+import PartidoDetailsButtonTabs from './src/components/grupo/Fixture/partidos/PartidoDetailsButtonTabs'
 
 
 const Stack = createNativeStackNavigator()

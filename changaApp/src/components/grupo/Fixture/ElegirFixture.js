@@ -14,7 +14,7 @@ const ElegirFixture = () => {
     const handleCategoria = (value)=>{
         try {
             setFixtureCategoria(value)
-            console.log(fixtureCategoria)
+            // console.log(fixtureCategoria)
             navigation.navigate("FixtureBox")
 
         } catch (error) {
