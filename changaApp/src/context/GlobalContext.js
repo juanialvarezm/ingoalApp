@@ -14,6 +14,8 @@ function GlobalContextProvider({children}){
     const [fechaPartido,setFechaPartido] = useState("")
     const [fixtureCategoria,setFixtureCategoria] = useState("")
     const [punto,setPunto] = useState(null)
+    const [nombreFixture,setNombreFixture] = useState("")
+    const [equipoFixture,setEquipoFixture] = useState("")
     
 
     return(
@@ -41,7 +43,11 @@ function GlobalContextProvider({children}){
             fixtureCategoria,
             setFixtureCategoria,
             punto,
-            setPunto
+            setPunto,
+            nombreFixture,
+            setNombreFixture,
+            equipoFixture,
+            setEquipoFixture,
         }}>
             {children}
         </GlobalContext.Provider>

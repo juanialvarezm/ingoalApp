@@ -4,12 +4,15 @@ import { useSelector } from "react-redux"
 import { useNavigation } from "@react-navigation/native"
 import { GlobalState } from "../../../context/GlobalContext"
 import BottomTabNvigator from "../../../screens/Index"
+import { fetchFixture } from "../../../features/fixtureActions"
+import { useDispatch } from "react-redux" 
 
 const ElegirFixture = () => {
     const navigation = useNavigation()
     const {userGroup,fixtureGroup} = useSelector((state)=>state.grupos)
     const {fixtureCategoria,setFixtureCategoria} = GlobalState()
 
+    const dispatch = useDispatch()
 
     const handleCategoria = (value)=>{
         try {
@@ -25,7 +28,7 @@ const ElegirFixture = () => {
 
 
     useEffect(()=>{
-
+        dispatch(fetchFixture())
     },[])
 
     return (

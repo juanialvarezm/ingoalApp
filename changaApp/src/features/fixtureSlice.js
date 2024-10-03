@@ -32,6 +32,20 @@ const fixtureSlice = createSlice({
                 ...state,
                 fixtureStatus:"loading",
             }
+        }),
+        builder.addCase(crearFixture.pending,()=>{
+            return console.log("loading creating")
+        })
+        builder.addCase(crearFixture.fulfilled,()=>{
+            return console.log(" created success")
+
+            // return {
+            //     ...state,
+            //     fixtureData:action.payload
+            // }
+        })
+        builder.addCase(crearFixture.rejected,()=>{
+            return console.log("error creating")
         })
     }
 })

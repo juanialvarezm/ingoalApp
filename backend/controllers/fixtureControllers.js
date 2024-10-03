@@ -11,9 +11,11 @@ const fetchFixture = async(req,res)=>{
 
         var fixture = await Fixture.findOne({categoria:categoria, grupo:grupo})
         // var fixture = await Fixture.findOne({grupo:grupo})
-        .populate("partidos")
-        fixture  = await fixture.populate("partidos.equipoLocal","nombre logo")
-        fixture  = await fixture.populate("partidos.equipoVisitante","nombre logo")
+
+
+        // .populate("partidos")
+        // fixture  = await fixture.populate("partidos.equipoLocal","nombre logo")
+        // fixture  = await fixture.populate("partidos.equipoVisitante","nombre logo")
 
 
         res.json(fixture)
@@ -25,10 +27,10 @@ const fetchFixture = async(req,res)=>{
 
 const crearFixture = async(req,res)=>{
     try {
-        const {grupo,categoria,partidos} = req.body
+        const {grupo,categoria} = req.body
         
 
-        var fixture = await Fixture.create({grupo,categoria,partidos})
+        var fixture = await Fixture.create({grupo,categoria})
         fixture  = await fixture.populate("partidos",)
         fixture  = await fixture.populate("partidos.equipoLocal","nombre")
 

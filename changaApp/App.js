@@ -33,7 +33,9 @@ import PartidoDetails from './src/components/grupo/partidos/PartidoDetails'
 import { ThemeProvider, createTheme,lightColors} from '@rneui/themed';
 import AgregarPartido from './src/components/grupo/Fixture/AgregarPartido'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import PartidoDetailsButtonTabs from './src/components/grupo/Fixture/partidos/PartidoDetailsButtonTabs'
+import PartidoDetailsButtonTabs from './src/components/grupo/partidos/PartidoDetailsButtonTabs'
+import CrearFixture from './src/components/grupo/Fixture/CrearFixture'
+import ElegirFixture from './src/components/grupo/Fixture/ElegirFixture'
 
 
 const Stack = createNativeStackNavigator()
@@ -84,8 +86,9 @@ const App = () => {
                     <Stack.Screen name='Register2' component={Register2} />
                     <Stack.Screen name='Register3' component={Register3} />
                     <Stack.Screen  name='CargarFixture' component={CargarFixture} />
-
+                    <Stack.Screen name='CrearFixture' component={CrearFixture} />
                     <Stack.Screen name='CrearGrupo' component={CrearGrupo} />
+                    <Stack.Screen name='ElegirFix' component={ElegirFixture} />
 
                   <Stack.Screen name='Rutina' component={Rutina} />
                   <Stack.Screen name='Fixture' component={Fixture} />

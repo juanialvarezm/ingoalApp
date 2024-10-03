@@ -20,14 +20,14 @@ const Fixture = ({navigation}) => {
   
   useEffect(()=>{
 
-    // console.log(pp)
+    console.log(userGroup)
   },[])
 
   return (
     <View style={styles.fixtureContainer}>
       {userGroup.admin == userInfo?._id?(
         <>
-          {userGroup?.partidos != undefined && userGroup.partidos.length > 0 ?(
+          {userGroup?.fixture != undefined ?(
             <>
               {/* <FixtureBox/> */}
               <ElegirFixture/>
@@ -36,13 +36,13 @@ const Fixture = ({navigation}) => {
         ):(
             <View style={styles.noHayFixture}>
               <Image
-              // source={confusing}
+              source={confusing}
               alt='No fixture pic'
               style={styles.noFixturePic}/>
-              <Text style={styles.noFixtureText}>No hay partidos...</Text>
+              <Text style={styles.noFixtureText}>No hay fixture...</Text>
               
               <View>
-                <Button onPress={()=>navigation.navigate("CargarFixture")}>
+                <Button onPress={()=>navigation.navigate("CrearFixture")}>
                   Crear Fixture
                 </Button>
               </View>
