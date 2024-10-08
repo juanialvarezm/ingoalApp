@@ -20,11 +20,10 @@ export const crearFixture = createAsyncThunk("fixtures/crearFixture",async(fixtu
     try {
         
         const {data} = await axios.post("http://10.0.2.2:5000/api/fixture/crear",{...fixtureData})
-        // console.log(data)
         return data
 
     } catch (error) {
-        return rejectWithValue(error.response?.data)
+        return rejectWithValue(error?.response?.data)
     }
 })
 

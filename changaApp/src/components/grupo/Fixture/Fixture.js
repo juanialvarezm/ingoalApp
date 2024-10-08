@@ -21,49 +21,45 @@ const Fixture = ({navigation}) => {
   useEffect(()=>{
 
     console.log(userGroup)
+    // console.log(userGroup.admin[0].toString())
+    // console.log(userInfo._id.toString())
   },[])
 
   return (
     <View style={styles.fixtureContainer}>
-      {userGroup.admin == userInfo?._id?(
-        <>
-          {userGroup?.fixture != undefined ?(
+      {Array.isArray(userGroup?.fixture) && userGroup?.fixture.length > 0 ?(
             <>
-              {/* <FixtureBox/> */}
               <ElegirFixture/>
             </>
-            
-        ):(
-            <View style={styles.noHayFixture}>
-              <Image
-              source={confusing}
-              alt='No fixture pic'
-              style={styles.noFixturePic}/>
-              <Text style={styles.noFixtureText}>No hay fixture...</Text>
-              
-              <View>
-                <Button onPress={()=>navigation.navigate("CrearFixture")}>
-                  Crear Fixture
-                </Button>
-              </View>
-            </View>
-          )}
-        </>
       ):(
         <>
-          {userGroup?.partidos == undefined?(
+          {userGroup?(
             <View style={styles.noHayFixture}>
-              <Image
-              source={confusing}
-              alt='No fixture pic'
-              style={styles.noFixturePic}/>
-              <Text style={styles.noFixtureText}>No hay partidossdksodksodk</Text>
+            <Image
+            source={confusing}
+            alt='No fixture pic'
+            style={styles.noFixturePic}/>
+            <Text style={styles.noFixtureText}>No hay fixture...</Text>
+
+            <View>
+              <Button onPress={()=>navigation.navigate("CrearFixture")}>
+                Crear Fixture
+              </Button>
             </View>
+          </View>
           ):(
-            <Text>Si hay fixture</Text>
-          )}
-        </>
-      )}      
+            <View style={styles.noHayFixture}>
+            {/* <Image
+            source={confusing}
+            alt='No fixture pic'
+            style={styles.noFixturePic}/> */}
+            <Text style={styles.noFixtureText}>No hay partidossdksodksodk</Text>
+            <Text >No hay partidossdksodksodk</Text>
+          </View>
+
+          )}   
+        </>         
+      )}
     </View>
   )
 }

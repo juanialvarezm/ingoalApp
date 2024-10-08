@@ -25,15 +25,6 @@ const CargarFixture = () => {
             }
         }
   
-
-    const crearFixture = ()=>{
-        try {
-            
-        } catch (error) {
-            
-        }
-    }
-
     
     return (
     <View style={styles.cargarPartidoContainer}>

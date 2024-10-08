@@ -15,9 +15,11 @@ const partidosSchema = mongoose.Schema({
     },
     resultadoLocal:{
         type:String,
+        default:"0"
     },
     resultadoVisitante:{
         type:String,
+        default:"0"
     },
     puntos:[{
         type:mongoose.Types.ObjectId,

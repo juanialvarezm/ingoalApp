@@ -6,6 +6,7 @@ import { GlobalState } from "../../../context/GlobalContext"
 import BottomTabNvigator from "../../../screens/Index"
 import { fetchFixture } from "../../../features/fixtureActions"
 import { useDispatch } from "react-redux" 
+import Button from "react-native-button"
 
 const ElegirFixture = () => {
     const navigation = useNavigation()
@@ -29,7 +30,7 @@ const ElegirFixture = () => {
 
     useEffect(()=>{
         dispatch(fetchFixture())
-    },[])
+    },[userGroup])
 
     return (
     <View style={styles.elegirFixtureContainer}>
@@ -41,6 +42,11 @@ const ElegirFixture = () => {
                     </View>
                 </TouchableOpacity>
             ))}
+            <View>
+              <Button onPress={()=>navigation.navigate("CrearFixture")}>
+                Crear Fixture
+              </Button>
+            </View>
         </View>
     </View>
   )

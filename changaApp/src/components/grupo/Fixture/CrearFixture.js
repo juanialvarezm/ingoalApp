@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const CrearFixture = () => {
     const dispatch = useDispatch()
-    const {equipoFixture} = GlobalState()
+    const {equipoFixture,setEquipoFixture} = GlobalState()
     
     const navigation = useNavigation()
     const {userGroup} = useSelector((state)=>state.grupos)
@@ -38,7 +38,7 @@ const CrearFixture = () => {
             <View style={styles.crearFixtureCardBox}>
                 <View>
                     <View style={styles.containerInputFields}>
-                        <TextInput placeholder='Equipo a'onChangeText={(value)=>setEquipoFixture(value)} />
+                        <TextInput placeholder='Equipo a' onChangeText={(value)=>setEquipoFixture(value)} />
                     </View>
                 </View>
             </View>
@@ -61,7 +61,7 @@ const styles= StyleSheet.create({
     boxbox:{
         flex:1,
         // justifyContent: 'center',
-        marginTop:60
+        marginTop:40
     },
     crearFixtureCardBox:{
         // justifyContent:"center",
