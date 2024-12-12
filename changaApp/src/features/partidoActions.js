@@ -52,3 +52,13 @@ export const crearPartido = createAsyncThunk("partidos/crear",async({crearData})
         throw new Error(error.message)
     }
 })
+
+
+export const agregarPartidoAlFixture=createAsyncThunk("partidos/agregar",async({rejectWithValue})=>{
+    try {
+        const {data} = await axios.post("http://10.0.2.2/api/partidos",{})
+        return data
+    } catch (error) {
+        rejectWithValue(error.response?.data)
+    }
+})

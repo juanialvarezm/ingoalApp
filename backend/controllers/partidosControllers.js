@@ -1,24 +1,28 @@
 const express = require("express")
 const Partidos = require("../models/Partidos")
 const Puntos = require("../models/Puntos")
+const Fixture = require("../models/Fixture")
 
 const crearPartido = async(req,res)=>{
     try {
         const {equipoVisitante,equipoLocal,creador,categoria,
-            tries,grupoId} = req.body
+            tries,grupoId,fixture} = req.body
             
-            if(!equipoVisitante || !equipoLocal){
-                throw new Error("Se necesitan los equipos")
+            if(!equipoVisitante || !equipoLocal || !fixture){
+                throw new Error("Se necesitan los equipos y el fixture")
             }
 
             // let creador = req.user
 
-            let partido = await Partidos.create({equipoLocal,equipoVisitante,creador,categoria,grupoId})
+
+            let partido = await Partidos.create({equipoLocal,equipoVisitante,creador,categoria,grupoId,fixture})
             partido =  await partido.populate("equipoLocal", "nombre logo") 
             partido =  await partido.populate("equipoVisitante", "nombre , logo") 
             partido =  await partido.populate("grupoId") 
             partido =  await partido.populate("categoria") 
             // partido =  await partido.populate("fecha") 
+
+            const addtofixture = await Fixture.findByIdAndUpdate(fixture,{$push:{partidos:partido._id}})
 
 
 

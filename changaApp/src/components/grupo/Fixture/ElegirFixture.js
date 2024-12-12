@@ -7,11 +7,15 @@ import BottomTabNvigator from "../../../screens/Index"
 import { fetchFixture } from "../../../features/fixtureActions"
 import { useDispatch } from "react-redux" 
 import Button from "react-native-button"
+import { fetchGroup } from "../../../features/grupoSlice"
 
 const ElegirFixture = () => {
     const navigation = useNavigation()
     const {userGroup,fixtureGroup} = useSelector((state)=>state.grupos)
+    const {fixtureData} = useSelector((state)=>state.fixtures)
     const {fixtureCategoria,setFixtureCategoria} = GlobalState()
+    const {userInfo} = useSelector((state)=>state.auth)
+
 
     const dispatch = useDispatch()
 
@@ -26,11 +30,20 @@ const ElegirFixture = () => {
         }
     } 
 
+    const fetchGupo = async()=>{
+        try {
+          dispatch(fetchGroup(userInfo._id))
+      // console.log(userGroup)
+        } catch (error) {
+          console.log(error.message)
+        }
+      }
 
 
     useEffect(()=>{
-        dispatch(fetchFixture())
-    },[userGroup])
+        fetchGupo()
+        console.log("loading fixture")
+    },[userInfo])
 
     return (
     <View style={styles.elegirFixtureContainer}>

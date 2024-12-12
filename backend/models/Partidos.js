@@ -47,6 +47,10 @@ const partidosSchema = mongoose.Schema({
     finalizado:{
         type:Boolean,
         default:false
+    },
+    fixture:{
+        type:mongoose.Types.ObjectId,
+        ref:"Fixture"
     }
 })
 

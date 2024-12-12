@@ -21,6 +21,7 @@ const CrearFixture = () => {
             try {
                 dispatch(crearFixture({grupo:userGroup,categoria:equipoFixture}))
                 navigation.navigate("ElegirFix")
+                console.log("Fixture nuevo creado")
             } catch (error) {
                 console.log(error)
             }

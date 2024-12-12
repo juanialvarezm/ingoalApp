@@ -1,10 +1,19 @@
 import { View, Text,StyleSheet, TextInput,Image,TouchableOpacity } from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import man from "../../../assets/ojo4.png" 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
+import { agregarPartidoAlFixture } from '../../../features/partidoActions'
+
 
 const AgregarPartido = () => {
+    const dispatch = useDispatch()
+
+    const agregarAlFixture = ()=>{
+
+    }
+
   return (
     <View style={styles.agregarPartidoContainer}>
       <View style={styles.agregarHero}>

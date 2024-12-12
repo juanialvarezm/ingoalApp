@@ -4,6 +4,7 @@ const Grupos = require("../models/Grupos")
 const Partidos = require("../models/Partidos")
 const Teams = require("../models/Teams")
 
+
 const fetchFixture = async(req,res)=>{
     try {
         const {categoria,grupo} = req.body
