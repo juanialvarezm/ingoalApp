@@ -13,7 +13,7 @@ const crearPartido = async(req,res)=>{
             }
 
             // let creador = req.user
-
+            
 
             let partido = await Partidos.create({equipoLocal,equipoVisitante,creador,categoria,grupoId,fixture})
             partido =  await partido.populate("equipoLocal", "nombre logo") 
