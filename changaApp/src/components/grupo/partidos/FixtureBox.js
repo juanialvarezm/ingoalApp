@@ -69,7 +69,7 @@ const FixtureBox = ({partido})=>{
                             </View>
                             <View style={styles.equipoVisitanteBox} >
                             <Image 
-                                source={{uri: p.equipoVisitante.logo}}
+                                source={{uri: p.equipoVisitante?.logo}}
                                     style={{width: 60, height: 60,marginRight:5}}
                                      />
 
